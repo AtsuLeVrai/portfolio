@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 # other
-.idea
+.idea/*
+!.idea/rcb-settings.xml
