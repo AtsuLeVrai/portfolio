@@ -1,7 +1,48 @@
 @import "libs/tailwind";
 @import "libs/font";
 
-* {
+body {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
+  background-color: rgba(12, 12, 12, 0.93);
+  color: white;
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 90%;
+}
+
+pre code {
+  display: block;
+  padding: 10px;
+  overflow-x: auto;
+  line-height: 1.45;
+  border-radius: 5px;
+  background-color: #282c34;
+  color: #abb2bf;
+}
+
+code .keyword {
+  color: #c678dd;
+}
+
+code .function {
+  color: #61afef;
+}
+
+code .string {
+  color: #98c379;
+}
+
+code .namespace {
+  color: #df584c;
+}
+
+code .bracket {
+  color: #f6dc02
 }

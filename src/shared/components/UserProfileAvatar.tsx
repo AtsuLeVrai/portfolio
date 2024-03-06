@@ -3,39 +3,31 @@
 import Error from "next/error";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-async function fetchAvatar(pseudo: string) {
-	const response = await fetch(`https://api.github.com/users/${pseudo}`);
-	if (!response.ok) {
-		new Error({
-			title: "Failed to fetch user data",
-			statusCode: 404,
-		});
-	}
-
-	const data = await response.json();
-	return data.avatar_url;
-}
+import { fetchGithubUser } from "@/shared";
 
 export function UserProfileAvatar({ username }: { readonly username: string; }) {
-	const [avatarURL, setAvatarURL] = useState("");
+	const [avatarURL, setAvatarURL] = useState<string | null>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await fetchAvatar(username);
-			setAvatarURL(data);
+			const data = await fetchGithubUser(username);
+			setAvatarURL(data.avatar_url);
 		};
 
 		void fetchData();
 	}, [username]);
 
+	if (avatarURL === null) {
+		return <Error statusCode={404} title='User not found'/>;
+	}
+
 	if (!avatarURL) {
-		return <div>Loading...</div>;
+		return <div className='text-gray-500'>Loading...</div>;
 	}
 
 	return (
-		<div>
-			<Image src={avatarURL} alt='Uer Picture' width='460' height='460'/>
+		<div className='inline-block relative'>
+			<Image src={avatarURL} alt={`${username}'s Picture`} className='rounded-full' width={300} height={300}/>
 		</div>
 	);
 }

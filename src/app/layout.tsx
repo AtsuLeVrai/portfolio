@@ -1,5 +1,5 @@
-import "@/assets/styles/globals.scss";
 import type { Metadata } from "next";
+import "@/assets/styles/globals.scss";
 
 export const metadata: Metadata = {
 	title: "AtsumiFlex | Portfolio",

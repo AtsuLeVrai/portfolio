@@ -3,12 +3,12 @@
 // TODO: [Projects Section] Mettre en avant mes projets en cours avec des cartes ou des listes, en intégrant des liens GitHub si applicable.
 // TODO: [Contact Section] Concevoir un formulaire de contact ou des liens vers mes réseaux sociaux/professionnels.
 
-import { AboutSection, ContactSection, HeaderSection, LanguagesSection, MainSection, ProjectsSection } from "@/shared";
+import React from "react";
+import { AboutSection, ContactSection, LanguagesSection, MainSection, ProjectsSection } from "@/shared";
 
 export default function Home() {
 	return (
 		<>
-			<HeaderSection/>
 			<MainSection/>
 			<AboutSection/>
 			<LanguagesSection/>
