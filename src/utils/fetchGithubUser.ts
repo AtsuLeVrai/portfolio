@@ -7,19 +7,15 @@ import type { GithubUserData } from "@/types";
  * @returns {Promise<GithubUserData>} A promise that resolves with the user data.
  * @throws {Error} Throws an error if the HTTP request fails or if the JSON data cannot be parsed.
  */
-export async function FetchGithubUser(username: string): Promise<GithubUserData> {
-	const response = await fetch(`https://api.github.com/users/${username}`, { cache: "force-cache" });
-
-	if (!response.ok) {
-		throw new Error(`HTTP error ! status: ${response.status}`);
-	}
-
-	let data: GithubUserData;
+export async function fetchGithubUser(username: string): Promise<GithubUserData> {
 	try {
-		data = await response.json();
+		const response = await fetch(`https://api.github.com/users/${username}`, { cache: "force-cache" });
+		if (!response.ok) {
+			new Error(`HTTP error ! status: ${response.status}`);
+		}
+
+		return await response.json();
 	} catch {
 		throw new Error("Could not parse JSON !");
 	}
-
-	return data;
 }
