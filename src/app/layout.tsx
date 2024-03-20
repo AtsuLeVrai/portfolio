@@ -13,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{
 }>) {
 	return (
 		<html lang='en'>
-			<body className={montserrat.className}>{children}</body>
+			<body className={`${montserrat.className} bg-neutral-900 text-white`}>{children}</body>
 		</html>
 	);
 }
