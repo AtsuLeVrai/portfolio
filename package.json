@@ -1,7 +1,6 @@
 {
   "name": "portfolio",
-  "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781",
-  "version": "0.1.0",
+  "packageManager": "yarn@4.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,10 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"
@@ -24,7 +19,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-neon": "^0.1.59",
+    "eslint-config-neon": "^0.1.60",
     "eslint-formatter-pretty": "^6.0.1",
     "postcss": "^8",
     "sass": "^1.72.0",

@@ -1,4 +1,4 @@
-import "@/styles/globals.scss";
+import "@/app/globals.scss";
 import type { Metadata } from "next";
 import React from "react";
 import { montserrat } from "@/utils";
@@ -13,8 +13,7 @@ export default function RootLayout({ children }: Readonly<{
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${montserrat.className} bg-neutral-900 text-white`}>{children}</body>
+			<body className={montserrat.className}>{children}</body>
 		</html>
 	);
 }
-
