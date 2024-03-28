@@ -1,7 +1,7 @@
-import "@/app/globals.scss";
+import "./globals.scss";
 import type { Metadata } from "next";
 import React from "react";
-import { montserrat } from "@/utils";
+import { rubik } from "@/utils";
 
 export const metadata: Metadata = {
 	title: "AtsumiFlex | Portfolio",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{
 }>) {
 	return (
 		<html lang='en'>
-			<body className={montserrat.className}>{children}</body>
+			<body className={`${rubik.className} bg-neutral-900 text-white`}>{children}</body>
 		</html>
 	);
 }
