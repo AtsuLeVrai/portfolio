@@ -1,7 +1,7 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import React from "react";
-import { rubik } from "@/utils";
+import { fira_code } from "@/utils";
 
 export const metadata: Metadata = {
 	title: "AtsumiFlex | Portfolio",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${rubik.className} bg-neutral-900 text-white`}>{children}</body>
+			<body className={fira_code.className}>{children}</body>
 		</html>
 	);
 }
