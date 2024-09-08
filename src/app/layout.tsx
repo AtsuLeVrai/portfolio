@@ -1,7 +1,6 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import React from "react";
-import { poppins } from "@/lib/fonts";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -15,7 +14,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`bg-olive ${poppins.className} overflow-hidden`}>{children}</body>
+            <body className="overflow-hidden">{children}</body>
         </html>
     );
 }

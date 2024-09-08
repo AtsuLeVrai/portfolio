@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -7,30 +8,38 @@ import { GithubIcon } from "@/components/GithubIcon";
 import { Menu } from "@/components/Menu";
 import { MenuButton } from "@/components/MenuButton";
 import { ANTIQUE_WHITE, GITHUB_USER } from "@/lib/constants";
-import { eczar } from "@/lib/fonts";
+import { eczar, poppins } from "@/lib/fonts";
 import profile from "@/public/profile.png";
 
-// https://www.figma.com/design/0PKPAeqSRvbrERBy4b9KTi/ANDCOfromfiverr-brutalist-kit-(Community)?node-id=0-1&node-type=CANVAS&t=IHe1Kz11byHSyIge-0
 export default function Home() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div>
-            <header className="py-11 px-28 relative">
+        <div className={`${poppins.className} bg-olive min-h-screen flex flex-col`}>
+            <header className="py-9 px-28 relative">
                 <nav className="flex justify-between items-center">
                     <h1 className="text-antique-white">Tom Bialecki.</h1>
                     <Image src={profile} alt="profile" width={80} height={80} className="rounded-full" />
                     <MenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
                 </nav>
             </header>
-            {isMenuOpen && <Menu />}
-            <main className={`flex flex-col items-center justify-center space-y-4 text-center ${eczar.className}`}>
-                <h1 className="text-antique-white text-9xl">I want the maximum</h1>
-                <h1 className="text-antique-white text-9xl">I want the maximum</h1>
-                <h1 className="text-antique-white text-9xl">I want the maximum</h1>
-                <h1 className="text-antique-white text-9xl">I want the maximum</h1>
+
+            <AnimatePresence>{isMenuOpen && <Menu />}</AnimatePresence>
+
+            <main className="flex-grow flex items-center justify-center">
+                <h1
+                    className={`${eczar.className} text-antique-white font-bold text-4xl md:text-5xl lg:text-6xl max-w-4xl px-4`}
+                >
+                    "The aim of art is to represent not the outward appearance of things, but their inward
+                    significance." - Aristotle
+                </h1>
             </main>
-            <footer className="fixed bottom-8 right-8 flex space-x-4">
+
+            <div className="fixed bottom-36 -left-12 text-antique-white text-lg uppercase -rotate-90">
+                Made by my self
+            </div>
+
+            <footer className="py-8 px-8 flex justify-end">
                 <Link href={`https://github.com/${GITHUB_USER}`} target="_blank">
                     <GithubIcon width={32} height={32} stroke={ANTIQUE_WHITE} />
                 </Link>
