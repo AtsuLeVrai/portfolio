@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "clean": "rimraf .next"
+    "clean": "rimraf .next",
+    "prepare": "husky"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
     "eslint-config-neon": "^0.1.62",
+    "husky": "^9.1.5",
     "postcss": "^8.4.45",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
