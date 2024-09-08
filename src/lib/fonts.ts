@@ -1,4 +1,4 @@
-import { Lexend, Poppins } from "next/font/google";
+import { Eczar, Lexend, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 
 export const helvetica = localFont({
@@ -8,6 +8,9 @@ export const helvetica = localFont({
 });
 
 export const lexend = Lexend();
+
+export const eczar = Eczar();
+
 export const poppins = Poppins({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
