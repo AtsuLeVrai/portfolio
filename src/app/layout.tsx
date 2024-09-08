@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`bg-olive ${poppins.className} text-antique-white overflow-hidden`}>{children}</body>
+            <body className={`bg-olive ${poppins.className} overflow-hidden`}>{children}</body>
         </html>
     );
 }

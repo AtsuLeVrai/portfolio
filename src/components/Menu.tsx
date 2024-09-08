@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { GithubIcon } from "@/components/GithubIcon";
+import { ANTIQUE_WHITE, OLIVE } from "@/lib/constants";
 import { eczar } from "@/lib/fonts";
 
 export function Menu() {
@@ -15,6 +16,9 @@ export function Menu() {
         <AnimatePresence>
             <motion.div
                 className="fixed inset-0 bg-white overflow-auto flex items-center"
+                style={{
+                    backgroundColor: ANTIQUE_WHITE,
+                }}
                 initial={{ opacity: 0, x: "-100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "-100%" }}
@@ -30,10 +34,10 @@ export function Menu() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                             >
-                                <p className="-rotate-90 text-sm md:text-base">{item.num}</p>
+                                <p className="-rotate-90 text-olive text-sm md:text-base">{item.num}</p>
                                 <Link
                                     href={item.href}
-                                    className={`block ${item.size} ${eczar.className} ${item.weight} hover:underline`}
+                                    className={`block ${item.size} ${eczar.className} ${item.weight} hover:underline text-olive`}
                                 >
                                     {item.text}
                                 </Link>
@@ -49,7 +53,7 @@ export function Menu() {
                     >
                         <a
                             href="mailto:tom.bialecki2211@gmail.com"
-                            className="text-sm uppercase border-b border-black pb-1 hover:text-gray-600 transition-colors"
+                            className="text-sm uppercase border-b border-black pb-1 hover:text-gray-600 transition-colors text-olive"
                         >
                             EMAIL US. WE NEED A COFFEE
                         </a>
@@ -62,7 +66,7 @@ export function Menu() {
                         transition={{ delay: 0.6 }}
                     >
                         <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                            <GithubIcon width={32} height={32} stroke="#000000" />
+                            <GithubIcon width={32} height={32} stroke={OLIVE} />
                         </a>
                     </motion.div>
                 </div>
