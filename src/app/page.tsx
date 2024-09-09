@@ -4,10 +4,10 @@ import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { GithubIcon } from "@/components/GithubIcon";
+import { GithubIcon, LinkedinIcon } from "@/components/Icon";
 import { Menu } from "@/components/Menu";
 import { MenuButton } from "@/components/MenuButton";
-import { ANTIQUE_WHITE, GITHUB_USER } from "@/lib/constants";
+import { ANTIQUE_WHITE, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 import { eczar, poppins } from "@/lib/fonts";
 import profile from "@/public/profile.png";
 
@@ -39,9 +39,12 @@ export default function Home() {
                 Made by my self
             </div>
 
-            <footer className="py-8 px-8 flex justify-end">
-                <Link href={`https://github.com/${GITHUB_USER}`} target="_blank">
-                    <GithubIcon width={32} height={32} stroke={ANTIQUE_WHITE} />
+            <footer className="py-8 px-8 flex justify-end space-x-4">
+                <Link href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                    <LinkedinIcon height={32} stroke={ANTIQUE_WHITE} width={32} />
+                </Link>
+                <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                    <GithubIcon width={32} stroke={ANTIQUE_WHITE} height={32} />
                 </Link>
             </footer>
         </div>

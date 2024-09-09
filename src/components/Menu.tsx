@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { GithubIcon } from "@/components/GithubIcon";
-import { ANTIQUE_WHITE, GITHUB_USER, OLIVE } from "@/lib/constants";
+import { usePathname } from "next/navigation";
+import { GithubIcon, LinkedinIcon } from "@/components/Icon";
+import { ANTIQUE_WHITE, EMAIL, GITHUB_URL, LINKEDIN_URL, OLIVE } from "@/lib/constants";
 import { eczar } from "@/lib/fonts";
 
 type MenuItemProps = {
@@ -29,13 +30,19 @@ function MenuItem({ num, text, href, size, weight }: MenuItemProps) {
 }
 
 export function Menu() {
+    const pathname = usePathname();
+
     const menuItems = [
-        { num: "01", text: "Home", href: "/", size: "text-4xl md:text-6xl", weight: "font-light" },
-        { num: "02", text: "Projects", href: "/projects", size: "text-4xl md:text-6xl", weight: "font-bold" },
-        { num: "03", text: "About", href: "/about", size: "text-5xl md:text-7xl", weight: "font-bold" },
-        { num: "04", text: "Blog", href: "/blog", size: "text-5xl md:text-7xl", weight: "font-bold" },
-        { num: "05", text: "Contact us", href: "/contact", size: "text-5xl md:text-7xl", weight: "font-bold" },
-    ];
+        { num: "01", text: "Home", href: "/" },
+        { num: "02", text: "Projects", href: "/projects" },
+        { num: "03", text: "About", href: "/about" },
+        { num: "04", text: "Blog", href: "/blog" },
+        { num: "05", text: "Contact us", href: "/contact" },
+    ].map((item) => ({
+        ...item,
+        size: pathname === item.href ? "text-4xl md:text-6xl" : "text-5xl md:text-7xl",
+        weight: pathname === item.href ? "font-light" : "font-bold",
+    }));
 
     return (
         <motion.div
@@ -59,12 +66,12 @@ export function Menu() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
                 >
-                    <a
-                        href="mailto:tom.bialecki2211@gmail.com"
+                    <Link
+                        href={`mailto:${EMAIL}`}
                         className="text-sm uppercase border-b border-black pb-1 hover:text-gray-600 transition-colors text-olive"
                     >
                         EMAIL US. WE NEED A COFFEE
-                    </a>
+                    </Link>
                 </motion.div>
 
                 <motion.div
@@ -73,9 +80,12 @@ export function Menu() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
                 >
-                    <a href={`https://github.com/${GITHUB_USER}`} target="_blank" rel="noopener noreferrer">
+                    <Link href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                        <LinkedinIcon height={32} stroke={OLIVE} width={32} />
+                    </Link>
+                    <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
                         <GithubIcon width={32} height={32} stroke={OLIVE} />
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
         </motion.div>
