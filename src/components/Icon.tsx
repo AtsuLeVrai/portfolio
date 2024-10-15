@@ -1,3 +1,5 @@
+import React from "react";
+
 type IconProps = {
     readonly height: number;
     readonly stroke: string;

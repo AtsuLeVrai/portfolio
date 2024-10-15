@@ -1,51 +1,66 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { GithubIcon, LinkedinIcon } from "@/components/Icon";
-import { Menu } from "@/components/Menu";
-import { MenuButton } from "@/components/MenuButton";
-import { ANTIQUE_WHITE, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
-import { eczar, poppins } from "@/lib/fonts";
+import { useCallback, useState } from "react";
+import { GithubIcon, LinkedinIcon, Menu, MenuButton, SocialLink } from "@/components";
+import { eczar, GITHUB_URL, LINKEDIN_URL } from "@/lib";
 import profile from "@/public/profile.png";
 
-export default function Home() {
+export default function HomePage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const toggleMenu = useCallback(() => {
+        setIsMenuOpen((prev) => !prev);
+    }, []);
+
     return (
-        <div className={`${poppins.className} bg-olive min-h-screen flex flex-col`}>
-            <header className="py-9 px-28 relative">
+        <div className="bg-olive min-h-screen flex flex-col">
+            <header className="py-4 sm:py-6 md:py-9 px-4 sm:px-8 md:px-16 lg:px-28 relative">
                 <nav className="flex justify-between items-center">
-                    <h1 className="text-antique-white">Tom Bialecki.</h1>
-                    <Image src={profile} alt="profile" width={80} height={80} className="rounded-full" />
-                    <MenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+                    <motion.h1
+                        className={`${eczar.className} text-antique-white text-xl sm:text-2xl md:text-3xl`}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        Tom Bialecki.
+                    </motion.h1>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <Image
+                            src={profile}
+                            alt="Profile picture of Tom Bialecki"
+                            width={80}
+                            height={80}
+                            className="rounded-full"
+                            placeholder="blur"
+                        />
+                    </motion.div>
+                    <MenuButton isOpen={isMenuOpen} setIsOpen={toggleMenu} />
                 </nav>
             </header>
 
             <AnimatePresence>{isMenuOpen && <Menu />}</AnimatePresence>
 
-            <main className="flex-grow flex items-center justify-center">
-                <h1
-                    className={`${eczar.className} text-antique-white font-bold text-4xl md:text-5xl lg:text-6xl max-w-4xl px-4`}
+            <main className="flex-grow flex items-center justify-center p-4 sm:p-8">
+                <motion.h2
+                    className={`${eczar.className} text-antique-white font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl max-w-4xl text-center`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     "The aim of art is to represent not the outward appearance of things, but their inward
                     significance." - Aristotle
-                </h1>
+                </motion.h2>
             </main>
 
-            <div className="fixed bottom-36 -left-12 text-antique-white text-lg uppercase -rotate-90">
-                Made by my self
-            </div>
-
-            <footer className="py-8 px-8 flex justify-end space-x-4">
-                <Link href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                    <LinkedinIcon height={32} stroke={ANTIQUE_WHITE} width={32} />
-                </Link>
-                <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                    <GithubIcon width={32} stroke={ANTIQUE_WHITE} height={32} />
-                </Link>
+            <footer className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 flex justify-end space-x-4">
+                <SocialLink href={LINKEDIN_URL} Icon={LinkedinIcon} label="LinkedIn" />
+                <SocialLink href={GITHUB_URL} Icon={GithubIcon} label="GitHub" />
             </footer>
         </div>
     );
