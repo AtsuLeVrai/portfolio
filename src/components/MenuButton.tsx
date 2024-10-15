@@ -1,8 +1,8 @@
-import React from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 type MenuButtonProps = {
     readonly isOpen: boolean;
-    readonly setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    readonly setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export function MenuButton({ isOpen, setIsOpen }: MenuButtonProps) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { useCallback, useState } from "react";
 import { Menu, MenuButton } from "@/components";
 
@@ -20,26 +20,28 @@ type SectionProps = {
     readonly title: string;
 };
 
-const Section = ({ title, content, isActive, onMouseEnter, onMouseLeave }: SectionProps) => (
-    <motion.section
-        className="mb-8 p-4 border-4 border-antique-white cursor-pointer"
-        variants={sectionVariants}
-        initial="inactive"
-        animate={isActive ? "active" : "inactive"}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-    >
-        <h2 className="text-3xl md:text-4xl mb-4 font-bold">{title}</h2>
-        {content}
-    </motion.section>
-);
+function Section({ title, content, isActive, onMouseEnter, onMouseLeave }: SectionProps) {
+    return (
+        <motion.section
+            className="mb-8 p-4 border-4 border-antique-white cursor-pointer"
+            variants={sectionVariants}
+            initial="inactive"
+            animate={isActive ? "active" : "inactive"}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
+            <h2 className="text-3xl md:text-4xl mb-4 font-bold">{title}</h2>
+            {content}
+        </motion.section>
+    );
+}
 
 export default function AboutPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [activeSection, setActiveSection] = useState<ActiveSectionState>(null);
 
-    const handleMouseMove = useCallback((event: React.MouseEvent) => {
+    const handleMouseMove = useCallback((event: MouseEvent) => {
         setMousePosition({ x: event.clientX, y: event.clientY });
     }, []);
 

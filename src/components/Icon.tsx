@@ -1,6 +1,6 @@
 import React from "react";
 
-type IconProps = {
+export type IconProps = {
     readonly height: number;
     readonly stroke: string;
     readonly width: number;

@@ -15,24 +15,26 @@ type MenuItemProps = {
     readonly text: string;
 };
 
-const MenuItem = ({ num, text, href, isActive }: MenuItemProps) => (
-    <motion.div
-        className="flex items-center space-x-3"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: Number.parseInt(num, 10) * 0.1 }}
-    >
-        <p className="-rotate-90 text-olive text-sm md:text-base">{num}</p>
-        <Link
-            href={href}
-            className={`block text-4xl md:text-5xl lg:text-6xl ${eczar.className} ${
-                isActive ? "font-light" : "font-bold"
-            } hover:underline text-olive transition-all duration-300`}
+function MenuItem({ num, text, href, isActive }: MenuItemProps) {
+    return (
+        <motion.div
+            className="flex items-center space-x-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: Number.parseInt(num, 10) * 0.1 }}
         >
-            {text}
-        </Link>
-    </motion.div>
-);
+            <p className="-rotate-90 text-olive text-sm md:text-base">{num}</p>
+            <Link
+                href={href}
+                className={`block text-4xl md:text-5xl lg:text-6xl ${eczar.className} ${
+                    isActive ? "font-light" : "font-bold"
+                } hover:underline text-olive transition-all duration-300`}
+            >
+                {text}
+            </Link>
+        </motion.div>
+    );
+}
 
 export function Menu() {
     const pathname = usePathname();

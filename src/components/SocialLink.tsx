@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
+import type { IconProps } from "@/components/Icon";
 import { OLIVE } from "@/lib";
 
-export function SocialLink({ href, Icon, label }: any) {
+type SocialLinkProps = {
+    readonly Icon: React.FC<IconProps>;
+    readonly href: string;
+    readonly label: string;
+};
+
+export function SocialLink({ href, Icon, label }: SocialLinkProps) {
     return (
         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Link href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
