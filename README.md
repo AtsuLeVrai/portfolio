@@ -1,20 +1,43 @@
-# 👋 Bienvenue sur mon portfolio
+# 🌟 Welcome to My Portfolio
 
-Ce portfolio a été construit en utilisant Next.js et TailwindCSS.
+A modern and responsive portfolio website built with Next.js and TailwindCSS.
 
-## 🛠️ Installation & Configuration
+## ✨ Features
 
-1. Clonez ce dépôt.
-2. Assurez-vous que [Node.js](https://nodejs.org/) et [yarn](https://yarnpkg.com/) sont installés sur votre machine.
-3. Exécutez `yarn install` pour installer les dépendances.
-4. Pour démarrer l'application, exécutez `yarn dev`.
-   Votre application devrait maintenant être accessible sur [http://localhost:3000](http://localhost:3000)
+- Responsive design
+- Modern UI/UX
+- Fast performance
+- SEO optimized
+- Dark/Light mode
 
-## 🚀 Déploiement
+## 🛠️ Tech Stack
 
-Pour déployer votre portfolio, vous pouvez utiliser [Vercel](https://vercel.com/) qui a une intégration native avec
-Next.js.
+- Next.js
+- TailwindCSS
+- TypeScript
+- Framer Motion
 
-1. Assurez-vous d'avoir installé le CLI de Vercel.
-2. Exécutez `vercel` pour déployer.
-   Enjoy! ✨
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (14.x or later)
+- Yarn package manager
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/AtsuLeVrai/portfolio.git
+    ```
+2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+3. Start the development server
+   ```bash
+    pnpm run dev
+    ```
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
