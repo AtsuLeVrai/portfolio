@@ -1,58 +1,26 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import type React from "react";
 
+const poppins = Poppins({
+	subsets: ["latin"],
+	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
 export const metadata: Metadata = {
-  title: {
-    default: "AtsuLeVrai | Full Stack Developer Portfolio",
-    template: "%s | AtsuLeVrai",
-  },
-  description:
-    "Full Stack Developer specializing in React, Next.js, and modern web technologies. Crafting digital experiences with a focus on performance and user experience.",
-  keywords: [
-    "AtsuLeVrai",
-    "Full Stack Developer",
-    "Web Developer",
-    "React Developer",
-    "Next.js",
-    "TypeScript",
-    "Portfolio",
-    "Software Engineer",
-  ],
-  authors: [{ name: "AtsuLeVrai" }],
-  creator: "AtsuLeVrai",
-  publisher: "AtsuLeVrai",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    url: "https://atsule-vrai.com",
-    siteName: "AtsuLeVrai Portfolio",
-    title: "AtsuLeVrai | Full Stack Developer",
-    description:
-      "Full Stack Developer specializing in React, Next.js, and modern web technologies.",
-  },
-  category: "technology",
+	title: "portfolio",
+	description: "My personal portfolio website",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<body className={`${poppins.className} antialiased`}>{children}</body>
+		</html>
+	);
 }

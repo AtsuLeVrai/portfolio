@@ -1,43 +1,49 @@
-# 🌟 Welcome to My Portfolio
+# my-better-t-app
 
-A modern and responsive portfolio website built with Next.js and TailwindCSS.
+This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, and more.
 
-## ✨ Features
+## Features
 
-- Responsive design
-- Modern UI/UX
-- Fast performance
-- SEO optimized
-- Dark/Light mode
+- **TypeScript** - For type safety and improved developer experience
+- **Next.js** - Full-stack React framework
+- **TailwindCSS** - Utility-first CSS for rapid UI development
+- **shadcn/ui** - Reusable UI components
+- **Biome** - Linting and formatting
+- **Husky** - Git hooks for code quality
 
-## 🛠️ Tech Stack
+## Getting Started
 
-- Next.js
-- TailwindCSS
-- TypeScript
-- Framer Motion
+First, install the dependencies:
 
-## 🚀 Getting Started
+```bash
+pnpm install
+```
 
-### Prerequisites
 
-- Node.js (14.x or later)
-- Yarn package manager
+Then, run the development server:
 
-### Installation
+```bash
+pnpm dev
+```
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/AtsuLeVrai/portfolio.git
-    ```
-2. Install dependencies
-   ```bash
-   pnpm install
-   ```
-3. Start the development server
-   ```bash
-    pnpm run dev
-    ```
+Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
+
+## Project Structure
+
+```
+my-better-t-app/
+├── apps/
+│   ├── web/         # Frontend application (Next.js)
+```
+
+## Available Scripts
+
+- `pnpm dev`: Start all applications in development mode
+- `pnpm build`: Build all applications
+- `pnpm dev:web`: Start only the web application
+- `pnpm check-types`: Check TypeScript types across all apps
+- `pnpm check`: Run Biome formatting and linting
