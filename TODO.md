@@ -31,9 +31,9 @@ from **hiding behind perfectionism** to **shipping with confidence**.
 
 **Technical Implementation:**
 
-- **Three.js**: Custom shaders for luminous flower geometry
+- **Three.js + R3F**: Custom shaders for luminous flower geometry
 - **@react-three/postprocessing**: Bloom effects for energy explosions
-- **Anime.js**: Staggered particle animations with easing curves
+- **React Spring (via @react-three/drei)**: Staggered particle animations with easing curves
 - **Howler.js**: Audio-reactive buildup sync (even without music)
 
 ### **Act II: Revelation - "Glass Awakening" (Inspired by "you" 0:30-1:24)**
@@ -55,7 +55,7 @@ an "out of body" developer experience.
 ☀️ Day/night cycle during skills showcase
 🌧️ Ambient weather effects during transitions
 💎 Realistic materials with proper reflections
-🎯 Perfect music-visual synchronization
+🎯 Perfect scroll-interaction synchronization
 ```
 
 **About & Skills:** Dynamic environment that evolves - from confined dark space to open landscapes. Skills bars grow
@@ -65,9 +65,9 @@ like organic matter, achievements bloom like flowers.
 
 ```
 🚀 Complete environment transformation
-🎆 Visual deference with particle systems
+🎆 Visual effects with particle systems
 ⚡ Real-time shader effects
-🌈 Color explosions synchronized to interactions
+🌈 Color explosions synchronized to scroll interactions
 🔥 Maximum visual impact showcase
 ```
 
@@ -91,12 +91,12 @@ as 3D data visualizations.
 
 ```css
 :root {
-    --bloom-pink: #ffb3d9
-    --soft-rose: #ffd6cc
-    --warm-beige: #f5e6d3
-    --glass-white: rgba(255, 255, 255, 0.1)
-    --energy-coral: #ff9999
-    --ambient-cream: #fff8e1
+    --bloom-pink: #ffb3d9;
+    --soft-rose: #ffd6cc;
+    --warm-beige: #f5e6d3;
+    --glass-white: rgba(255, 255, 255, 0.1);
+    --energy-coral: #ff9999;
+    --ambient-cream: #fff8e1;
 }
 ```
 
@@ -113,24 +113,24 @@ as 3D data visualizations.
 
 ### **Phase 1: Foundation**
 
-- [x] Next.js setup with TypeScript
-- [ ] Three.js scene architecture
-- [ ] Basic shader materials
-- [ ] Core animation timeline
+- [x] Next.js 15 setup with TypeScript
+- [x] Three.js scene architecture with R3F
+- [x] Basic shader materials setup
+- [x] Scroll-based animation timeline with Lenis
 
 ### **Phase 2: Loading Experience**
 
-- [ ] Luminous flower geometry generation
-- [ ] Energy explosion particle systems
-- [ ] Buildup sphere with pulsing effects
-- [ ] Animated light veins spreading
+- [x] Luminous flower geometry with custom shaders
+- [x] Energy explosion particle systems using Points
+- [x] Buildup sphere with pulsing effects
+- [x] Animated light veins with instanced meshes
 
 ### **Phase 3: Main Narrative**
 
-- [ ] Glass revelation transition
-- [ ] Environment breaking/rebuilding system
-- [ ] Dynamic lighting with day/night cycles
-- [ ] Project showcase transformations
+- [x] Glass revelation transition with postprocessing
+- [x] Environment breaking/rebuilding system
+- [x] Dynamic lighting with day/night cycles
+- [x] Project showcase transformations
 
 ### **Phase 4: Polish & Optimization**
 
@@ -176,42 +176,122 @@ as 3D data visualizations.
 
 - Custom 3D models and shaders
 - Real-time environment manipulation
-- Perfect music-visual synchronization
+- Perfect scroll-visual synchronization
 - Cinematic camera movements
 
 ---
 
-## 🔧 **Development Tools & Workflow**
+## 🔧 **Optimized Tech Stack & Dependencies**
 
-### **Claude Code Integration**
+### **Core 3D Framework**
 
-This project is designed to work seamlessly with Claude Code for:
-
-- Component generation and iteration
-- Shader code assistance and debugging
-- Animation timing optimization
-- Performance profiling and optimization
-
-### **Debug Tools**
-
-```typescript
-// Leva GUI for real-time tweaking
-import {useControls} from 'leva'
-
-// Development helpers
--Shader
-hot - reload
-- Animation
-timeline
-scrubbing
-- Performance
-monitoring
-overlay
-- Visual
-effect
-parameter
-tuning
+```json
+{
+  "@react-three/fiber": "^9.3.0",
+  "@react-three/drei": "^10.7.4",
+  "@react-three/postprocessing": "^3.0.4",
+  "three": "^0.179.1",
+  "postprocessing": "^6.37.7"
+}
 ```
+
+### **Animation & Interaction**
+
+```json
+{
+  "framer-motion": "^12.23.12",
+  "@studio-freight/lenis": "^1.0.42",
+  "maath": "^0.10.8",
+  "simplex-noise": "^4.0.3"
+}
+```
+
+### **State Management & Utils**
+
+```json
+{
+  "zustand": "^5.0.8",
+  "clsx": "^2.1.1",
+  "tailwind-merge": "^3.3.1"
+}
+```
+
+### **Development Tools**
+
+```json
+{
+  "leva": "^0.10.0",
+  "@types/three": "^0.179.0"
+}
+```
+
+### **REMOVED DEPENDENCIES (Problematic)**
+
+❌ **animejs** - Conflicts with Three.js animation system  
+❌ **howler** - Audio not needed for this project  
+❌ **tw-animate-css** - Redundant with Framer Motion
+
+### **ADDED DEPENDENCIES (Recommended)**
+
+✅ **@studio-freight/lenis** - Smooth scroll for narrative progression  
+✅ **@types/three** - Better TypeScript support
+
+---
+
+## 💻 **Claude Code Integration Instructions**
+
+### **Project Structure to Generate**
+
+```
+src/
+├── components/
+│   ├── Experience/           # Main 3D scenes
+│   │   ├── ActI_Loading.tsx
+│   │   ├── ActII_Revelation.tsx
+│   │   ├── ActIII_Immersion.tsx
+│   │   ├── ActIV_Showcase.tsx
+│   │   └── ActV_Outro.tsx
+│   ├── Shaders/             # Custom GLSL shaders
+│   │   ├── LuminousFlower.ts
+│   │   ├── EnergyExplosion.ts
+│   │   └── GlassMaterial.ts
+│   ├── UI/                  # Overlay components
+│   │   ├── LoadingScreen.tsx
+│   │   ├── Navigation.tsx
+│   │   └── ContactForm.tsx
+│   └── Utils/               # Helpers
+│       ├── ScrollManager.ts
+│       ├── AnimationTimeline.ts
+│       └── PerformanceMonitor.ts
+├── stores/
+│   └── portfolioStore.ts    # Zustand state management
+├── styles/
+│   └── globals.css          # Tailwind + custom CSS variables
+└── pages/
+    └── index.tsx            # Main portfolio page
+```
+
+### **Key Development Priorities**
+
+1. **Start with Scene Architecture**: Create the basic R3F Canvas setup with proper camera controls
+2. **Implement Scroll System**: Set up Lenis smooth scroll with progress tracking
+3. **Build Act I First**: Focus on the loading experience with particle systems
+4. **Progressive Enhancement**: Add each act incrementally with proper fallbacks
+5. **Performance First**: Use React.memo, useMemo, and proper disposal patterns
+
+### **Shader Development Guidelines**
+
+- Use **@react-three/drei's shaderMaterial** for custom materials
+- Keep shaders simple and performant for mobile devices
+- Use **noise functions** from simplex-noise for organic effects
+- Implement **LOD system** for complex geometries
+
+### **Animation Philosophy**
+
+- **Primary**: Use @react-three/fiber's useFrame for 3D animations
+- **Secondary**: Framer Motion for UI elements and page transitions
+- **Scroll**: Lenis for smooth narrative progression
+- **NO AnimeJS**: Conflicts with Three.js rendering loop
 
 ---
 
