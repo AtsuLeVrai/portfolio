@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import type React from "react";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -9,8 +10,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: "portfolio",
-	description: "My personal portfolio website",
+	title: "AtsuLeVrai - Portfolio",
+	description:
+		"Backend Engineer. Trading Aspirant. Future Game Maker. A cinematic journey inspired by Beat Saber's legendary maps.",
 };
 
 export default function RootLayout({
@@ -20,7 +22,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${poppins.className} antialiased`}>{children}</body>
+			<body
+				className={`${poppins.className} overflow-x-hidden bg-black text-white antialiased`}
+			>
+				<SmoothScroll>{children}</SmoothScroll>
+			</body>
 		</html>
 	);
 }

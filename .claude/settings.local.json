@@ -1,6 +1,11 @@
 {
 	"permissions": {
-		"allow": ["WebSearch", "WebFetch(domain:animejs.com)", "Bash(mkdir:*)"],
+		"allow": [
+			"WebSearch",
+			"WebFetch(domain:animejs.com)",
+			"Bash(mkdir:*)",
+			"Bash(rm:*)"
+		],
 		"deny": [],
 		"ask": []
 	}
