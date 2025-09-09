@@ -1,6 +1,6 @@
 "use client";
 
-import { animate, createScope, stagger, type Scope } from "animejs";
+import { animate, createScope, type Scope, stagger } from "animejs";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
