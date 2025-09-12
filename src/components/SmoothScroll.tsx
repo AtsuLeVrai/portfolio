@@ -1,21 +1,33 @@
-"use client";
-
 import Lenis from "lenis/react";
-import { useEffect } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
-interface SmoothScrollProps {
-	children: React.ReactNode;
+function useIsMobile(breakpoint = 768) {
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+
+		const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
+
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
+
+		return () => window.removeEventListener("resize", checkMobile);
+	}, [breakpoint]);
+
+	return isMobile;
 }
 
-export default function SmoothScroll({ children }: SmoothScrollProps) {
-	useEffect(() => {
-		// Disable smooth scroll on mobile for better performance
-		const isMobile = window.innerWidth < 768;
+export default function SmoothScroll({
+	children,
+}: Readonly<{
+	children: ReactNode;
+}>) {
+	const isMobile = useIsMobile();
 
-		if (isMobile) {
-			document.body.style.overflow = "auto";
-		}
-	}, []);
+	if (isMobile) {
+		return <>{children}</>;
+	}
 
 	return (
 		<Lenis
@@ -28,6 +40,11 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 				smoothWheel: true,
 				wheelMultiplier: 1,
 				touchMultiplier: 2,
+				autoRaf: true,
+				syncTouch: false,
+				infinite: false,
+				overscroll: true,
+				autoResize: true,
 			}}
 		>
 			{children}
