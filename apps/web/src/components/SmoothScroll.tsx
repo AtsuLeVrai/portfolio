@@ -1,3 +1,5 @@
+"use client";
+
 import Lenis from "lenis/react";
 import { type ReactNode, useEffect, useState } from "react";
 
@@ -18,7 +20,7 @@ function useIsMobile(breakpoint = 768) {
 	return isMobile;
 }
 
-export default function SmoothScroll({
+export function SmoothScroll({
 	children,
 }: Readonly<{
 	children: ReactNode;
@@ -33,18 +35,19 @@ export default function SmoothScroll({
 		<Lenis
 			root
 			options={{
-				lerp: 0.1,
-				duration: 1.2,
+				lerp: 0.08,
+				duration: 1.6,
 				orientation: "vertical",
 				gestureOrientation: "vertical",
 				smoothWheel: true,
-				wheelMultiplier: 1,
-				touchMultiplier: 2,
+				wheelMultiplier: 0.8,
+				touchMultiplier: 1.5,
 				autoRaf: true,
-				syncTouch: false,
+				syncTouch: true,
 				infinite: false,
-				overscroll: true,
+				overscroll: false,
 				autoResize: true,
+				easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
 			}}
 		>
 			{children}

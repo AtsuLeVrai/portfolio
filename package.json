@@ -1,42 +1,27 @@
 {
-	"$schema": "https://json.schemastore.org/package",
-	"name": "portfolio",
-	"version": "0.1.0",
-	"packageManager": "bun@1.2.21",
+	"name": "@portfolio/source",
 	"private": true,
+	"packageManager": "pnpm@10.16.1",
 	"type": "module",
 	"scripts": {
-		"biome:check": "biome check --unsafe --write .",
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"preview": "vite preview",
-		"check-types": "tsc --noEmit",
-		"prepare": "husky"
-	},
-	"dependencies": {
-		"@fontsource/poppins": "^5.2.6",
-		"@tailwindcss/vite": "^4.1.13",
-		"@types/animejs": "^3.1.13",
-		"animejs": "^4.1.3",
-		"clsx": "^2.1.1",
-		"framer-motion": "^12.23.12",
-		"lenis": "^1.3.11",
-		"lucide-react": "^0.544.0",
-		"react": "^19.1.1",
-		"react-dom": "^19.1.1",
-		"tailwind-merge": "^3.3.1",
-		"tailwindcss": "^4.1.13"
+		"check": "biome check --unsafe --write .",
+		"prepare": "husky",
+		"dev": "turbo dev",
+		"build": "turbo build",
+		"check-types": "turbo check-types",
+		"dev:web": "turbo -F @portfolio/web dev",
+		"dev:server": "turbo -F @portfolio/server dev",
+		"db:local": "turbo -F @portfolio/server db:local",
+		"db:push": "turbo -F @portfolio/server db:push",
+		"db:studio": "turbo -F @portfolio/server db:studio",
+		"db:generate": "turbo -F @portfolio/server db:generate",
+		"db:migrate": "turbo -F @portfolio/server db:migrate"
 	},
 	"devDependencies": {
+		"turbo": "^2.5.6",
 		"@biomejs/biome": "^2.2.4",
-		"@types/node": "^24.3.1",
-		"@types/react": "^19.1.12",
-		"@types/react-dom": "^19.1.9",
-		"@vitejs/plugin-react-swc": "^4.0.1",
 		"husky": "^9.1.7",
-		"lint-staged": "^16.1.6",
-		"typescript": "^5.9.2",
-		"vite": "^7.1.5"
+		"lint-staged": "^16.1.6"
 	},
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
