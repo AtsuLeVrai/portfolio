@@ -26,7 +26,6 @@ export function SmoothScroll({
 	children: ReactNode;
 }>) {
 	const isMobile = useIsMobile();
-
 	if (isMobile) {
 		return <>{children}</>;
 	}
