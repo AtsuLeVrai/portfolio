@@ -1,27 +1,37 @@
 {
-	"name": "@portfolio/source",
+	"name": "portfolio",
 	"private": true,
 	"packageManager": "pnpm@10.16.1",
 	"type": "module",
 	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"check-types": "tsc --noEmit",
 		"check": "biome check --unsafe --write .",
-		"prepare": "husky",
-		"dev": "turbo dev",
-		"build": "turbo build",
-		"check-types": "turbo check-types",
-		"dev:web": "turbo -F @portfolio/web dev",
-		"dev:server": "turbo -F @portfolio/server dev",
-		"db:local": "turbo -F @portfolio/server db:local",
-		"db:push": "turbo -F @portfolio/server db:push",
-		"db:studio": "turbo -F @portfolio/server db:studio",
-		"db:generate": "turbo -F @portfolio/server db:generate",
-		"db:migrate": "turbo -F @portfolio/server db:migrate"
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"lenis": "^1.3.11",
+		"lucide-react": "^0.544.0",
+		"motion": "^12.23.16",
+		"next": "^15.5.3",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"tailwind-merge": "^3.3.1",
+		"tw-animate-css": "^1.3.8"
 	},
 	"devDependencies": {
-		"turbo": "^2.5.6",
 		"@biomejs/biome": "^2.2.4",
+		"@tailwindcss/postcss": "^4.1.13",
+		"@types/node": "^24.5.2",
+		"@types/react": "^19.1.13",
+		"@types/react-dom": "^19.1.9",
 		"husky": "^9.1.7",
-		"lint-staged": "^16.1.6"
+		"lint-staged": "^16.1.6",
+		"tailwindcss": "^4.1.13",
+		"typescript": "^5.9.2"
 	},
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
