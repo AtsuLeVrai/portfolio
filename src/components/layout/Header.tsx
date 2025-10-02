@@ -21,19 +21,16 @@ export const Header = memo(() => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { scrollY } = useScroll();
 
-	// Header appears after scrolling past hero animation (around 2600px)
-	const headerOpacity = useTransform(scrollY, [2400, 2600], [0, 1]);
-	const headerY = useTransform(scrollY, [2400, 2600], [-20, 0]);
-
+	// Header background and shadow appear on scroll
 	const headerBackground = useTransform(
 		scrollY,
-		[2600, 2900],
+		[0, 100],
 		["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.95)"],
 	);
 
 	const headerShadow = useTransform(
 		scrollY,
-		[2600, 2900],
+		[0, 100],
 		["0px 0px 0px 0px rgba(17,24,39,0)", "0px 4px 12px 0px rgba(17,24,39,0.1)"],
 	);
 
@@ -51,9 +48,10 @@ export const Header = memo(() => {
 			style={{
 				backgroundColor: headerBackground,
 				boxShadow: headerShadow,
-				opacity: headerOpacity,
-				y: headerY,
 			}}
+			initial={{ y: -100 }}
+			animate={{ y: 0 }}
+			transition={{ duration: 0.6, ease: "easeOut" }}
 		>
 			<nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
 				{/* Logo */}
