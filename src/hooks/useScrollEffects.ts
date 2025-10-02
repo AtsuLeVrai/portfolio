@@ -53,10 +53,32 @@ export function useScrollEffects() {
 	}, [scrollY]);
 
 	useEffect(() => {
+		let rafId: number;
+		let lastScrollY = 0;
+
+		const handleScroll = () => {
+			if (rafId) {
+				cancelAnimationFrame(rafId);
+			}
+
+			rafId = requestAnimationFrame(() => {
+				const currentScrollY = window.scrollY;
+				if (currentScrollY !== lastScrollY) {
+					scrollY.set(currentScrollY);
+					lastScrollY = currentScrollY;
+				}
+			});
+		};
+
 		updateScrollY();
-		window.addEventListener("scroll", updateScrollY, { passive: true });
-		return () => window.removeEventListener("scroll", updateScrollY);
-	}, [updateScrollY]);
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+			if (rafId) {
+				cancelAnimationFrame(rafId);
+			}
+		};
+	}, [updateScrollY, scrollY]);
 
 	return {
 		frameScale,

@@ -12,28 +12,71 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: "Tom B. - Backend Engineer Portfolio",
+	metadataBase: new URL("https://tom-portfolio.com"),
+	title: {
+		default: "Tom B. - Backend Engineer Portfolio",
+		template: "%s | Tom B. Portfolio",
+	},
 	description:
-		"Backend Engineer specializing in trading systems, game backends, and scalable APIs. Building high-performance systems with precision and creativity.",
+		"Backend Engineer specializing in high-frequency trading systems, multiplayer game backends, and scalable APIs. 7+ years building systems that process millions of requests with microsecond precision.",
 	keywords: [
 		"Backend Engineer",
+		"High-Frequency Trading",
 		"Trading Systems",
-		"Game Development",
+		"Game Backends",
+		"Multiplayer Architecture",
 		"Scalable APIs",
-		"High Performance",
+		"Rust",
+		"Go",
+		"Node.js",
+		"Microservices",
+		"Distributed Systems",
+		"Performance Optimization",
+		"Low Latency",
+		"Real-time Systems",
 	],
 	authors: [{ name: "Tom B." }],
 	creator: "Tom B.",
+	publisher: "Tom B.",
 	openGraph: {
 		type: "website",
 		locale: "en_US",
+		url: "https://tom-portfolio.com",
+		siteName: "Tom B. Portfolio",
 		title: "Tom B. - Backend Engineer Portfolio",
 		description:
-			"Backend Engineer specializing in trading systems, game backends, and scalable APIs.",
+			"Backend Engineer specializing in high-frequency trading systems, multiplayer game backends, and scalable APIs.",
+		images: [
+			{
+				url: "/og-image.jpg",
+				width: 1200,
+				height: 630,
+				alt: "Tom B. - Backend Engineer Portfolio",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		site: "@tombdev",
+		creator: "@tombdev",
+		title: "Tom B. - Backend Engineer Portfolio",
+		description:
+			"Building high-performance systems that scale. Trading platforms, game backends, and scalable APIs.",
+		images: ["/og-image.jpg"],
 	},
 	robots: {
 		index: true,
 		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
+	},
+	verification: {
+		google: "your-google-verification-code",
 	},
 };
 

@@ -1,7 +1,7 @@
 import { Zap } from "lucide-react";
 import { motion } from "motion/react";
 import { memo } from "react";
-import { ANIMATION_VARIANTS, MOTION_CONFIG } from "@/constants";
+import { ANIMATION_VARIANTS } from "@/constants";
 
 const StatCard = memo(({ value, label }: { value: string; label: string }) => (
 	<div className="rounded-2xl border-2 border-gray-300 bg-white/90 p-3 text-center shadow-sm">
@@ -48,9 +48,15 @@ export const ProfileCard = memo(() => (
 
 			<motion.div
 				className="-top-2 -right-2 absolute flex h-12 w-12 items-center justify-center rounded-full border-4 border-gray-900 bg-cyan-400 text-xl shadow-lg"
-				// @ts-expect-error
-				animate={MOTION_CONFIG.iconPulse}
-				transition={MOTION_CONFIG.iconTransition}
+				animate={{
+					rotate: [0, 10, -10, 0],
+					scale: [1, 1.1, 1],
+				}}
+				transition={{
+					duration: 3,
+					repeat: Number.POSITIVE_INFINITY,
+					ease: "easeInOut",
+				}}
 				style={{ willChange: "transform" }}
 			>
 				<Zap />
