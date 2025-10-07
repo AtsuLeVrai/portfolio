@@ -2,7 +2,6 @@ import "../index.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
-import { SmoothScroll } from "@/components/SmoothScroll";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -87,9 +86,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${poppins.className} antialiased`}>
-				<SmoothScroll>{children}</SmoothScroll>
-			</body>
+			<body className={`${poppins.className} antialiased`}>{children}</body>
 		</html>
 	);
 }
