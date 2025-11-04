@@ -1,8 +1,7 @@
 "use client";
 
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "motion/react";
-import { memo } from "react";
 
 interface SocialLink {
 	name: string;
@@ -14,25 +13,19 @@ interface SocialLink {
 const SOCIAL_LINKS: SocialLink[] = [
 	{
 		name: "GitHub",
-		href: "https://github.com/tombdev",
+		href: "https://github.com/username",
 		icon: Github,
 		color: "hover:bg-gray-900 hover:text-white",
 	},
 	{
 		name: "LinkedIn",
-		href: "https://linkedin.com/in/tombdev",
+		href: "https://linkedin.com/in/username",
 		icon: Linkedin,
 		color: "hover:bg-blue-600 hover:text-white",
 	},
 	{
-		name: "Twitter",
-		href: "https://twitter.com/tombdev",
-		icon: Twitter,
-		color: "hover:bg-cyan-500 hover:text-white",
-	},
-	{
 		name: "Email",
-		href: "mailto:tom@example.com",
+		href: "mailto:email@example.com",
 		icon: Mail,
 		color: "hover:bg-rose-500 hover:text-white",
 	},
@@ -56,7 +49,7 @@ const NAV_SECTIONS = [
 	},
 ];
 
-export const Footer = memo(() => {
+export function Footer() {
 	const handleNavClick = (href: string) => {
 		const element = document.querySelector(href);
 		if (element) {
@@ -67,9 +60,7 @@ export const Footer = memo(() => {
 	return (
 		<footer className="relative border-gray-900 border-t-2 bg-gradient-to-br from-gray-50 to-gray-100 md:border-t-3 xl:border-t-4">
 			<div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 xl:max-w-[1400px] xl:py-12 2xl:max-w-[1600px] 2xl:py-16">
-				{/* Top Section */}
 				<div className="grid gap-6 sm:gap-8 md:grid-cols-3 xl:gap-10">
-					{/* Branding */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +79,6 @@ export const Footer = memo(() => {
 						</p>
 					</motion.div>
 
-					{/* Navigation Links */}
 					{NAV_SECTIONS.map((section, idx) => (
 						<motion.div
 							key={section.title}
@@ -117,7 +107,6 @@ export const Footer = memo(() => {
 					))}
 				</div>
 
-				{/* Divider */}
 				<motion.div
 					className="my-6 h-1 rounded-full bg-gradient-to-r from-cyan-400 via-rose-400 to-cyan-400 sm:my-8 xl:my-10"
 					initial={{ scaleX: 0 }}
@@ -126,9 +115,7 @@ export const Footer = memo(() => {
 					transition={{ duration: 0.8, delay: 0.3 }}
 				/>
 
-				{/* Bottom Section */}
 				<div className="flex flex-col items-center justify-between gap-5 sm:gap-6 md:flex-row xl:gap-8">
-					{/* Social Links */}
 					<motion.div
 						className="flex gap-3 sm:gap-4 xl:gap-5"
 						initial={{ opacity: 0, y: 20 }}
@@ -155,7 +142,6 @@ export const Footer = memo(() => {
 						})}
 					</motion.div>
 
-					{/* Copyright */}
 					<motion.p
 						className="font-medium text-gray-600 text-xs sm:text-sm xl:text-base"
 						initial={{ opacity: 0, y: 20 }}
@@ -169,6 +155,4 @@ export const Footer = memo(() => {
 			</div>
 		</footer>
 	);
-});
-
-Footer.displayName = "Footer";
+}

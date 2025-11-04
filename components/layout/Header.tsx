@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { memo, useState } from "react";
+import { useState } from "react";
 
 interface NavLink {
 	label: string;
@@ -17,11 +17,10 @@ const NAV_LINKS: NavLink[] = [
 	{ label: "Contact", href: "#contact" },
 ];
 
-export const Header = memo(() => {
+export function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { scrollY } = useScroll();
 
-	// Header background and shadow appear on scroll
 	const headerBackground = useTransform(
 		scrollY,
 		[0, 100],
@@ -64,7 +63,7 @@ export const Header = memo(() => {
 					<button
 						type="button"
 						onClick={() => handleNavClick("#hero")}
-						className="font-black text-gray-900 text-xl transition-colors hover:text-cyan-600 sm:text-2xl xl:text-3xl"
+						className="cursor-pointer font-black text-gray-900 text-xl transition-colors hover:text-cyan-600 sm:text-2xl xl:text-3xl"
 						aria-label="Go to top"
 					>
 						TOM<span className="text-cyan-600">.</span>
@@ -82,10 +81,10 @@ export const Header = memo(() => {
 						<motion.button
 							key={link.href}
 							onClick={() => handleNavClick(link.href)}
-							className="group relative font-bold text-gray-700 text-sm transition-colors hover:text-gray-900 sm:text-base xl:text-lg"
+							className="group relative cursor-pointer font-bold text-gray-700 text-sm transition-colors hover:text-gray-900 sm:text-base xl:text-lg"
 							initial={{ opacity: 0, y: -10 }}
 							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
+							transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
 							whileHover={{ y: -2 }}
 							whileTap={{ scale: 0.95 }}
 						>
@@ -97,7 +96,7 @@ export const Header = memo(() => {
 
 				{/* Mobile Menu Button */}
 				<motion.button
-					className="rounded-lg border-2 border-gray-900 bg-white p-2 text-gray-900 sm:p-2.5 md:hidden"
+					className="cursor-pointer rounded-lg border-2 border-gray-900 bg-white p-2 text-gray-900 sm:p-2.5 md:hidden"
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
 					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0 }}
@@ -130,7 +129,7 @@ export const Header = memo(() => {
 						<motion.button
 							key={link.href}
 							onClick={() => handleNavClick(link.href)}
-							className="block w-full rounded-lg border-2 border-gray-900 bg-cyan-50 px-4 py-3 text-left font-bold text-gray-900 text-sm transition-colors hover:bg-cyan-100 sm:text-base"
+							className="block w-full cursor-pointer rounded-lg border-2 border-gray-900 bg-cyan-50 px-4 py-3 text-left font-bold text-gray-900 text-sm transition-colors hover:bg-cyan-100 sm:text-base"
 							initial={{ opacity: 0, x: -20 }}
 							animate={{
 								opacity: isMenuOpen ? 1 : 0,
@@ -150,6 +149,4 @@ export const Header = memo(() => {
 			</motion.div>
 		</motion.header>
 	);
-});
-
-Header.displayName = "Header";
+}

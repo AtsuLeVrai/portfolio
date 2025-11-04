@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { memo, useId, useState } from "react";
+import { useState } from "react";
 import { ProjectCard } from "@/components/project/ProjectCard";
 import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
@@ -10,7 +10,7 @@ type FilterCategory = "All" | Project["category"];
 
 const FILTER_CATEGORIES: FilterCategory[] = ["All", "Trading", "Game", "API"];
 
-export const Projects = memo(() => {
+export function Projects() {
 	const [activeFilter, setActiveFilter] = useState<FilterCategory>("All");
 
 	const filteredProjects =
@@ -20,11 +20,10 @@ export const Projects = memo(() => {
 
 	return (
 		<section
-			id={useId()}
+			id="projects"
 			className="relative bg-gradient-to-br from-rose-50 via-white to-cyan-50 py-12 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
-				{/* Section Header */}
 				<motion.div
 					className="mb-10 text-center sm:mb-12 md:mb-14 xl:mb-16 2xl:mb-20"
 					initial={{ opacity: 0, y: 30 }}
@@ -56,7 +55,6 @@ export const Projects = memo(() => {
 					</motion.p>
 				</motion.div>
 
-				{/* Filter Buttons */}
 				<motion.div
 					className="mb-10 flex flex-wrap justify-center gap-3 sm:mb-12 sm:gap-4 md:mb-14 xl:mb-16 xl:gap-5"
 					initial={{ opacity: 0, y: 20 }}
@@ -84,7 +82,6 @@ export const Projects = memo(() => {
 					))}
 				</motion.div>
 
-				{/* Projects Grid */}
 				<motion.div
 					className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-10 2xl:grid-cols-4 2xl:gap-12"
 					layout
@@ -95,7 +92,6 @@ export const Projects = memo(() => {
 					))}
 				</motion.div>
 
-				{/* Empty State */}
 				{filteredProjects.length === 0 && (
 					<motion.div
 						className="py-20 text-center"
@@ -111,6 +107,4 @@ export const Projects = memo(() => {
 			</div>
 		</section>
 	);
-});
-
-Projects.displayName = "Projects";
+}

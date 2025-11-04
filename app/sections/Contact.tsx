@@ -1,8 +1,8 @@
 "use client";
 
-import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { motion } from "motion/react";
-import { memo, useId, useState } from "react";
+import { useState } from "react";
 
 interface FormData {
 	name: string;
@@ -14,30 +14,24 @@ const SOCIAL_LINKS = [
 	{
 		name: "GitHub",
 		icon: Github,
-		href: "https://github.com/tombdev",
+		href: "https://github.com/username",
 		color: "bg-gray-900 hover:bg-gray-800",
 	},
 	{
 		name: "LinkedIn",
 		icon: Linkedin,
-		href: "https://linkedin.com/in/tombdev",
+		href: "https://linkedin.com/in/username",
 		color: "bg-blue-600 hover:bg-blue-700",
-	},
-	{
-		name: "Twitter",
-		icon: Twitter,
-		href: "https://twitter.com/tombdev",
-		color: "bg-cyan-500 hover:bg-cyan-600",
 	},
 	{
 		name: "Email",
 		icon: Mail,
-		href: "mailto:tom@example.com",
+		href: "mailto:email@example.com",
 		color: "bg-rose-500 hover:bg-rose-600",
 	},
 ];
 
-export const Contact = memo(() => {
+export function Contact() {
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
 		email: "",
@@ -52,14 +46,12 @@ export const Contact = memo(() => {
 		e.preventDefault();
 		setIsSubmitting(true);
 
-		// Simulate form submission
 		setTimeout(() => {
 			console.log("Form submitted:", formData);
 			setIsSubmitting(false);
 			setSubmitStatus("success");
 			setFormData({ name: "", email: "", message: "" });
 
-			// Reset success message after 3 seconds
 			setTimeout(() => setSubmitStatus("idle"), 3000);
 		}, 1000);
 	};
@@ -75,11 +67,10 @@ export const Contact = memo(() => {
 
 	return (
 		<section
-			id={useId()}
+			id="contact"
 			className="relative bg-gradient-to-br from-cyan-50 via-white to-rose-50 py-12 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
-				{/* Section Header */}
 				<motion.div
 					className="mb-12 text-center sm:mb-14 md:mb-16 xl:mb-20 2xl:mb-24"
 					initial={{ opacity: 0, y: 30 }}
@@ -111,7 +102,6 @@ export const Contact = memo(() => {
 				</motion.div>
 
 				<div className="grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 xl:gap-14">
-					{/* Contact Form */}
 					<motion.div
 						initial={{ opacity: 0, x: -30 }}
 						whileInView={{ opacity: 1, x: 0 }}
@@ -123,7 +113,6 @@ export const Contact = memo(() => {
 								onSubmit={handleSubmit}
 								className="space-y-5 sm:space-y-6 xl:space-y-7"
 							>
-								{/* Name Input */}
 								<div>
 									<label
 										htmlFor="name"
@@ -133,7 +122,7 @@ export const Contact = memo(() => {
 									</label>
 									<input
 										type="text"
-										id={useId()}
+										id="name"
 										name="name"
 										value={formData.name}
 										onChange={handleChange}
@@ -143,7 +132,6 @@ export const Contact = memo(() => {
 									/>
 								</div>
 
-								{/* Email Input */}
 								<div>
 									<label
 										htmlFor="email"
@@ -153,7 +141,7 @@ export const Contact = memo(() => {
 									</label>
 									<input
 										type="email"
-										id={useId()}
+										id="email"
 										name="email"
 										value={formData.email}
 										onChange={handleChange}
@@ -163,7 +151,6 @@ export const Contact = memo(() => {
 									/>
 								</div>
 
-								{/* Message Textarea */}
 								<div>
 									<label
 										htmlFor="message"
@@ -172,7 +159,7 @@ export const Contact = memo(() => {
 										Your Message
 									</label>
 									<textarea
-										id={useId()}
+										id="message"
 										name="message"
 										value={formData.message}
 										onChange={handleChange}
@@ -183,7 +170,6 @@ export const Contact = memo(() => {
 									/>
 								</div>
 
-								{/* Submit Button */}
 								<motion.button
 									type="submit"
 									disabled={isSubmitting}
@@ -216,7 +202,6 @@ export const Contact = memo(() => {
 									)}
 								</motion.button>
 
-								{/* Success Message */}
 								{submitStatus === "success" && (
 									<motion.p
 										className="rounded-2xl border-2 border-green-600 bg-green-50 p-3 text-center font-bold text-green-900 text-sm sm:p-4 sm:text-base xl:p-5 xl:text-lg"
@@ -230,7 +215,6 @@ export const Contact = memo(() => {
 						</div>
 					</motion.div>
 
-					{/* Contact Info & Social Links */}
 					<motion.div
 						className="space-y-6 sm:space-y-8 xl:space-y-10"
 						initial={{ opacity: 0, x: 30 }}
@@ -238,7 +222,6 @@ export const Contact = memo(() => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
 					>
-						{/* Get in Touch */}
 						<motion.div
 							className="rounded-2xl border-2 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12"
 							whileHover={{ rotate: 1 }}
@@ -256,16 +239,15 @@ export const Contact = memo(() => {
 										<Mail size={20} className="text-white xl:h-6 xl:w-6" />
 									</div>
 									<a
-										href="mailto:tom@example.com"
+										href="mailto:email@example.com"
 										className="font-bold text-base text-white hover:underline sm:text-lg xl:text-xl 2xl:text-2xl"
 									>
-										tom@example.com
+										email@example.com
 									</a>
 								</div>
 							</div>
 						</motion.div>
 
-						{/* Social Links */}
 						<motion.div
 							className="rounded-2xl border-2 border-gray-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12"
 							initial={{ opacity: 0, y: 20 }}
@@ -310,6 +292,4 @@ export const Contact = memo(() => {
 			</div>
 		</section>
 	);
-});
-
-Contact.displayName = "Contact";
+}
