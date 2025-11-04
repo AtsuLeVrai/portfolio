@@ -1,51 +1,16 @@
 "use client";
 
-import { Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "motion/react";
-
-interface SocialLink {
-	name: string;
-	href: string;
-	icon: typeof Github;
-	color: string;
-}
-
-const SOCIAL_LINKS: SocialLink[] = [
-	{
-		name: "GitHub",
-		href: "https://github.com/username",
-		icon: Github,
-		color: "hover:bg-gray-900 hover:text-white",
-	},
-	{
-		name: "LinkedIn",
-		href: "https://linkedin.com/in/username",
-		icon: Linkedin,
-		color: "hover:bg-blue-600 hover:text-white",
-	},
-	{
-		name: "Email",
-		href: "mailto:email@example.com",
-		icon: Mail,
-		color: "hover:bg-rose-500 hover:text-white",
-	},
-];
+import { NAV_LINKS, PERSONAL_INFO, SOCIAL_LINKS } from "@/data/constants";
 
 const NAV_SECTIONS = [
 	{
 		title: "Navigation",
-		links: [
-			{ label: "About", href: "#about" },
-			{ label: "Skills", href: "#skills" },
-			{ label: "Projects", href: "#projects" },
-		],
+		links: NAV_LINKS.slice(0, 2), // About, Projects
 	},
 	{
 		title: "More",
-		links: [
-			{ label: "Experience", href: "#experience" },
-			{ label: "Contact", href: "#contact" },
-		],
+		links: NAV_LINKS.slice(2), // Experience, Contact
 	},
 ];
 
@@ -68,14 +33,14 @@ export function Footer() {
 						transition={{ duration: 0.5 }}
 					>
 						<h3 className="mb-3 font-black text-2xl text-gray-900 sm:mb-4 sm:text-3xl xl:text-4xl 2xl:text-5xl">
-							TOM<span className="text-cyan-600">.</span>
+							{PERSONAL_INFO.fullName}
+							<span className="text-cyan-600">.</span>
 						</h3>
 						<p className="mb-3 font-medium text-gray-600 text-sm leading-relaxed sm:mb-4 sm:text-base xl:text-lg">
-							Backend Engineer specializing in scalable systems, trading
-							platforms, and game backends.
+							{PERSONAL_INFO.description}
 						</p>
 						<p className="font-bold text-gray-900 text-xs italic sm:text-sm xl:text-base">
-							Built with Next.js & ❤️
+							{PERSONAL_INFO.tagline}
 						</p>
 					</motion.div>
 
@@ -149,7 +114,8 @@ export function Footer() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.5 }}
 					>
-						© {new Date().getFullYear()} Tom B. All rights reserved.
+						© {new Date().getFullYear()} {PERSONAL_INFO.name} All rights
+						reserved.
 					</motion.p>
 				</div>
 			</div>

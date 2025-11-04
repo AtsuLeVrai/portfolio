@@ -1,6 +1,5 @@
 "use client";
 
-import { Download } from "lucide-react";
 import { motion } from "motion/react";
 
 export function About() {
@@ -45,7 +44,7 @@ export function About() {
 								}}
 							>
 								<p className="font-black text-base text-gray-900 sm:text-lg xl:text-xl 2xl:text-2xl">
-									7+ Years
+									5+ Years
 								</p>
 								<p className="font-bold text-[10px] text-gray-900 sm:text-xs xl:text-sm 2xl:text-base">
 									Experience
@@ -84,87 +83,37 @@ export function About() {
 						>
 							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
 								I'm a{" "}
-								<strong className="text-gray-900">Backend Engineer</strong> with
-								a passion for building systems that scale. Specializing in{" "}
+								<strong className="text-gray-900">
+									Backend Engineer & Infrastructure Developer
+								</strong>{" "}
+								with a passion for building robust, developer-friendly tools.
+								Specializing in{" "}
 								<strong className="text-cyan-600">
-									high-frequency trading platforms
+									Discord bot development
 								</strong>{" "}
 								and{" "}
 								<strong className="text-rose-600">
-									multiplayer game backends
+									real-time communication platforms
 								</strong>
-								, I thrive on solving complex technical challenges.
+								, I thrive on creating tools that empower developers.
 							</p>
 
 							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
-								With over 7 years of experience, I've architected systems
-								processing{" "}
+								With over 5 years of experience, I've built everything from{" "}
 								<strong className="text-gray-900">
-									millions of requests per second
+									high-performance Rust-based Discord bots
 								</strong>{" "}
-								with microsecond latency. My work spans across distributed
-								systems, real-time data processing, and scalable API design.
+								to full-stack communication platforms. My work focuses on
+								WebSocket-driven real-time systems, type-safe APIs, and
+								developer experience.
 							</p>
 
 							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
-								When I'm not optimizing database queries or debugging race
-								conditions, you'll find me exploring new technologies,
-								contributing to open source, or mentoring junior developers.
+								When I'm not crafting Discord frameworks or optimizing WebSocket
+								connections, you'll find me exploring new technologies,
+								contributing to open source, and building tools that make
+								development more enjoyable.
 							</p>
-						</motion.div>
-
-						<motion.div
-							className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 xl:mt-10 xl:gap-5 2xl:mt-12 2xl:gap-6"
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.6, delay: 0.3 }}
-						>
-							{[
-								"🚀 Performance Optimization",
-								"⚡ Low-Latency Systems",
-								"🎯 Scalable Architecture",
-								"🔧 DevOps & CI/CD",
-							].map((point, index) => (
-								<motion.div
-									key={point}
-									className="rounded-xl border-2 border-gray-900 bg-gradient-to-br from-cyan-50 to-rose-50 p-3 sm:rounded-2xl sm:p-4 xl:p-5 2xl:p-6"
-									initial={{ opacity: 0, scale: 0.9 }}
-									whileInView={{ opacity: 1, scale: 1 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-									whileHover={{ scale: 1.05, rotate: 1 }}
-								>
-									<p className="text-center font-bold text-gray-900 text-xs sm:text-sm xl:text-base 2xl:text-lg">
-										{point}
-									</p>
-								</motion.div>
-							))}
-						</motion.div>
-
-						<motion.div
-							className="mt-6 sm:mt-8 xl:mt-10 2xl:mt-12"
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.6, delay: 0.5 }}
-						>
-							<motion.a
-								href="/resume.pdf"
-								download
-								className="inline-flex items-center gap-2 rounded-full border-3 border-gray-900 bg-cyan-400 px-6 py-3 font-black text-base text-gray-900 shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] sm:border-4 sm:px-8 sm:py-4 sm:text-lg xl:px-10 xl:py-5 xl:text-xl 2xl:px-12 2xl:py-6 2xl:text-2xl"
-								whileHover={{
-									y: -3,
-									boxShadow: "8px 8px 0px 0px rgba(17,24,39,1)",
-								}}
-								whileTap={{
-									y: 0,
-									boxShadow: "3px 3px 0px 0px rgba(17,24,39,1)",
-								}}
-							>
-								<Download size={20} className="xl:h-6 xl:w-6 2xl:h-7 2xl:w-7" />
-								DOWNLOAD CV
-							</motion.a>
 						</motion.div>
 					</motion.div>
 				</div>

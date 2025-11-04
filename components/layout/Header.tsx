@@ -3,29 +3,11 @@
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useState } from "react";
-
-interface NavLink {
-	label: string;
-	href: string;
-}
-
-const NAV_LINKS: NavLink[] = [
-	{ label: "About", href: "#about" },
-	{ label: "Skills", href: "#skills" },
-	{ label: "Projects", href: "#projects" },
-	{ label: "Experience", href: "#experience" },
-	{ label: "Contact", href: "#contact" },
-];
+import { NAV_LINKS } from "@/data/constants";
 
 export function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { scrollY } = useScroll();
-
-	const headerBackground = useTransform(
-		scrollY,
-		[0, 100],
-		["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.95)"],
-	);
 
 	const headerShadow = useTransform(
 		scrollY,
@@ -45,7 +27,7 @@ export function Header() {
 		<motion.header
 			className="fixed top-0 z-50 w-full border-gray-900 border-b-2 backdrop-blur-md"
 			style={{
-				backgroundColor: headerBackground,
+				backgroundColor: "rgba(255, 255, 255, 0.8)",
 				boxShadow: headerShadow,
 			}}
 			initial={{ y: -100 }}
@@ -63,10 +45,13 @@ export function Header() {
 					<button
 						type="button"
 						onClick={() => handleNavClick("#hero")}
-						className="cursor-pointer font-black text-gray-900 text-xl transition-colors hover:text-cyan-600 sm:text-2xl xl:text-3xl"
+						className="group cursor-pointer font-black text-gray-900 text-xl transition-all sm:text-2xl xl:text-3xl"
 						aria-label="Go to top"
 					>
-						TOM<span className="text-cyan-600">.</span>
+						<span className="bg-gradient-to-r from-cyan-600 to-rose-600 bg-clip-text transition-all group-hover:text-transparent">
+							TOM
+						</span>
+						.
 					</button>
 				</motion.div>
 

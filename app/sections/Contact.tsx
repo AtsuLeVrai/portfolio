@@ -1,35 +1,15 @@
 "use client";
 
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { CONTACT_INFO, SOCIAL_LINKS } from "@/data/constants";
 
 interface FormData {
 	name: string;
 	email: string;
 	message: string;
 }
-
-const SOCIAL_LINKS = [
-	{
-		name: "GitHub",
-		icon: Github,
-		href: "https://github.com/username",
-		color: "bg-gray-900 hover:bg-gray-800",
-	},
-	{
-		name: "LinkedIn",
-		icon: Linkedin,
-		href: "https://linkedin.com/in/username",
-		color: "bg-blue-600 hover:bg-blue-700",
-	},
-	{
-		name: "Email",
-		icon: Mail,
-		href: "mailto:email@example.com",
-		color: "bg-rose-500 hover:bg-rose-600",
-	},
-];
 
 export function Contact() {
 	const [formData, setFormData] = useState<FormData>({
@@ -239,10 +219,10 @@ export function Contact() {
 										<Mail size={20} className="text-white xl:h-6 xl:w-6" />
 									</div>
 									<a
-										href="mailto:email@example.com"
+										href={`mailto:${CONTACT_INFO.email}`}
 										className="font-bold text-base text-white hover:underline sm:text-lg xl:text-xl 2xl:text-2xl"
 									>
-										email@example.com
+										{CONTACT_INFO.email}
 									</a>
 								</div>
 							</div>
@@ -267,7 +247,7 @@ export function Contact() {
 											href={social.href}
 											target="_blank"
 											rel="noopener noreferrer"
-											className={`flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-gray-900 p-4 text-white transition-all sm:p-5 xl:gap-3 xl:rounded-2xl xl:p-6 2xl:p-8 ${social.color}`}
+											className={`flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-gray-900 p-4 text-white transition-all sm:p-5 xl:gap-3 xl:rounded-2xl xl:p-6 2xl:p-8 ${social.bgColor}`}
 											initial={{ opacity: 0, scale: 0.9 }}
 											whileInView={{ opacity: 1, scale: 1 }}
 											viewport={{ once: true }}

@@ -1,15 +1,4 @@
-export interface Experience {
-	id: string;
-	position: string;
-	company: string;
-	startDate: string;
-	endDate: string;
-	current: boolean;
-	achievements: string[];
-	technologies: string[];
-}
-
-export const experiences: Experience[] = [
+export const experiences = [
 	{
 		id: "example-position",
 		position: "Software Engineer",
@@ -24,4 +13,4 @@ export const experiences: Experience[] = [
 		],
 		technologies: ["TypeScript", "React", "Node.js", "PostgreSQL"],
 	},
-];
+] as const;
