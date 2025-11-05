@@ -6,7 +6,7 @@ export function About() {
 	return (
 		<section
 			id="about"
-			className="relative bg-white py-12 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
+			className="relative bg-white py-12 dark:bg-gray-900 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
 				<div className="grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20 2xl:gap-24">
@@ -14,15 +14,15 @@ export function About() {
 						className="flex items-center justify-center"
 						initial={{ opacity: 0, x: -30 }}
 						whileInView={{ opacity: 1, x: 0 }}
-						viewport={{ once: true, margin: "-100px" }}
-						transition={{ duration: 0.6 }}
+						viewport={{ once: true, margin: "-50px" }}
+						transition={{ duration: 0.5, ease: "easeOut" }}
 					>
 						<div className="relative">
-							<div className="-top-3 -left-3 sm:-top-4 sm:-left-4 absolute h-64 w-64 rotate-3 rounded-2xl border-3 border-gray-900 bg-cyan-200 sm:h-72 sm:w-72 md:h-80 md:w-80 md:rounded-3xl md:border-4 xl:h-96 xl:w-96 2xl:h-[28rem] 2xl:w-[28rem]" />
+							<div className="-top-3 -left-3 sm:-top-4 sm:-left-4 absolute h-64 w-64 rotate-3 rounded-2xl border-3 border-gray-900 bg-cyan-200 dark:border-gray-100 dark:bg-cyan-900/50 sm:h-72 sm:w-72 md:h-80 md:w-80 md:rounded-3xl md:border-4 xl:h-96 xl:w-96 2xl:h-[28rem] 2xl:w-[28rem]" />
 
 							<motion.div
-								className="relative h-64 w-64 overflow-hidden rounded-2xl border-3 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:h-72 sm:w-72 md:h-80 md:w-80 md:rounded-3xl md:border-4 md:shadow-[12px_12px_0px_0px_rgba(17,24,39,1)] xl:h-96 xl:w-96 2xl:h-[28rem] 2xl:w-[28rem]"
-								whileHover={{ rotate: -2 }}
+								className="relative h-64 w-64 overflow-hidden rounded-2xl border-3 border-gray-900 bg-gradient-to-br from-purple-400 via-cyan-400 to-rose-400 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:from-purple-600 dark:via-cyan-600 dark:to-rose-600 dark:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:h-72 sm:w-72 md:h-80 md:w-80 md:rounded-3xl md:border-4 md:shadow-[12px_12px_0px_0px_rgba(17,24,39,1)] dark:md:shadow-[12px_12px_0px_0px_rgba(243,244,246,1)] xl:h-96 xl:w-96 2xl:h-[28rem] 2xl:w-[28rem]"
+								whileHover={{ rotate: -2, scale: 1.02 }}
 								transition={{ duration: 0.3 }}
 							>
 								<div className="flex h-full w-full items-center justify-center">
@@ -33,7 +33,7 @@ export function About() {
 							</motion.div>
 
 							<motion.div
-								className="-bottom-3 -right-3 sm:-bottom-4 sm:-right-4 absolute rounded-xl border-3 border-gray-900 bg-rose-400 px-4 py-2 shadow-lg sm:rounded-2xl sm:border-4 sm:px-6 sm:py-3 xl:px-8 xl:py-4 2xl:px-10 2xl:py-5"
+								className="-bottom-3 -right-3 sm:-bottom-4 sm:-right-4 absolute rounded-xl border-3 border-gray-900 bg-gradient-to-br from-rose-400 to-orange-400 px-4 py-2 shadow-lg dark:border-gray-100 dark:from-rose-600 dark:to-orange-600 sm:rounded-2xl sm:border-4 sm:px-6 sm:py-3 xl:px-8 xl:py-4 2xl:px-10 2xl:py-5"
 								animate={{
 									y: [0, -10, 0],
 								}}
@@ -43,10 +43,10 @@ export function About() {
 									ease: "easeInOut",
 								}}
 							>
-								<p className="font-black text-base text-gray-900 sm:text-lg xl:text-xl 2xl:text-2xl">
+								<p className="font-black text-base text-white sm:text-lg xl:text-xl 2xl:text-2xl">
 									5+ Years
 								</p>
-								<p className="font-bold text-[10px] text-gray-900 sm:text-xs xl:text-sm 2xl:text-base">
+								<p className="font-bold text-[10px] text-white sm:text-xs xl:text-sm 2xl:text-base">
 									Experience
 								</p>
 							</motion.div>
@@ -57,18 +57,18 @@ export function About() {
 						className="flex flex-col justify-center"
 						initial={{ opacity: 0, x: 30 }}
 						whileInView={{ opacity: 1, x: 0 }}
-						viewport={{ once: true, margin: "-100px" }}
-						transition={{ duration: 0.6 }}
+						viewport={{ once: true, margin: "-50px" }}
+						transition={{ duration: 0.5, ease: "easeOut" }}
 					>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.6, delay: 0.1 }}
+							transition={{ duration: 0.5, delay: 0.1 }}
 						>
-							<h2 className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:mb-5 sm:text-4xl md:mb-6 md:text-5xl xl:text-6xl 2xl:mb-8 2xl:text-7xl">
+							<h2 className="mb-4 font-black text-3xl text-gray-900 leading-tight dark:text-gray-100 sm:mb-5 sm:text-4xl md:mb-6 md:text-5xl xl:text-6xl 2xl:mb-8 2xl:text-7xl">
 								ABOUT{" "}
-								<span className="bg-gradient-to-r from-cyan-600 to-rose-600 bg-clip-text text-transparent">
+								<span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-rose-600 bg-clip-text text-transparent">
 									ME
 								</span>
 							</h2>
@@ -79,28 +79,28 @@ export function About() {
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.6, delay: 0.2 }}
+							transition={{ duration: 0.5, delay: 0.2 }}
 						>
-							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
+							<p className="font-medium text-base text-gray-700 leading-relaxed dark:text-gray-300 sm:text-lg xl:text-xl 2xl:text-2xl">
 								I'm a{" "}
-								<strong className="text-gray-900">
+								<strong className="text-gray-900 dark:text-gray-100">
 									Backend Engineer & Infrastructure Developer
 								</strong>{" "}
 								with a passion for building robust, developer-friendly tools.
 								Specializing in{" "}
-								<strong className="text-cyan-600">
+								<strong className="text-cyan-600 dark:text-cyan-400">
 									Discord bot development
 								</strong>{" "}
 								and{" "}
-								<strong className="text-rose-600">
+								<strong className="text-rose-600 dark:text-rose-400">
 									real-time communication platforms
 								</strong>
 								, I thrive on creating tools that empower developers.
 							</p>
 
-							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
+							<p className="font-medium text-base text-gray-700 leading-relaxed dark:text-gray-300 sm:text-lg xl:text-xl 2xl:text-2xl">
 								With over 5 years of experience, I've built everything from{" "}
-								<strong className="text-gray-900">
+								<strong className="text-gray-900 dark:text-gray-100">
 									high-performance Rust-based Discord bots
 								</strong>{" "}
 								to full-stack communication platforms. My work focuses on
@@ -108,7 +108,7 @@ export function About() {
 								developer experience.
 							</p>
 
-							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
+							<p className="font-medium text-base text-gray-700 leading-relaxed dark:text-gray-300 sm:text-lg xl:text-xl 2xl:text-2xl">
 								When I'm not crafting Discord frameworks or optimizing WebSocket
 								connections, you'll find me exploring new technologies,
 								contributing to open source, and building tools that make

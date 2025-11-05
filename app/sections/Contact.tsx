@@ -25,15 +25,32 @@ export function Contact() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsSubmitting(true);
+		setSubmitStatus("idle");
 
-		setTimeout(() => {
-			console.log("Form submitted:", formData);
-			setIsSubmitting(false);
+		try {
+			const response = await fetch("/api/send-email", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+
+			if (!response.ok) {
+				throw new Error("Failed to send email");
+			}
+
 			setSubmitStatus("success");
 			setFormData({ name: "", email: "", message: "" });
 
-			setTimeout(() => setSubmitStatus("idle"), 3000);
-		}, 1000);
+			setTimeout(() => setSubmitStatus("idle"), 5000);
+		} catch (error) {
+			console.error("Error sending email:", error);
+			setSubmitStatus("error");
+			setTimeout(() => setSubmitStatus("idle"), 5000);
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	const handleChange = (
@@ -48,7 +65,7 @@ export function Contact() {
 	return (
 		<section
 			id="contact"
-			className="relative bg-gradient-to-br from-cyan-50 via-white to-rose-50 py-12 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
+			className="relative bg-gradient-to-br from-cyan-50 via-white to-rose-50 py-12 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
 				<motion.div
@@ -59,7 +76,7 @@ export function Contact() {
 					transition={{ duration: 0.6 }}
 				>
 					<motion.h2
-						className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl"
+						className="mb-4 font-black text-3xl text-gray-900 leading-tight dark:text-gray-100 sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
@@ -71,7 +88,7 @@ export function Contact() {
 						</span>
 					</motion.h2>
 					<motion.p
-						className="mx-auto max-w-2xl font-medium text-base text-gray-700 sm:text-lg md:text-xl xl:text-2xl"
+						className="mx-auto max-w-2xl font-medium text-base text-gray-700 dark:text-gray-300 sm:text-lg md:text-xl xl:text-2xl"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
@@ -88,7 +105,7 @@ export function Contact() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
 					>
-						<div className="rounded-2xl border-2 border-gray-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12">
+						<div className="rounded-2xl border-2 border-gray-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12">
 							<form
 								onSubmit={handleSubmit}
 								className="space-y-5 sm:space-y-6 xl:space-y-7"
@@ -96,7 +113,7 @@ export function Contact() {
 								<div>
 									<label
 										htmlFor="name"
-										className="mb-2 block font-bold text-gray-900 text-sm sm:text-base xl:text-lg"
+										className="mb-2 block font-bold text-gray-900 text-sm dark:text-gray-100 sm:text-base xl:text-lg"
 									>
 										Your Name
 									</label>
@@ -107,7 +124,7 @@ export function Contact() {
 										value={formData.name}
 										onChange={handleChange}
 										required
-										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
+										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 dark:border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-cyan-400 dark:focus:ring-cyan-400 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
 										placeholder="John Doe"
 									/>
 								</div>
@@ -115,7 +132,7 @@ export function Contact() {
 								<div>
 									<label
 										htmlFor="email"
-										className="mb-2 block font-bold text-gray-900 text-sm sm:text-base xl:text-lg"
+										className="mb-2 block font-bold text-gray-900 text-sm dark:text-gray-100 sm:text-base xl:text-lg"
 									>
 										Your Email
 									</label>
@@ -126,7 +143,7 @@ export function Contact() {
 										value={formData.email}
 										onChange={handleChange}
 										required
-										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
+										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 dark:border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-cyan-400 dark:focus:ring-cyan-400 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
 										placeholder="john@example.com"
 									/>
 								</div>
@@ -134,7 +151,7 @@ export function Contact() {
 								<div>
 									<label
 										htmlFor="message"
-										className="mb-2 block font-bold text-gray-900 text-sm sm:text-base xl:text-lg"
+										className="mb-2 block font-bold text-gray-900 text-sm dark:text-gray-100 sm:text-base xl:text-lg"
 									>
 										Your Message
 									</label>
@@ -145,7 +162,7 @@ export function Contact() {
 										onChange={handleChange}
 										required
 										rows={5}
-										className="w-full resize-none rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
+										className="w-full resize-none rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 dark:border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-cyan-400 dark:focus:ring-cyan-400 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
 										placeholder="Tell me about your project..."
 									/>
 								</div>
@@ -153,7 +170,7 @@ export function Contact() {
 								<motion.button
 									type="submit"
 									disabled={isSubmitting}
-									className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-cyan-400 px-6 py-3 font-black text-base text-gray-900 shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:py-4 sm:text-lg md:border-3 xl:border-4 xl:px-10 xl:py-5 xl:text-xl 2xl:px-12 2xl:py-6 2xl:text-2xl"
+									className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-cyan-400 px-6 py-3 font-black text-base text-gray-900 shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-100 dark:bg-cyan-600 dark:text-white dark:shadow-[6px_6px_0px_0px_rgba(243,244,246,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:px-8 sm:py-4 sm:text-lg md:border-3 xl:border-4 xl:px-10 xl:py-5 xl:text-xl 2xl:px-12 2xl:py-6 2xl:text-2xl"
 									whileHover={!isSubmitting ? { y: -3 } : {}}
 									whileTap={
 										!isSubmitting
@@ -164,7 +181,7 @@ export function Contact() {
 									{isSubmitting ? (
 										<>
 											<motion.div
-												className="h-5 w-5 rounded-full border-2 border-gray-900 border-t-transparent"
+												className="h-5 w-5 rounded-full border-2 border-gray-900 border-t-transparent dark:border-white dark:border-t-transparent"
 												animate={{ rotate: 360 }}
 												transition={{
 													duration: 1,
@@ -184,11 +201,21 @@ export function Contact() {
 
 								{submitStatus === "success" && (
 									<motion.p
-										className="rounded-2xl border-2 border-green-600 bg-green-50 p-3 text-center font-bold text-green-900 text-sm sm:p-4 sm:text-base xl:p-5 xl:text-lg"
+										className="rounded-2xl border-2 border-green-600 bg-green-50 p-3 text-center font-bold text-green-900 text-sm dark:border-green-500 dark:bg-green-900/30 dark:text-green-100 sm:p-4 sm:text-base xl:p-5 xl:text-lg"
 										initial={{ opacity: 0, y: -10 }}
 										animate={{ opacity: 1, y: 0 }}
 									>
 										Message sent successfully! I'll get back to you soon.
+									</motion.p>
+								)}
+
+								{submitStatus === "error" && (
+									<motion.p
+										className="rounded-2xl border-2 border-red-600 bg-red-50 p-3 text-center font-bold text-red-900 text-sm dark:border-red-500 dark:bg-red-900/30 dark:text-red-100 sm:p-4 sm:text-base xl:p-5 xl:text-lg"
+										initial={{ opacity: 0, y: -10 }}
+										animate={{ opacity: 1, y: 0 }}
+									>
+										Failed to send message. Please try again or email me directly.
 									</motion.p>
 								)}
 							</form>
@@ -203,7 +230,7 @@ export function Contact() {
 						transition={{ duration: 0.6 }}
 					>
 						<motion.div
-							className="rounded-2xl border-2 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12"
+							className="rounded-2xl border-2 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:from-cyan-600 dark:to-rose-600 dark:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12"
 							whileHover={{ rotate: 1 }}
 						>
 							<h3 className="mb-3 font-black text-2xl text-white sm:mb-4 sm:text-3xl xl:mb-5 xl:text-4xl 2xl:text-5xl">
@@ -229,13 +256,13 @@ export function Contact() {
 						</motion.div>
 
 						<motion.div
-							className="rounded-2xl border-2 border-gray-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12"
+							className="rounded-2xl border-2 border-gray-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12"
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.6, delay: 0.2 }}
 						>
-							<h3 className="mb-5 font-black text-gray-900 text-xl sm:mb-6 sm:text-2xl xl:mb-8 xl:text-3xl 2xl:text-4xl">
+							<h3 className="mb-5 font-black text-gray-900 text-xl dark:text-gray-100 sm:mb-6 sm:text-2xl xl:mb-8 xl:text-3xl 2xl:text-4xl">
 								Connect With Me
 							</h3>
 							<div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4 xl:gap-5">
@@ -247,7 +274,7 @@ export function Contact() {
 											href={social.href}
 											target="_blank"
 											rel="noopener noreferrer"
-											className={`flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-gray-900 p-4 text-white transition-all sm:p-5 xl:gap-3 xl:rounded-2xl xl:p-6 2xl:p-8 ${social.bgColor}`}
+											className={`flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-gray-900 p-4 text-white transition-all dark:border-gray-100 sm:p-5 xl:gap-3 xl:rounded-2xl xl:p-6 2xl:p-8 ${social.bgColor}`}
 											initial={{ opacity: 0, scale: 0.9 }}
 											whileInView={{ opacity: 1, scale: 1 }}
 											viewport={{ once: true }}
