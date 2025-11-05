@@ -7,12 +7,26 @@ import { DYNAMIC_TEXTS, HERO_STATS, SOCIAL_LINKS } from "@/data/constants";
 
 function StatCard({ value, label }: { value: string; label: string }) {
 	return (
-		<div className="rounded-2xl border-2 border-gray-300 bg-white/90 p-3 text-center shadow-sm sm:p-4">
-			<div className="font-black text-gray-900 text-xl sm:text-2xl">
+		<motion.div
+			className="rounded-2xl border-2 border-gray-300 bg-white/90 p-3 text-center shadow-sm transition-all dark:border-gray-600 dark:bg-gray-800/90 sm:p-4"
+			whileHover={{
+				scale: 1.05,
+				y: -4,
+				boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)",
+				transition: { duration: 0.2 },
+			}}
+			whileTap={{ scale: 0.95 }}
+		>
+			<motion.div
+				className="font-black text-gray-900 text-xl dark:text-gray-100 sm:text-2xl"
+				whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+			>
 				{value}
+			</motion.div>
+			<div className="font-bold text-gray-600 text-xs dark:text-gray-400 sm:text-sm">
+				{label}
 			</div>
-			<div className="font-bold text-gray-600 text-xs sm:text-sm">{label}</div>
-		</div>
+		</motion.div>
 	);
 }
 
@@ -213,7 +227,7 @@ export function Hero() {
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-cyan-50 py-20 sm:py-24 md:py-28"
+			className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-cyan-50 py-20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:py-24 md:py-28"
 		>
 			<FloatingShapes />
 			<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
@@ -246,11 +260,11 @@ export function Hero() {
 								},
 							}}
 						>
-							<h1 className="font-black text-4xl text-gray-900 leading-none tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
+							<h1 className="font-black text-4xl text-gray-900 leading-none tracking-tight dark:text-gray-100 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
 								HI,
 								<br />
 								I'M{" "}
-								<span className="bg-gradient-to-r from-cyan-600 to-rose-600 bg-clip-text text-transparent">
+								<span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-rose-600 bg-clip-text text-transparent">
 									TOM
 								</span>
 								!
@@ -270,7 +284,7 @@ export function Hero() {
 								},
 							}}
 						>
-							<p className="max-w-2xl font-medium text-gray-700 text-lg leading-relaxed sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl">
+							<p className="max-w-2xl font-medium text-gray-700 text-lg leading-relaxed dark:text-gray-300 sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl">
 								<DynamicText />
 							</p>
 						</motion.div>
@@ -295,20 +309,24 @@ export function Hero() {
 						animate="visible"
 					>
 						<div className="relative">
-							<div className="-top-4 -left-4 absolute h-[28rem] w-96 rotate-2 rounded-3xl border-4 border-gray-900 bg-rose-200 sm:h-[32rem] sm:w-[26rem]" />
+							<div className="-top-4 -left-4 absolute h-[28rem] w-96 rotate-2 rounded-3xl border-4 border-gray-900 bg-rose-200 dark:border-gray-100 dark:bg-rose-900/50 sm:h-[32rem] sm:w-[26rem]" />
 
-							<div className="relative flex h-[28rem] w-96 flex-col items-center justify-center overflow-hidden rounded-3xl border-4 border-gray-900 bg-gradient-to-br from-cyan-50 to-rose-50 p-8 text-center shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:h-[32rem] sm:w-[26rem] sm:p-10">
-								<div className="mb-8 flex h-36 w-36 items-center justify-center rounded-full border-4 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 shadow-lg sm:h-40 sm:w-40">
+							<div className="relative flex h-[28rem] w-96 flex-col items-center justify-center overflow-hidden rounded-3xl border-4 border-gray-900 bg-gradient-to-br from-cyan-50 to-rose-50 p-8 text-center shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:from-gray-800 dark:to-gray-900 dark:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:h-[32rem] sm:w-[26rem] sm:p-10">
+								<motion.div
+									className="mb-8 flex h-36 w-36 items-center justify-center rounded-full border-4 border-gray-900 bg-gradient-to-br from-purple-400 via-cyan-400 to-rose-400 shadow-lg dark:border-gray-100 dark:from-purple-600 dark:via-cyan-600 dark:to-rose-600 sm:h-40 sm:w-40"
+									whileHover={{ scale: 1.05, rotate: 5 }}
+									transition={{ duration: 0.3 }}
+								>
 									<span className="font-black text-5xl text-white sm:text-6xl">
 										BE
 									</span>
-								</div>
+								</motion.div>
 
-								<h3 className="mb-4 font-black text-2xl text-gray-900 sm:text-3xl">
+								<h3 className="mb-4 font-black text-2xl text-gray-900 dark:text-gray-100 sm:text-3xl">
 									BACKEND ENGINEER
 								</h3>
 
-								<p className="mb-8 font-medium text-base text-gray-600 leading-relaxed sm:text-lg">
+								<p className="mb-8 font-medium text-base text-gray-600 leading-relaxed dark:text-gray-400 sm:text-lg">
 									Building systems that handle millions of requests with
 									microsecond precision and reliability.
 								</p>
@@ -320,7 +338,7 @@ export function Hero() {
 							</div>
 
 							<motion.div
-								className="-top-2 -right-2 absolute flex h-14 w-14 items-center justify-center rounded-full border-4 border-gray-900 bg-cyan-400 text-xl shadow-lg sm:h-16 sm:w-16"
+								className="-top-2 -right-2 absolute flex h-14 w-14 items-center justify-center rounded-full border-4 border-gray-900 bg-gradient-to-br from-yellow-400 to-orange-500 text-xl shadow-lg dark:border-gray-100 dark:from-yellow-600 dark:to-orange-700 sm:h-16 sm:w-16"
 								animate={{
 									rotate: [0, 10, -10, 0],
 									scale: [1, 1.1, 1],
@@ -332,7 +350,7 @@ export function Hero() {
 								}}
 								style={{ willChange: "transform" }}
 							>
-								<Zap className="h-7 w-7 sm:h-8 sm:w-8" />
+								<Zap className="h-7 w-7 text-white sm:h-8 sm:w-8" />
 							</motion.div>
 						</div>
 					</motion.div>

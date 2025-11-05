@@ -23,7 +23,7 @@ export function Footer() {
 	};
 
 	return (
-		<footer className="relative border-gray-900 border-t-2 bg-gradient-to-br from-gray-50 to-gray-100 md:border-t-3 xl:border-t-4">
+		<footer className="relative border-gray-900 border-t-2 bg-gradient-to-br from-gray-50 to-gray-100 dark:border-gray-100 dark:from-gray-900 dark:to-gray-800 md:border-t-3 xl:border-t-4">
 			<div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 xl:max-w-[1400px] xl:py-12 2xl:max-w-[1600px] 2xl:py-16">
 				<div className="grid gap-6 sm:gap-8 md:grid-cols-3 xl:gap-10">
 					<motion.div
@@ -32,14 +32,14 @@ export function Footer() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5 }}
 					>
-						<h3 className="mb-3 font-black text-2xl text-gray-900 sm:mb-4 sm:text-3xl xl:text-4xl 2xl:text-5xl">
+						<h3 className="mb-3 font-black text-2xl text-gray-900 dark:text-gray-100 sm:mb-4 sm:text-3xl xl:text-4xl 2xl:text-5xl">
 							{PERSONAL_INFO.fullName}
-							<span className="text-cyan-600">.</span>
+							<span className="text-cyan-600 dark:text-cyan-400">.</span>
 						</h3>
-						<p className="mb-3 font-medium text-gray-600 text-sm leading-relaxed sm:mb-4 sm:text-base xl:text-lg">
+						<p className="mb-3 font-medium text-gray-600 text-sm leading-relaxed dark:text-gray-400 sm:mb-4 sm:text-base xl:text-lg">
 							{PERSONAL_INFO.description}
 						</p>
-						<p className="font-bold text-gray-900 text-xs italic sm:text-sm xl:text-base">
+						<p className="font-bold text-gray-900 text-xs italic dark:text-gray-100 sm:text-sm xl:text-base">
 							{PERSONAL_INFO.tagline}
 						</p>
 					</motion.div>
@@ -52,7 +52,7 @@ export function Footer() {
 							viewport={{ once: true }}
 							transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
 						>
-							<h4 className="mb-3 font-black text-base text-gray-900 sm:mb-4 sm:text-lg xl:text-xl 2xl:text-2xl">
+							<h4 className="mb-3 font-black text-base text-gray-900 dark:text-gray-100 sm:mb-4 sm:text-lg xl:text-xl 2xl:text-2xl">
 								{section.title}
 							</h4>
 							<ul className="space-y-2 xl:space-y-3">
@@ -61,7 +61,7 @@ export function Footer() {
 										<button
 											type="button"
 											onClick={() => handleNavClick(link.href)}
-											className="font-medium text-gray-600 text-sm transition-colors hover:text-cyan-600 sm:text-base xl:text-lg"
+											className="font-medium text-gray-600 text-sm transition-colors hover:text-cyan-600 dark:text-gray-400 dark:hover:text-cyan-400 sm:text-base xl:text-lg"
 										>
 											{link.label}
 										</button>
@@ -73,7 +73,7 @@ export function Footer() {
 				</div>
 
 				<motion.div
-					className="my-6 h-1 rounded-full bg-gradient-to-r from-cyan-400 via-rose-400 to-cyan-400 sm:my-8 xl:my-10"
+					className="my-6 h-1 rounded-full bg-gradient-to-r from-purple-400 via-cyan-400 to-rose-400 dark:from-purple-600 dark:via-cyan-600 dark:to-rose-600 sm:my-8 xl:my-10"
 					initial={{ scaleX: 0 }}
 					whileInView={{ scaleX: 1 }}
 					viewport={{ once: true }}
@@ -96,7 +96,7 @@ export function Footer() {
 									href={social.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className={`rounded-full border-2 border-gray-900 bg-white p-2.5 text-gray-900 transition-all sm:p-3 xl:p-4 ${social.color}`}
+									className={`rounded-full border-2 border-gray-900 bg-white p-2.5 text-gray-900 transition-all dark:border-gray-100 dark:bg-gray-800 dark:text-gray-100 sm:p-3 xl:p-4 ${social.color}`}
 									whileHover={{ y: -4, rotate: 5 }}
 									whileTap={{ scale: 0.95 }}
 									aria-label={social.name}
@@ -108,7 +108,7 @@ export function Footer() {
 					</motion.div>
 
 					<motion.p
-						className="font-medium text-gray-600 text-xs sm:text-sm xl:text-base"
+						className="font-medium text-gray-600 text-xs dark:text-gray-400 sm:text-sm xl:text-base"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
