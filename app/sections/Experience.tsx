@@ -2,6 +2,7 @@
 
 import { Briefcase, Calendar } from "lucide-react";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 interface ExperienceItem {
 	id: string;
@@ -12,62 +13,66 @@ interface ExperienceItem {
 	technologies: string[];
 }
 
-const experiences: ExperienceItem[] = [
-	{
-		id: "web-development-freelance",
-		title: "Web Development Freelance",
-		company: "Freelance",
-		period: "2024 - Present",
-		description: [
-			"Created custom web solutions for individuals and small businesses",
-			"Full project management with complete autonomy from conception to delivery",
-		],
-		technologies: [
-			"TypeScript",
-			"Next.js",
-			"React",
-			"Node.js",
-			"PostgreSQL",
-			"Tailwind CSS",
-		],
-	},
-	{
-		id: "nyxo-js-library",
-		title: "Nyxo.js - JavaScript Library",
-		company: "Open Source Project",
-		period: "2024",
-		description: [
-			"Built an optimized alternative to Discord.js focused on performance and API quality",
-			"Implemented advanced memory management and CPU/RAM optimization techniques",
-		],
-		technologies: [
-			"TypeScript",
-			"Node.js",
-			"Discord API",
-			"Performance Optimization",
-			"Documentation",
-			"Testing",
-		],
-	},
-	{
-		id: "it-internship-mairie",
-		title: "IT Service Internship",
-		company: "Mairie de Saint-Saulve",
-		period: "2023",
-		description: [
-			"Maintained computer equipment and managed IT infrastructure",
-			"Provided technical support to staff and troubleshot hardware/software issues",
-		],
-		technologies: [
-			"Windows",
-			"Hardware Maintenance",
-			"Network Administration",
-			"Technical Support",
-			"IT Infrastructure",
-			"System Management",
-		],
-	},
-];
+function useExperiences() {
+	const { t } = useTranslation();
+
+	return [
+		{
+			id: "web-development-freelance",
+			title: t("experience.freelance.title"),
+			company: t("experience.freelance.company"),
+			period: t("experience.freelance.period"),
+			description: [
+				t("experience.freelance.description1"),
+				t("experience.freelance.description2"),
+			],
+			technologies: [
+				"TypeScript",
+				"Next.js",
+				"React",
+				"Node.js",
+				"PostgreSQL",
+				"Tailwind CSS",
+			],
+		},
+		{
+			id: "nyxo-js-library",
+			title: t("experience.nyxo.title"),
+			company: t("experience.nyxo.company"),
+			period: t("experience.nyxo.period"),
+			description: [
+				t("experience.nyxo.description1"),
+				t("experience.nyxo.description2"),
+			],
+			technologies: [
+				"TypeScript",
+				"Node.js",
+				"Discord API",
+				"Performance Optimization",
+				"Documentation",
+				"Testing",
+			],
+		},
+		{
+			id: "it-internship-mairie",
+			title: t("experience.mairie.title"),
+			company: t("experience.mairie.company"),
+			period: t("experience.mairie.period"),
+			description: [
+				t("experience.mairie.description1"),
+				t("experience.mairie.description2"),
+			],
+			technologies: [
+				"Windows",
+				"Hardware Maintenance",
+				"Network Administration",
+				"Technical Support",
+				"IT Infrastructure",
+				"System Management",
+			],
+		},
+	];
+}
 
 function ExperienceCard({
 	experience,
@@ -145,6 +150,9 @@ function ExperienceCard({
 }
 
 export function Experience() {
+	const { t } = useTranslation();
+	const experiences = useExperiences();
+
 	return (
 		<section
 			id="experience"
@@ -166,9 +174,9 @@ export function Experience() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6, delay: 0.1 }}
 					>
-						MY{" "}
+						{t("experience.title")}{" "}
 						<span className="bg-gradient-to-r from-cyan-600 to-rose-600 bg-clip-text text-transparent">
-							EXPERIENCE
+							{t("experience.subtitle")}
 						</span>
 					</motion.h2>
 					<motion.p
@@ -178,8 +186,7 @@ export function Experience() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6, delay: 0.2 }}
 					>
-						BTS SIO student with 5+ years of self-taught backend development
-						experience
+						{t("experience.description")}
 					</motion.p>
 				</motion.div>
 

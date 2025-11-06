@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { ProjectCard } from "@/components/project/ProjectCard";
 import { projects } from "@/data/projects";
 
 export function Projects() {
+	const { t } = useTranslation();
 	return (
 		<section
 			id="projects"
@@ -25,9 +27,9 @@ export function Projects() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.1 }}
 					>
-						MY{" "}
+						{t("projects.title")}{" "}
 						<span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-rose-600 bg-clip-text text-transparent">
-							PROJECTS
+							{t("projects.subtitle")}
 						</span>
 					</motion.h2>
 					<motion.p
@@ -37,8 +39,7 @@ export function Projects() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.2 }}
 					>
-						Scalable systems, trading platforms, and game backends built with
-						precision
+						{t("projects.description")}
 					</motion.p>
 				</motion.div>
 

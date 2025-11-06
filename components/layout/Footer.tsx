@@ -1,20 +1,27 @@
 "use client";
 
 import { motion } from "motion/react";
-import { NAV_LINKS, PERSONAL_INFO, SOCIAL_LINKS } from "@/data/constants";
+import { useTranslation } from "react-i18next";
+import { NAV_LINKS, SOCIAL_LINKS } from "@/data/constants";
 
-const NAV_SECTIONS = [
-	{
-		title: "Navigation",
-		links: NAV_LINKS.slice(0, 2), // About, Projects
-	},
-	{
-		title: "More",
-		links: NAV_LINKS.slice(2), // Experience, Contact
-	},
-];
+function useNavSections() {
+	const { t } = useTranslation();
+
+	return [
+		{
+			title: t("footer.links.title"),
+			links: NAV_LINKS.slice(0, 2),
+		},
+		{
+			title: t("footer.links.title"),
+			links: NAV_LINKS.slice(2),
+		},
+	];
+}
 
 export function Footer() {
+	const { t } = useTranslation();
+	const navSections = useNavSections();
 	const handleNavClick = (href: string) => {
 		const element = document.querySelector(href);
 		if (element) {
@@ -33,18 +40,18 @@ export function Footer() {
 						transition={{ duration: 0.5 }}
 					>
 						<h3 className="mb-3 font-black text-2xl text-gray-900 sm:mb-4 sm:text-3xl xl:text-4xl 2xl:text-5xl">
-							{PERSONAL_INFO.fullName}
+							{t("footer.name")}
 							<span className="text-cyan-600">.</span>
 						</h3>
 						<p className="mb-3 font-medium text-gray-600 text-sm leading-relaxed sm:mb-4 sm:text-base xl:text-lg">
-							{PERSONAL_INFO.description}
+							{t("footer.description")}
 						</p>
 						<p className="font-bold text-gray-900 text-xs italic sm:text-sm xl:text-base">
-							{PERSONAL_INFO.tagline}
+							{t("footer.quote")}
 						</p>
 					</motion.div>
 
-					{NAV_SECTIONS.map((section, idx) => (
+					{navSections.map((section, idx) => (
 						<motion.div
 							key={section.title}
 							initial={{ opacity: 0, y: 20 }}
@@ -114,8 +121,7 @@ export function Footer() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.5 }}
 					>
-						© {new Date().getFullYear()} {PERSONAL_INFO.name} All rights
-						reserved.
+						© {new Date().getFullYear()} {t("footer.name")} {t("footer.rights")}
 					</motion.p>
 				</div>
 			</div>

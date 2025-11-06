@@ -3,11 +3,14 @@
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { NAV_LINKS } from "@/data/constants";
 
 export function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { scrollY } = useScroll();
+	const { t } = useTranslation();
 
 	const headerShadow = useTransform(
 		scrollY,
@@ -73,14 +76,16 @@ export function Header() {
 							whileHover={{ y: -2 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							{link.label}
+							{t(`nav.${link.label.toLowerCase()}`)}
 							<span className="-bottom-1 absolute left-0 h-0.5 w-0 bg-cyan-600 transition-all duration-300 group-hover:w-full" />
 						</motion.button>
 					))}
+					<LanguageToggle />
 				</motion.div>
 
-				{/* Mobile Menu Button */}
-				<div className="md:hidden">
+				{/* Mobile Menu Button and Language Toggle */}
+				<div className="flex items-center gap-3 md:hidden">
+					<LanguageToggle />
 					<motion.button
 						className="cursor-pointer rounded-lg border-2 border-gray-900 bg-white p-2 text-gray-900 sm:p-2.5"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -129,7 +134,7 @@ export function Header() {
 							whileHover={{ x: 4 }}
 							whileTap={{ scale: 0.98 }}
 						>
-							{link.label}
+							{t(`nav.${link.label.toLowerCase()}`)}
 						</motion.button>
 					))}
 				</div>

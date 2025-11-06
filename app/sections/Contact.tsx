@@ -3,6 +3,7 @@
 import { Mail, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { CONTACT_INFO, SOCIAL_LINKS } from "@/data/constants";
 
 interface FormData {
@@ -12,6 +13,7 @@ interface FormData {
 }
 
 export function Contact() {
+	const { t } = useTranslation();
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
 		email: "",
@@ -82,9 +84,9 @@ export function Contact() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6, delay: 0.1 }}
 					>
-						LET'S{" "}
+						{t("contact.title")}{" "}
 						<span className="bg-gradient-to-r from-cyan-600 to-rose-600 bg-clip-text text-transparent">
-							BUILD SOMETHING AMAZING
+							{t("contact.subtitle")}
 						</span>
 					</motion.h2>
 					<motion.p
@@ -94,7 +96,7 @@ export function Contact() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6, delay: 0.2 }}
 					>
-						Have a project in mind? Let's discuss how we can work together
+						{t("contact.description")}
 					</motion.p>
 				</motion.div>
 
@@ -115,7 +117,7 @@ export function Contact() {
 										htmlFor="name"
 										className="mb-2 block font-bold text-gray-900 text-sm sm:text-base xl:text-lg"
 									>
-										Your Name
+										{t("contact.form.name")}
 									</label>
 									<input
 										type="text"
@@ -125,7 +127,7 @@ export function Contact() {
 										onChange={handleChange}
 										required
 										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
-										placeholder="John Doe"
+										placeholder={t("contact.form.namePlaceholder")}
 									/>
 								</div>
 
@@ -134,7 +136,7 @@ export function Contact() {
 										htmlFor="email"
 										className="mb-2 block font-bold text-gray-900 text-sm sm:text-base xl:text-lg"
 									>
-										Your Email
+										{t("contact.form.email")}
 									</label>
 									<input
 										type="email"
@@ -144,7 +146,7 @@ export function Contact() {
 										onChange={handleChange}
 										required
 										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
-										placeholder="john@example.com"
+										placeholder={t("contact.form.emailPlaceholder")}
 									/>
 								</div>
 
@@ -153,7 +155,7 @@ export function Contact() {
 										htmlFor="message"
 										className="mb-2 block font-bold text-gray-900 text-sm sm:text-base xl:text-lg"
 									>
-										Your Message
+										{t("contact.form.message")}
 									</label>
 									<textarea
 										id="message"
@@ -163,7 +165,7 @@ export function Contact() {
 										required
 										rows={5}
 										className="w-full resize-none rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
-										placeholder="Tell me about your project..."
+										placeholder={t("contact.form.messagePlaceholder")}
 									/>
 								</div>
 
@@ -189,12 +191,12 @@ export function Contact() {
 													ease: "linear",
 												}}
 											/>
-											SENDING...
+											{t("contact.form.sending").toUpperCase()}
 										</>
 									) : (
 										<>
 											<Send size={20} className="xl:h-6 xl:w-6" />
-											SEND MESSAGE
+											{t("contact.form.send").toUpperCase()}
 										</>
 									)}
 								</motion.button>
@@ -205,7 +207,7 @@ export function Contact() {
 										initial={{ opacity: 0, y: -10 }}
 										animate={{ opacity: 1, y: 0 }}
 									>
-										Message sent successfully! I'll get back to you soon.
+										{t("contact.form.success")}
 									</motion.p>
 								)}
 
@@ -215,8 +217,7 @@ export function Contact() {
 										initial={{ opacity: 0, y: -10 }}
 										animate={{ opacity: 1, y: 0 }}
 									>
-										Failed to send message. Please try again or email me
-										directly.
+										{t("contact.form.error")}
 									</motion.p>
 								)}
 							</form>
@@ -232,11 +233,10 @@ export function Contact() {
 					>
 						<div className="rounded-2xl border-2 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] sm:p-8 md:border-3 xl:rounded-3xl xl:border-4 xl:p-10 2xl:p-12">
 							<h3 className="mb-3 font-black text-2xl text-white sm:mb-4 sm:text-3xl xl:mb-5 xl:text-4xl 2xl:text-5xl">
-								Get in Touch
+								{t("contact.social.title")}
 							</h3>
 							<p className="mb-5 font-medium text-base text-white leading-relaxed sm:mb-6 sm:text-lg xl:mb-8 xl:text-xl 2xl:text-2xl">
-								I'm always open to discussing new projects, creative ideas, or
-								opportunities to be part of your vision.
+								{t("contact.description")}
 							</p>
 							<div className="space-y-3 xl:space-y-4">
 								<div className="flex items-center gap-3 xl:gap-4">
@@ -261,7 +261,7 @@ export function Contact() {
 							transition={{ duration: 0.6, delay: 0.2 }}
 						>
 							<h3 className="mb-5 font-black text-gray-900 text-xl sm:mb-6 sm:text-2xl xl:mb-8 xl:text-3xl 2xl:text-4xl">
-								Connect With Me
+								{t("contact.quickLinks.title")}
 							</h3>
 							<div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4 xl:gap-5">
 								{SOCIAL_LINKS.map((social, index) => {

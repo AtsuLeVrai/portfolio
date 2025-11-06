@@ -3,7 +3,8 @@
 import { ChevronDown, Zap } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { DYNAMIC_TEXTS, HERO_STATS, SOCIAL_LINKS } from "@/data/constants";
+import { useTranslation } from "react-i18next";
+import { HERO_STATS, SOCIAL_LINKS } from "@/data/constants";
 
 function StatCard({ value, label }: { value: string; label: string }) {
 	return (
@@ -48,36 +49,6 @@ function SocialLinks() {
 				);
 			})}
 		</div>
-	);
-}
-
-function DynamicText() {
-	const [index, setIndex] = useState(0);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setIndex((prev) => (prev + 1) % DYNAMIC_TEXTS.length);
-		}, 3000);
-		return () => clearInterval(interval);
-	}, []);
-
-	return (
-		<>
-			Backend Engineer crafting{" "}
-			<AnimatePresence mode="wait">
-				<motion.span
-					key={index}
-					className="inline-block bg-gradient-to-r from-cyan-600 to-rose-600 bg-clip-text text-transparent"
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: -20 }}
-					transition={{ duration: 0.5 }}
-				>
-					{DYNAMIC_TEXTS[index]}
-				</motion.span>
-			</AnimatePresence>{" "}
-			with precision and creativity.
-		</>
 	);
 }
 
@@ -210,6 +181,8 @@ function ScrollIndicator() {
 }
 
 export function Hero() {
+	const { t } = useTranslation();
+
 	return (
 		<section
 			id="hero"
@@ -247,11 +220,11 @@ export function Hero() {
 							}}
 						>
 							<h1 className="font-black text-4xl text-gray-900 leading-none tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
-								HI,
+								{t("hero.greeting").toUpperCase()},
 								<br />
 								I'M{" "}
 								<span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-rose-600 bg-clip-text text-transparent">
-									TOM
+									{t("hero.name")}
 								</span>
 								!
 							</h1>
@@ -271,7 +244,7 @@ export function Hero() {
 							}}
 						>
 							<p className="max-w-2xl font-medium text-gray-700 text-lg leading-relaxed sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl">
-								<DynamicText />
+								{t("hero.role")}
 							</p>
 						</motion.div>
 						<SocialLinks />
@@ -305,17 +278,22 @@ export function Hero() {
 								</div>
 
 								<h3 className="mb-4 font-black text-2xl text-gray-900 sm:text-3xl">
-									BACKEND ENGINEER
+									{t("hero.role").toUpperCase()}
 								</h3>
 
 								<p className="mb-8 font-medium text-base text-gray-600 leading-relaxed sm:text-lg">
-									Building systems that handle millions of requests with
-									microsecond precision and reliability.
+									{t("hero.description")}
 								</p>
 
 								<div className="grid w-full grid-cols-2 gap-4 sm:gap-5">
-									<StatCard value={HERO_STATS.projects} label="Projects" />
-									<StatCard value={HERO_STATS.experience} label="Experience" />
+									<StatCard
+										value={HERO_STATS.projects}
+										label={t("hero.stats.projects")}
+									/>
+									<StatCard
+										value={HERO_STATS.experience}
+										label={t("hero.stats.experience")}
+									/>
 								</div>
 							</div>
 

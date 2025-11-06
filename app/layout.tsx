@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
+import { I18nProvider } from "@/components/I18nProvider";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -62,7 +63,9 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
 	return (
 		<html lang="en">
-			<body className={`${poppins.className} antialiased`}>{children}</body>
+			<body className={`${poppins.className} antialiased`}>
+				<I18nProvider>{children}</I18nProvider>
+			</body>
 		</html>
 	);
 }

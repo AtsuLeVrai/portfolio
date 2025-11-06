@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 export function About() {
+	const { t } = useTranslation();
 	return (
 		<section
 			id="about"
@@ -48,9 +50,9 @@ export function About() {
 							transition={{ duration: 0.5, delay: 0.1 }}
 						>
 							<h2 className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:mb-5 sm:text-4xl md:mb-6 md:text-5xl xl:text-6xl 2xl:mb-8 2xl:text-7xl">
-								ABOUT{" "}
+								{t("about.title").toUpperCase()}{" "}
 								<span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-rose-600 bg-clip-text text-transparent">
-									ME
+									{t("about.subtitle")}
 								</span>
 							</h2>
 						</motion.div>
@@ -63,37 +65,35 @@ export function About() {
 							transition={{ duration: 0.5, delay: 0.2 }}
 						>
 							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
-								I'm a{" "}
+								{t("about.intro")}{" "}
 								<strong className="text-gray-900">
-									Backend Engineer & Infrastructure Developer
+									{t("about.education")}
 								</strong>{" "}
-								with a passion for building robust, developer-friendly tools.
-								Specializing in{" "}
+								{t("about.with")}{" "}
 								<strong className="text-gray-900">
-									Discord bot development
+									{t("about.yearsExperience")}
 								</strong>{" "}
-								and{" "}
+								{t("about.autodidact")}{" "}
 								<strong className="text-gray-900">
-									real-time communication platforms
+									{t("about.expertise")}
+								</strong>{" "}
+								{t("about.and")}{" "}
+								<strong className="text-gray-900">
+									{t("about.performance")}
 								</strong>
-								, I thrive on creating tools that empower developers.
+								.
 							</p>
 
 							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
-								With over 5 years of experience, I've built everything from{" "}
+								{t("about.seeking")}{" "}
 								<strong className="text-gray-900">
-									high-performance Rust-based Discord bots
+									{t("about.internship")}
 								</strong>{" "}
-								to full-stack communication platforms. My work focuses on
-								WebSocket-driven real-time systems, type-safe APIs, and
-								developer experience.
+								{t("about.environment")}
 							</p>
 
 							<p className="font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl 2xl:text-2xl">
-								When I'm not crafting Discord frameworks or optimizing WebSocket
-								connections, you'll find me exploring new technologies,
-								contributing to open source, and building tools that make
-								development more enjoyable.
+								{t("about.passion")}
 							</p>
 						</motion.div>
 					</motion.div>

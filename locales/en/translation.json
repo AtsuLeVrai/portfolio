@@ -1,0 +1,116 @@
+{
+	"nav": {
+		"about": "About",
+		"projects": "Projects",
+		"experience": "Experience",
+		"contact": "Contact"
+	},
+	"hero": {
+		"greeting": "Hi, I'm",
+		"name": "TOM",
+		"role": "Backend Engineer & BTS SIO Student",
+		"description": "Passionate about building high-performance backend systems and developer tools. Specialized in TypeScript/Rust and real-time application development.",
+		"cta": {
+			"projects": "View My Work",
+			"contact": "Get In Touch"
+		},
+		"stats": {
+			"experience": "Years Experience",
+			"projects": "Projects Completed",
+			"technologies": "Technologies"
+		}
+	},
+	"about": {
+		"title": "About",
+		"subtitle": "ME",
+		"description": "BTS SIO student passionate about backend development",
+		"intro": "Student in",
+		"education": "BTS SIO option SLAM",
+		"with": "with",
+		"yearsExperience": "5+ years of experience",
+		"autodidact": "self-taught in backend development. Expertise in",
+		"expertise": "TypeScript/Node.js",
+		"and": "and creating personal projects focused on",
+		"performance": "performance",
+		"seeking": "Seeking a",
+		"internship": "6-week internship",
+		"environment": "in a professional environment.",
+		"passion": "What drives me is transforming ideas into robust and performant technical solutions. Always seeking learning and continuous improvement."
+	},
+	"projects": {
+		"title": "MY",
+		"subtitle": "PROJECTS",
+		"description": "Scalable systems, trading platforms, and game backends built with precision",
+		"featured": "FEATURED",
+		"clickDetails": "Click for details",
+		"metrics": "Metrics",
+		"techStack": "Tech Stack",
+		"viewCode": "View Code"
+	},
+	"experience": {
+		"title": "MY",
+		"subtitle": "EXPERIENCE",
+		"description": "BTS SIO student with 5+ years of self-taught backend development experience",
+		"freelance": {
+			"title": "Web Development Freelance",
+			"company": "Freelance",
+			"period": "2024 - Present",
+			"description1": "Created custom web solutions for individuals and small businesses",
+			"description2": "Full project management with complete autonomy from conception to delivery"
+		},
+		"nyxo": {
+			"title": "Nyxo.js - JavaScript Library",
+			"company": "Open Source Project",
+			"period": "2024",
+			"description1": "Built an optimized alternative to Discord.js focused on performance and API quality",
+			"description2": "Implemented advanced memory management and CPU/RAM optimization techniques"
+		},
+		"mairie": {
+			"title": "IT Service Internship",
+			"company": "Mairie de Saint-Saulve",
+			"period": "2023",
+			"description1": "Maintained computer equipment and managed IT infrastructure",
+			"description2": "Provided technical support to staff and troubleshot hardware/software issues"
+		}
+	},
+	"contact": {
+		"title": "GET IN",
+		"subtitle": "TOUCH",
+		"description": "Interested in working together? Drop me a message!",
+		"form": {
+			"name": "Name",
+			"namePlaceholder": "Your name",
+			"email": "Email",
+			"emailPlaceholder": "your.email@example.com",
+			"message": "Message",
+			"messagePlaceholder": "Your message...",
+			"sending": "Sending...",
+			"send": "Send Message",
+			"success": "Message sent successfully! I'll get back to you soon.",
+			"error": "Failed to send message. Please try again."
+		},
+		"quickLinks": {
+			"title": "Quick Links",
+			"email": "Email",
+			"github": "GitHub",
+			"linkedin": "LinkedIn"
+		},
+		"social": {
+			"title": "Let's Connect",
+			"github": "GitHub",
+			"linkedin": "LinkedIn",
+			"email": "Email"
+		}
+	},
+	"footer": {
+		"name": "TOM",
+		"tagline": "Backend Engineer",
+		"description": "Building high-performance backend systems and developer tools.",
+		"quote": "\"Code is poetry that a computer can execute\"",
+		"links": {
+			"title": "Quick Links"
+		},
+		"builtWith": "Built with",
+		"rights": "All rights reserved."
+	}
+}

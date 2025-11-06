@@ -1,0 +1,116 @@
+{
+	"nav": {
+		"about": "À Propos",
+		"projects": "Projets",
+		"experience": "Expérience",
+		"contact": "Contact"
+	},
+	"hero": {
+		"greeting": "Salut, je suis",
+		"name": "TOM",
+		"role": "Backend Engineer & Étudiant BTS SIO",
+		"description": "Passionné par la construction de systèmes backend performants et d'outils développeur. Spécialisé en TypeScript/Rust et développement d'applications temps réel.",
+		"cta": {
+			"projects": "Voir mes projets",
+			"contact": "Me Contacter"
+		},
+		"stats": {
+			"experience": "Années d'Expérience",
+			"projects": "Projets Complétés",
+			"technologies": "Technologies"
+		}
+	},
+	"about": {
+		"title": "À Propos",
+		"subtitle": "DE MOI",
+		"description": "Étudiant en BTS SIO option SLAM passionné par le développement backend",
+		"intro": "Étudiant en",
+		"education": "BTS SIO option SLAM",
+		"with": "avec",
+		"yearsExperience": "5+ années d'expérience",
+		"autodidact": "autodidacte en développement backend. Expertise en",
+		"expertise": "TypeScript/Node.js",
+		"and": "et création de projets personnels axés sur les",
+		"performance": "performances",
+		"seeking": "Recherche un",
+		"internship": "stage de 6 semaines",
+		"environment": "en environnement professionnel.",
+		"passion": "Ce qui me passionne, c'est transformer des idées en solutions techniques robustes et performantes. Toujours en quête d'apprentissage et d'amélioration continue."
+	},
+	"projects": {
+		"title": "MES",
+		"subtitle": "PROJETS",
+		"description": "Systèmes évolutifs, plateformes de trading et backends de jeux construits avec précision",
+		"featured": "EN VEDETTE",
+		"clickDetails": "Cliquer pour détails",
+		"metrics": "Métriques",
+		"techStack": "Stack Technique",
+		"viewCode": "Voir le Code"
+	},
+	"experience": {
+		"title": "MON",
+		"subtitle": "EXPÉRIENCE",
+		"description": "Étudiant BTS SIO avec 5+ années d'expérience autodidacte en développement backend",
+		"freelance": {
+			"title": "Développement Web Freelance",
+			"company": "Freelance",
+			"period": "2024 - Présent",
+			"description1": "Création de solutions web personnalisées pour particuliers et petites entreprises",
+			"description2": "Gestion complète de projets en autonomie de la conception à la livraison"
+		},
+		"nyxo": {
+			"title": "Nyxo.js - Bibliothèque JavaScript",
+			"company": "Projet Open Source",
+			"period": "2024",
+			"description1": "Construction d'une alternative optimisée à Discord.js axée sur les performances et la qualité de l'API",
+			"description2": "Mise en œuvre de techniques avancées de gestion de mémoire et d'optimisation CPU/RAM"
+		},
+		"mairie": {
+			"title": "Stage Service Informatique",
+			"company": "Mairie de Saint-Saulve",
+			"period": "2023",
+			"description1": "Maintenance du parc informatique et gestion de l'infrastructure IT",
+			"description2": "Support technique au personnel et résolution de problèmes matériels/logiciels"
+		}
+	},
+	"contact": {
+		"title": "ENTRER EN",
+		"subtitle": "CONTACT",
+		"description": "Intéressé par une collaboration ? Envoyez-moi un message !",
+		"form": {
+			"name": "Nom",
+			"namePlaceholder": "Votre nom",
+			"email": "Email",
+			"emailPlaceholder": "votre.email@exemple.com",
+			"message": "Message",
+			"messagePlaceholder": "Votre message...",
+			"sending": "Envoi...",
+			"send": "Envoyer le Message",
+			"success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
+			"error": "Échec de l'envoi du message. Veuillez réessayer."
+		},
+		"quickLinks": {
+			"title": "Liens Rapides",
+			"email": "Email",
+			"github": "GitHub",
+			"linkedin": "LinkedIn"
+		},
+		"social": {
+			"title": "Restons Connectés",
+			"github": "GitHub",
+			"linkedin": "LinkedIn",
+			"email": "Email"
+		}
+	},
+	"footer": {
+		"name": "TOM",
+		"tagline": "Backend Engineer",
+		"description": "Construction de systèmes backend performants et d'outils développeur.",
+		"quote": "\"Le code est de la poésie qu'un ordinateur peut exécuter\"",
+		"links": {
+			"title": "Liens Rapides"
+		},
+		"builtWith": "Construit avec",
+		"rights": "Tous droits réservés."
+	}
+}

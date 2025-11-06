@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	env: {
-		RESEND_API_KEY: "re_basf2nog_NKGffX8UncBSLH9ZyNJ3YxWq",
+		RESEND_API_KEY: process.env.RESEND_API_KEY,
 	},
 	images: {
 		remotePatterns: [
