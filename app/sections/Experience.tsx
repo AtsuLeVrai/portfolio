@@ -4,6 +4,7 @@ import { Briefcase, Calendar } from "lucide-react";
 import { motion } from "motion/react";
 
 interface ExperienceItem {
+	id: string;
 	title: string;
 	company: string;
 	period: string;
@@ -13,41 +14,57 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
 	{
-		title: "Backend Engineer",
+		id: "web-development-freelance",
+		title: "Web Development Freelance",
 		company: "Freelance",
-		period: "2019 - Present",
+		period: "2024 - Present",
 		description: [
-			"Specialized in Discord bot development and real-time communication platforms",
-			"Built high-performance Rust-based Discord bots handling millions of requests",
-			"Developed WebSocket-driven real-time systems with type-safe APIs",
-			"Created developer-friendly tools and frameworks for Discord ecosystem",
+			"Created custom web solutions for individuals and small businesses",
+			"Full project management with complete autonomy from conception to delivery",
 		],
 		technologies: [
-			"Rust",
 			"TypeScript",
-			"Discord API",
-			"WebSocket",
+			"Next.js",
+			"React",
+			"Node.js",
 			"PostgreSQL",
-			"Redis",
+			"Tailwind CSS",
 		],
 	},
 	{
-		title: "Infrastructure Developer",
-		company: "Open Source Projects",
-		period: "2020 - Present",
+		id: "nyxo-js-library",
+		title: "Nyxo.js - JavaScript Library",
+		company: "Open Source Project",
+		period: "2024",
 		description: [
-			"Maintained and contributed to various open-source Discord bot frameworks",
-			"Optimized performance and scalability of backend systems",
-			"Implemented CI/CD pipelines and automated testing workflows",
-			"Collaborated with developers worldwide on Discord tooling projects",
+			"Built an optimized alternative to Discord.js focused on performance and API quality",
+			"Implemented advanced memory management and CPU/RAM optimization techniques",
 		],
 		technologies: [
-			"Docker",
-			"GitHub Actions",
+			"TypeScript",
 			"Node.js",
-			"Python",
-			"MongoDB",
-			"Kubernetes",
+			"Discord API",
+			"Performance Optimization",
+			"Documentation",
+			"Testing",
+		],
+	},
+	{
+		id: "it-internship-mairie",
+		title: "IT Service Internship",
+		company: "Mairie de Saint-Saulve",
+		period: "2023",
+		description: [
+			"Maintained computer equipment and managed IT infrastructure",
+			"Provided technical support to staff and troubleshot hardware/software issues",
+		],
+		technologies: [
+			"Windows",
+			"Hardware Maintenance",
+			"Network Administration",
+			"Technical Support",
+			"IT Infrastructure",
+			"System Management",
 		],
 	},
 ];
@@ -55,81 +72,73 @@ const experiences: ExperienceItem[] = [
 function ExperienceCard({
 	experience,
 	index,
-}: { experience: ExperienceItem; index: number }) {
+}: {
+	experience: ExperienceItem;
+	index: number;
+}) {
 	return (
 		<motion.div
-			className="relative rounded-2xl border-3 border-gray-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] transition-all dark:border-gray-100 dark:bg-gray-800 dark:shadow-[8px_8px_0px_0px_rgba(243,244,246,1)] sm:p-8 md:border-4 xl:p-10 2xl:p-12"
+			className="group relative overflow-hidden rounded-2xl border-2 border-gray-900 bg-white p-5 shadow-[4px_4px_0px_0px_rgba(17,24,39,1)] transition-all sm:p-6 xl:p-7"
 			initial={{ opacity: 0, y: 30 }}
 			whileInView={{ opacity: 1, y: 0 }}
-			viewport={{ once: true, margin: "-100px" }}
-			transition={{ duration: 0.6, delay: index * 0.2 }}
+			viewport={{ once: true, margin: "-50px" }}
+			transition={{ duration: 0.5, delay: index * 0.1 }}
 			whileHover={{
 				y: -4,
-				boxShadow: "12px 12px 0px 0px rgba(17,24,39,1)",
+				boxShadow: "8px 8px 0px 0px rgba(17,24,39,1)",
 				transition: { duration: 0.2 },
 			}}
 		>
-			{/* Company Badge */}
-			<motion.div
-				className="-top-4 -right-4 absolute rounded-full border-3 border-gray-900 bg-gradient-to-br from-cyan-400 to-rose-400 p-3 dark:border-gray-100 dark:from-cyan-600 dark:to-rose-600 md:border-4"
-				whileHover={{ rotate: 360, scale: 1.1 }}
-				transition={{ duration: 0.6 }}
-			>
-				<Briefcase className="h-6 w-6 text-white" />
-			</motion.div>
+			{/* Gradient accent */}
+			<div className="absolute top-0 right-0 h-full w-1 bg-gradient-to-b from-cyan-400 via-purple-400 to-rose-400" />
 
 			{/* Header */}
-			<div className="mb-5 sm:mb-6 xl:mb-8">
-				<h3 className="mb-2 font-black text-2xl text-gray-900 dark:text-gray-100 sm:text-3xl xl:text-4xl">
-					{experience.title}
-				</h3>
-				<p className="mb-3 font-bold text-cyan-600 text-lg dark:text-cyan-400 sm:text-xl xl:text-2xl">
+			<div className="mb-4">
+				<div className="mb-2 flex items-start justify-between gap-3">
+					<h3 className="font-black text-gray-900 text-lg leading-tight sm:text-xl xl:text-2xl">
+						{experience.title}
+					</h3>
+					<Briefcase className="h-5 w-5 flex-shrink-0 text-cyan-600 sm:h-6 sm:w-6" />
+				</div>
+				<p className="mb-2 font-bold text-base text-cyan-600 sm:text-lg">
 					{experience.company}
 				</p>
-				<div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+				<div className="flex items-center gap-2 text-gray-600">
 					<Calendar className="h-4 w-4" />
-					<span className="font-semibold text-sm sm:text-base">
+					<span className="font-semibold text-xs sm:text-sm">
 						{experience.period}
 					</span>
 				</div>
 			</div>
 
-			{/* Description */}
-			<ul className="mb-5 space-y-2 sm:mb-6 sm:space-y-3 xl:mb-8">
-				{experience.description.map((item, i) => (
-					<motion.li
-						key={i}
-						className="flex items-start gap-3 font-medium text-gray-700 text-sm leading-relaxed dark:text-gray-300 sm:text-base xl:text-lg"
-						initial={{ opacity: 0, x: -20 }}
-						whileInView={{ opacity: 1, x: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.4, delay: index * 0.2 + i * 0.1 }}
+			{/* Description - Only show first 2 items */}
+			<ul className="mb-4 space-y-1.5">
+				{experience.description.slice(0, 2).map((item) => (
+					<li
+						key={item}
+						className="flex items-start gap-2 font-medium text-gray-700 text-xs leading-relaxed sm:text-sm"
 					>
-						<span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-gradient-to-r from-cyan-600 to-rose-600" />
+						<span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-cyan-600 to-rose-600" />
 						<span>{item}</span>
-					</motion.li>
+					</li>
 				))}
 			</ul>
 
-			{/* Technologies */}
-			<div className="flex flex-wrap gap-2 sm:gap-3">
-				{experience.technologies.map((tech, i) => (
-					<motion.span
+			{/* Technologies - Show max 4 */}
+			<div className="flex flex-wrap gap-1.5 sm:gap-2">
+				{experience.technologies.slice(0, 4).map((tech) => (
+					<span
 						key={tech}
-						className="rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-50 to-rose-50 px-3 py-1.5 font-bold text-gray-900 text-xs dark:border-gray-100 dark:from-cyan-900/30 dark:to-rose-900/30 dark:text-gray-100 sm:px-4 sm:py-2 sm:text-sm xl:text-base"
-						initial={{ opacity: 0, scale: 0.8 }}
-						whileInView={{ opacity: 1, scale: 1 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.3, delay: index * 0.2 + i * 0.05 }}
-						whileHover={{
-							scale: 1.1,
-							rotate: 5,
-							transition: { duration: 0.2 },
-						}}
+						className="rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-50 to-rose-50 px-2.5 py-1 font-bold text-[10px] text-gray-900 sm:text-xs"
 					>
 						{tech}
-					</motion.span>
+					</span>
 				))}
+				{experience.technologies.length > 4 && (
+					<span className="rounded-full border-2 border-gray-900 bg-gray-200 px-2.5 py-1 font-bold text-[10px] text-gray-700 sm:text-xs">
+						+{experience.technologies.length - 4}
+					</span>
+				)}
 			</div>
 		</motion.div>
 	);
@@ -139,19 +148,19 @@ export function Experience() {
 	return (
 		<section
 			id="experience"
-			className="relative bg-white py-12 dark:bg-gray-900 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
+			className="relative bg-white py-12 sm:py-14 md:py-16 xl:py-20"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
 				{/* Section Header */}
 				<motion.div
-					className="mb-12 text-center sm:mb-14 md:mb-16 xl:mb-20 2xl:mb-24"
+					className="mb-8 text-center sm:mb-10 md:mb-12 xl:mb-14"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6 }}
 				>
 					<motion.h2
-						className="mb-4 font-black text-3xl text-gray-900 leading-tight dark:text-gray-100 sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl"
+						className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
@@ -163,21 +172,22 @@ export function Experience() {
 						</span>
 					</motion.h2>
 					<motion.p
-						className="mx-auto max-w-2xl font-medium text-base text-gray-700 dark:text-gray-300 sm:text-lg md:text-xl xl:text-2xl"
+						className="mx-auto max-w-2xl font-medium text-base text-gray-700 sm:text-lg md:text-xl xl:text-2xl"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.6, delay: 0.2 }}
 					>
-						Building scalable systems and developer tools for over 5 years
+						BTS SIO student with 5+ years of self-taught backend development
+						experience
 					</motion.p>
 				</motion.div>
 
 				{/* Experience Cards */}
-				<div className="grid gap-8 sm:gap-10 md:gap-12 xl:gap-14">
+				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-3 xl:gap-10">
 					{experiences.map((experience, index) => (
 						<ExperienceCard
-							key={index}
+							key={experience.id}
 							experience={experience}
 							index={index}
 						/>

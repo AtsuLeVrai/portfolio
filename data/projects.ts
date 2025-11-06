@@ -7,13 +7,14 @@ export const projects = [
 		longDescription:
 			"A professional, open-source Discord bot combining the best features from premium bots (MEE6, Dyno, Xenon) into one powerful, free solution. Features moderation, leveling, tickets, giveaways, raid protection, logging, and more.",
 		tags: ["Rust", "Serenity", "Discord", "Tokio", "Async"],
-		image: "https://placehold.co/600x400/CE412B/white?text=Zen",
+		gradient: "from-orange-400 via-red-500 to-pink-500",
+		icon: "Bot",
 		githubUrl: "https://github.com/AtsuLeVrai/zen",
 		featured: true,
 		metrics: [
 			{ label: "Language", value: "Rust" },
-			{ label: "Commands", value: "50+" },
-			{ label: "Status", value: "Active" },
+			{ label: "Commands", value: "150+" },
+			{ label: "Status", value: "Developing" },
 		],
 	},
 	{
@@ -32,7 +33,8 @@ export const projects = [
 			"WebSocket",
 			"Tailwind",
 		],
-		image: "https://placehold.co/600x400/3178C6/white?text=Vox",
+		gradient: "from-blue-400 via-indigo-500 to-purple-500",
+		icon: "MessageSquare",
 		githubUrl: "https://github.com/AtsuLeVrai/vox",
 		featured: true,
 		metrics: [
@@ -48,14 +50,15 @@ export const projects = [
 			"Modern TypeScript framework for building Discord bots - Discord.js reimagined",
 		longDescription:
 			"A modern JavaScript/TypeScript framework for building Discord bots with improved developer experience. Features a clean API, full TypeScript support, and modern async patterns. Built to be faster and more intuitive than existing solutions.",
-		tags: ["TypeScript", "Discord", "Node.js", "Framework", "Library"],
-		image: "https://placehold.co/600x400/F7DF1E/black?text=Nyxo.js",
+		tags: ["TypeScript", "Discord", "Node.js", "Library", "Framework"],
+		gradient: "from-yellow-400 via-amber-500 to-orange-500",
+		icon: "Code",
 		githubUrl: "https://github.com/AtsuLeVrai/nyxo.js",
 		featured: true,
 		metrics: [
 			{ label: "Type", value: "Framework" },
-			{ label: "License", value: "Apache 2.0" },
-			{ label: "Status", value: "Active Dev" },
+			{ label: "License", value: "Apache2.0" },
+			{ label: "Status", value: "Developing" },
 		],
 	},
 ] as const;

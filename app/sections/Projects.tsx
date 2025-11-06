@@ -8,7 +8,7 @@ export function Projects() {
 	return (
 		<section
 			id="projects"
-			className="relative bg-gradient-to-br from-rose-50 via-white to-cyan-50 py-12 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
+			className="relative bg-gradient-to-br from-rose-50 via-white to-cyan-50 py-12 sm:py-16 md:py-20 xl:py-24 2xl:py-28"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
 				<motion.div
@@ -19,7 +19,7 @@ export function Projects() {
 					transition={{ duration: 0.5, ease: "easeOut" }}
 				>
 					<motion.h2
-						className="mb-4 font-black text-3xl text-gray-900 leading-tight dark:text-gray-100 sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl"
+						className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
@@ -31,7 +31,7 @@ export function Projects() {
 						</span>
 					</motion.h2>
 					<motion.p
-						className="mx-auto max-w-2xl font-medium text-base text-gray-700 dark:text-gray-300 sm:text-lg md:text-xl xl:text-2xl"
+						className="mx-auto max-w-2xl font-medium text-base text-gray-700 sm:text-lg md:text-xl xl:text-2xl"
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
@@ -43,7 +43,7 @@ export function Projects() {
 				</motion.div>
 
 				<motion.div
-					className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-10 2xl:grid-cols-4 2xl:gap-12"
+					className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 xl:grid-cols-3 xl:gap-12 2xl:gap-14"
 					layout
 					transition={{ duration: 0.3 }}
 				>

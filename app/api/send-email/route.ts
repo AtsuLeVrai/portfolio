@@ -1,5 +1,5 @@
-import { Resend } from "resend";
 import { type NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -18,12 +18,15 @@ export async function POST(req: NextRequest) {
 		// Validate email format
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
-			return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
+			return NextResponse.json(
+				{ error: "Invalid email format" },
+				{ status: 400 },
+			);
 		}
 
 		const { data, error } = await resend.emails.send({
 			from: "Portfolio Contact <onboarding@resend.dev>",
-			to: "tom.bialecki2211@gmail.com",
+			to: "minecraftytom22@gmail.com",
 			replyTo: email,
 			subject: `New Contact Form Submission from ${name}`,
 			html: `

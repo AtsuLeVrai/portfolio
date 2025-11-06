@@ -1,10 +1,15 @@
 "use client";
 
-import { Github, X } from "lucide-react";
+import { Bot, Code, Github, MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { projects } from "@/data/projects";
+
+const iconMap = {
+	Bot,
+	MessageSquare,
+	Code,
+};
 
 export function ProjectCard({
 	project,
@@ -14,11 +19,32 @@ export function ProjectCard({
 	index: number;
 }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const Icon = iconMap[project.icon as keyof typeof iconMap];
+
+	// Close modal on Escape key
+	useEffect(() => {
+		const handleEscape = (e: KeyboardEvent) => {
+			if (e.key === "Escape") {
+				setIsModalOpen(false);
+			}
+		};
+
+		if (isModalOpen) {
+			document.addEventListener("keydown", handleEscape);
+			// Prevent body scroll when modal is open
+			document.body.style.overflow = "hidden";
+		}
+
+		return () => {
+			document.removeEventListener("keydown", handleEscape);
+			document.body.style.overflow = "unset";
+		};
+	}, [isModalOpen]);
 
 	return (
 		<>
 			<motion.div
-				className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-gray-900 bg-white shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] transition-all duration-300 hover:shadow-[12px_12px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:bg-gray-800 dark:shadow-[6px_6px_0px_0px_rgba(243,244,246,1)] dark:hover:shadow-[12px_12px_0px_0px_rgba(243,244,246,1)] md:border-3 xl:rounded-3xl xl:border-4"
+				className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-gray-900 bg-white shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] transition-all duration-300 hover:shadow-[12px_12px_0px_0px_rgba(17,24,39,1)] md:border-3 xl:rounded-3xl xl:border-4"
 				initial={{ opacity: 0, y: 30 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true, margin: "-50px" }}
@@ -27,18 +53,17 @@ export function ProjectCard({
 				onClick={() => setIsModalOpen(true)}
 			>
 				{project.featured && (
-					<div className="absolute top-3 right-3 z-10 rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-400 to-rose-400 px-2 py-1 font-bold text-[10px] text-white shadow-sm dark:border-gray-100 sm:top-4 sm:right-4 sm:px-3 sm:text-xs xl:text-sm">
+					<div className="absolute top-3 right-3 z-10 rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-400 to-rose-400 px-2 py-1 font-bold text-[10px] text-white shadow-sm sm:top-4 sm:right-4 sm:px-3 sm:text-xs xl:text-sm">
 						FEATURED
 					</div>
 				)}
 
-				<div className="relative h-40 overflow-hidden bg-gradient-to-br from-cyan-100 to-rose-100 dark:from-cyan-900/30 dark:to-rose-900/30 sm:h-48 xl:h-56 2xl:h-64">
-					<Image
-						src={project.image}
-						alt={project.title}
-						width={800}
-						height={600}
-						className="h-full w-full object-cover"
+				<div
+					className={`relative h-40 overflow-hidden bg-gradient-to-br ${project.gradient} flex items-center justify-center sm:h-48 xl:h-56 2xl:h-64`}
+				>
+					<Icon
+						className="h-20 w-20 text-white/90 sm:h-24 sm:w-24 xl:h-28 xl:w-28"
+						strokeWidth={1.5}
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 					<div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -49,26 +74,26 @@ export function ProjectCard({
 				</div>
 
 				<div className="p-4 sm:p-5 xl:p-6 2xl:p-8">
-					<h3 className="mb-2 font-black text-gray-900 text-lg leading-tight dark:text-gray-100 sm:text-xl xl:text-2xl 2xl:text-3xl">
+					<h3 className="mb-2 font-black text-gray-900 text-lg leading-tight sm:text-xl xl:text-2xl 2xl:text-3xl">
 						{project.title}
 					</h3>
 
-					<p className="mb-3 font-medium text-gray-600 text-sm leading-relaxed dark:text-gray-400 sm:mb-4 sm:text-base xl:text-lg">
+					<p className="mb-3 font-medium text-gray-600 text-sm leading-relaxed sm:mb-4 sm:text-base xl:text-lg">
 						{project.shortDescription}
 					</p>
 
 					{project.metrics && project.metrics.length > 0 && (
-						<div className="mb-3 grid grid-cols-2 gap-2 sm:mb-4 xl:grid-cols-3 xl:gap-3">
+						<div className="mb-4 grid grid-cols-3 gap-2 sm:gap-3 xl:mb-5 xl:gap-4">
 							{project.metrics.map((metric) => (
 								<motion.div
 									key={metric.label}
-									className="rounded-lg border-2 border-gray-900 bg-gray-50 p-2 text-center dark:border-gray-600 dark:bg-gray-900/50 xl:p-3"
+									className="flex flex-col items-center justify-center rounded-xl border-2 border-gray-900 bg-gradient-to-br from-gray-50 to-gray-100 p-2 text-center sm:p-3"
 									whileHover={{ scale: 1.05 }}
 								>
-									<div className="font-black text-gray-900 text-sm dark:text-gray-100 xl:text-base 2xl:text-lg">
+									<div className="font-black text-gray-900 text-xs leading-tight sm:text-sm xl:text-base">
 										{metric.value}
 									</div>
-									<div className="font-medium text-[10px] text-gray-600 dark:text-gray-400 sm:text-xs xl:text-sm">
+									<div className="mt-0.5 font-bold text-[9px] text-gray-600 leading-tight sm:text-[10px] xl:text-xs">
 										{metric.label}
 									</div>
 								</motion.div>
@@ -80,13 +105,13 @@ export function ProjectCard({
 						{project.tags.slice(0, 4).map((tag) => (
 							<span
 								key={tag}
-								className="rounded-full border-2 border-gray-900 bg-white px-2 py-1 font-bold text-[10px] text-gray-700 dark:border-gray-600 dark:bg-gray-900/50 dark:text-gray-300 sm:text-xs xl:text-sm"
+								className="rounded-full border-2 border-gray-900 bg-white px-2 py-1 font-bold text-[10px] text-gray-700 sm:text-xs xl:text-sm"
 							>
 								{tag}
 							</span>
 						))}
 						{project.tags.length > 4 && (
-							<span className="rounded-full border-2 border-gray-900 bg-gray-200 px-2 py-1 font-bold text-[10px] text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 sm:text-xs xl:text-sm">
+							<span className="rounded-full border-2 border-gray-900 bg-gray-200 px-2 py-1 font-bold text-[10px] text-gray-700 sm:text-xs xl:text-sm">
 								+{project.tags.length - 4}
 							</span>
 						)}
@@ -108,9 +133,14 @@ export function ProjectCard({
 						/>
 
 						{/* Modal Content */}
-						<div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+						{/** biome-ignore lint/a11y/noStaticElementInteractions: <explanation> */}
+						{/** biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+						<div
+							className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+							onClick={() => setIsModalOpen(false)}
+						>
 							<motion.div
-								className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border-4 border-gray-900 bg-white shadow-[12px_12px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:bg-gray-800 dark:shadow-[12px_12px_0px_0px_rgba(243,244,246,1)]"
+								className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border-4 border-gray-900 bg-white shadow-[12px_12px_0px_0px_rgba(17,24,39,1)]"
 								initial={{ opacity: 0, scale: 0.9, y: 20 }}
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -121,23 +151,22 @@ export function ProjectCard({
 								<button
 									type="button"
 									onClick={() => setIsModalOpen(false)}
-									className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-900 bg-white text-gray-900 transition-colors hover:bg-gray-100 dark:border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-700"
+									className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-900 bg-white text-gray-900 transition-colors hover:bg-gray-100"
 									aria-label="Close modal"
 								>
 									<X size={24} />
 								</button>
 
 								{/* Image */}
-								<div className="relative h-64 overflow-hidden bg-gradient-to-br from-cyan-100 to-rose-100 dark:from-cyan-900/30 dark:to-rose-900/30 sm:h-80 xl:h-96">
-									<Image
-										src={project.image}
-										alt={project.title}
-										width={1200}
-										height={800}
-										className="h-full w-full object-cover"
+								<div
+									className={`relative h-64 overflow-hidden bg-gradient-to-br ${project.gradient} flex items-center justify-center sm:h-80 xl:h-96`}
+								>
+									<Icon
+										className="h-32 w-32 text-white/90 sm:h-40 sm:w-40 xl:h-48 xl:w-48"
+										strokeWidth={1.5}
 									/>
 									{project.featured && (
-										<div className="absolute top-4 left-4 rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-400 to-rose-400 px-4 py-2 font-bold text-white text-sm shadow-lg dark:border-gray-100">
+										<div className="absolute top-4 left-4 rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-400 to-rose-400 px-4 py-2 font-bold text-sm text-white shadow-lg">
 											FEATURED PROJECT
 										</div>
 									)}
@@ -145,31 +174,31 @@ export function ProjectCard({
 
 								{/* Content */}
 								<div className="p-6 sm:p-8 xl:p-10">
-									<h2 className="mb-4 font-black text-3xl text-gray-900 leading-tight dark:text-gray-100 sm:text-4xl xl:text-5xl">
+									<h2 className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:text-4xl xl:text-5xl">
 										{project.title}
 									</h2>
 
-									<p className="mb-6 font-medium text-base text-gray-700 leading-relaxed dark:text-gray-300 sm:text-lg xl:text-xl">
+									<p className="mb-6 font-medium text-base text-gray-700 leading-relaxed sm:text-lg xl:text-xl">
 										{project.longDescription}
 									</p>
 
 									{/* Metrics */}
 									{project.metrics && project.metrics.length > 0 && (
-										<div className="mb-6">
-											<h3 className="mb-3 font-black text-gray-900 text-xl dark:text-gray-100 sm:text-2xl">
+										<div className="mb-6 sm:mb-8">
+											<h3 className="mb-4 font-black text-gray-900 text-xl sm:text-2xl xl:text-3xl">
 												Metrics
 											</h3>
-											<div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:gap-4">
+											<div className="grid grid-cols-3 gap-3 sm:gap-4 xl:gap-5">
 												{project.metrics.map((metric) => (
 													<motion.div
 														key={metric.label}
-														className="rounded-xl border-2 border-gray-900 bg-gradient-to-br from-cyan-50 to-rose-50 p-4 text-center dark:border-gray-600 dark:from-cyan-900/30 dark:to-rose-900/30"
-														whileHover={{ scale: 1.05 }}
+														className="flex flex-col items-center justify-center rounded-2xl border-3 border-gray-900 bg-gradient-to-br from-cyan-50 to-rose-50 p-4 text-center sm:p-5 xl:p-6"
+														whileHover={{ scale: 1.05, y: -4 }}
 													>
-														<div className="font-black text-gray-900 text-xl dark:text-gray-100 xl:text-2xl">
+														<div className="font-black text-gray-900 text-lg leading-tight sm:text-xl xl:text-2xl">
 															{metric.value}
 														</div>
-														<div className="font-bold text-gray-600 text-sm dark:text-gray-400 xl:text-base">
+														<div className="mt-1 font-bold text-gray-600 text-xs leading-tight sm:text-sm xl:text-base">
 															{metric.label}
 														</div>
 													</motion.div>
@@ -180,14 +209,14 @@ export function ProjectCard({
 
 									{/* Tech Stack */}
 									<div className="mb-6">
-										<h3 className="mb-3 font-black text-gray-900 text-xl dark:text-gray-100 sm:text-2xl">
+										<h3 className="mb-3 font-black text-gray-900 text-xl sm:text-2xl">
 											Tech Stack
 										</h3>
 										<div className="flex flex-wrap gap-2">
 											{project.tags.map((tag) => (
 												<span
 													key={tag}
-													className="rounded-full border-2 border-gray-900 bg-white px-3 py-2 font-bold text-gray-700 text-sm dark:border-gray-600 dark:bg-gray-900/50 dark:text-gray-300 sm:text-base"
+													className="rounded-full border-2 border-gray-900 bg-white px-3 py-2 font-bold text-gray-700 text-sm sm:text-base"
 												>
 													{tag}
 												</span>
@@ -202,7 +231,7 @@ export function ProjectCard({
 												href={project.githubUrl}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="flex flex-1 items-center justify-center gap-2 rounded-full border-3 border-gray-900 bg-gray-900 px-6 py-3 font-bold text-base text-white shadow-[4px_4px_0px_0px_rgba(17,24,39,1)] transition-all hover:bg-gray-800 hover:shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] dark:border-gray-100 dark:bg-gray-100 dark:text-gray-900 dark:shadow-[4px_4px_0px_0px_rgba(243,244,246,1)] dark:hover:bg-gray-200 dark:hover:shadow-[6px_6px_0px_0px_rgba(243,244,246,1)] sm:text-lg"
+												className="flex flex-1 items-center justify-center gap-2 rounded-full border-3 border-gray-900 bg-gray-900 px-6 py-3 font-bold text-base text-white shadow-[4px_4px_0px_0px_rgba(17,24,39,1)] transition-all hover:bg-gray-800 hover:shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] sm:text-lg"
 												whileHover={{ y: -2 }}
 												whileTap={{ scale: 0.98 }}
 												onClick={(e) => e.stopPropagation()}
