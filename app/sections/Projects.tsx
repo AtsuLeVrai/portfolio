@@ -49,7 +49,6 @@ export function Projects() {
 					transition={{ duration: 0.3 }}
 				>
 					{projects.map((project, index) => (
-						// @ts-expect-error 2719
 						<ProjectCard key={project.id} project={project} index={index} />
 					))}
 				</motion.div>

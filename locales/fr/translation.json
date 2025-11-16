@@ -107,8 +107,11 @@
 		"tagline": "Backend Engineer",
 		"description": "Construction de systèmes backend performants et d'outils développeur.",
 		"quote": "\"Le code est de la poésie qu'un ordinateur peut exécuter\"",
-		"links": {
-			"title": "Liens Rapides"
+		"navigation": {
+			"title": "Navigation"
+		},
+		"connect": {
+			"title": "Contactez-moi"
 		},
 		"builtWith": "Construit avec",
 		"rights": "Tous droits réservés."

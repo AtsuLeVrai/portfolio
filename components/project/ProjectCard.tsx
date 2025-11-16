@@ -3,6 +3,7 @@
 import { Bot, Code, Github, MessageSquare, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { projects } from "@/data/projects";
 
 const iconMap = {
@@ -15,9 +16,10 @@ export function ProjectCard({
 	project,
 	index,
 }: {
-	project: (typeof projects)[0];
+	project: (typeof projects)[number];
 	index: number;
 }) {
+	const { t } = useTranslation();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const Icon = iconMap[project.icon as keyof typeof iconMap];
 
@@ -54,7 +56,7 @@ export function ProjectCard({
 			>
 				{project.featured && (
 					<div className="absolute top-3 right-3 z-10 rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-400 to-rose-400 px-2 py-1 font-bold text-[10px] text-white shadow-sm sm:top-4 sm:right-4 sm:px-3 sm:text-xs xl:text-sm">
-						FEATURED
+						{t("projects.featured")}
 					</div>
 				)}
 
@@ -68,7 +70,7 @@ export function ProjectCard({
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 					<div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
 						<div className="rounded-full border-2 border-white bg-white/90 px-4 py-2 font-bold text-gray-900 text-sm backdrop-blur-sm">
-							Click for details
+							{t("projects.clickDetails")}
 						</div>
 					</div>
 				</div>
@@ -133,11 +135,11 @@ export function ProjectCard({
 						/>
 
 						{/* Modal Content */}
-						{/** biome-ignore lint/a11y/noStaticElementInteractions: <explanation> */}
-						{/** biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+						{/** biome-ignore lint/a11y/noStaticElementInteractions: Backdrop click is an optional way to close modal, keyboard users can use Escape key or the close button */}
 						<div
 							className="fixed inset-0 z-[60] flex items-center justify-center p-4"
 							onClick={() => setIsModalOpen(false)}
+							role="presentation"
 						>
 							<motion.div
 								className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border-4 border-gray-900 bg-white shadow-[12px_12px_0px_0px_rgba(17,24,39,1)]"
@@ -146,6 +148,9 @@ export function ProjectCard({
 								exit={{ opacity: 0, scale: 0.9, y: 20 }}
 								transition={{ duration: 0.3 }}
 								onClick={(e) => e.stopPropagation()}
+								role="dialog"
+								aria-modal="true"
+								aria-labelledby="modal-title"
 							>
 								{/* Close Button */}
 								<button
@@ -167,14 +172,17 @@ export function ProjectCard({
 									/>
 									{project.featured && (
 										<div className="absolute top-4 left-4 rounded-full border-2 border-gray-900 bg-gradient-to-r from-cyan-400 to-rose-400 px-4 py-2 font-bold text-sm text-white shadow-lg">
-											FEATURED PROJECT
+											{t("projects.featured")}
 										</div>
 									)}
 								</div>
 
 								{/* Content */}
 								<div className="p-6 sm:p-8 xl:p-10">
-									<h2 className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:text-4xl xl:text-5xl">
+									<h2
+										id="modal-title"
+										className="mb-4 font-black text-3xl text-gray-900 leading-tight sm:text-4xl xl:text-5xl"
+									>
 										{project.title}
 									</h2>
 
@@ -186,7 +194,7 @@ export function ProjectCard({
 									{project.metrics && project.metrics.length > 0 && (
 										<div className="mb-6 sm:mb-8">
 											<h3 className="mb-4 font-black text-gray-900 text-xl sm:text-2xl xl:text-3xl">
-												Metrics
+												{t("projects.metrics")}
 											</h3>
 											<div className="grid grid-cols-3 gap-3 sm:gap-4 xl:gap-5">
 												{project.metrics.map((metric) => (
@@ -210,7 +218,7 @@ export function ProjectCard({
 									{/* Tech Stack */}
 									<div className="mb-6">
 										<h3 className="mb-3 font-black text-gray-900 text-xl sm:text-2xl">
-											Tech Stack
+											{t("projects.techStack")}
 										</h3>
 										<div className="flex flex-wrap gap-2">
 											{project.tags.map((tag) => (
@@ -237,7 +245,7 @@ export function ProjectCard({
 												onClick={(e) => e.stopPropagation()}
 											>
 												<Github size={20} />
-												View Code
+												{t("projects.viewCode")}
 											</motion.a>
 										)}
 									</div>

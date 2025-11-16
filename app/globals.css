@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Hide scrollbars */
 *::-webkit-scrollbar {
 	display: none;
 }
@@ -7,4 +8,47 @@
 * {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Prevent layout shift on language change */
+body {
+	overflow-x: hidden;
+}
+
+/* Smooth transitions for text content changes (useful for i18n) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+button {
+	transition: opacity 0.2s ease-in-out;
+}
+
+/* Better focus visible for accessibility */
+*:focus-visible {
+	outline: 2px solid #06b6d4;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Improve text rendering */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Prevent text overflow */
+* {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 }

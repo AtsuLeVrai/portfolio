@@ -107,8 +107,11 @@
 		"tagline": "Backend Engineer",
 		"description": "Building high-performance backend systems and developer tools.",
 		"quote": "\"Code is poetry that a computer can execute\"",
-		"links": {
-			"title": "Quick Links"
+		"navigation": {
+			"title": "Navigation"
+		},
+		"connect": {
+			"title": "Connect"
 		},
 		"builtWith": "Built with",
 		"rights": "All rights reserved."

@@ -220,9 +220,8 @@ export function Hero() {
 							}}
 						>
 							<h1 className="font-black text-4xl text-gray-900 leading-none tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
-								{t("hero.greeting").toUpperCase()},
+								{t("hero.greeting").toUpperCase()}
 								<br />
-								I'M{" "}
 								<span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-rose-600 bg-clip-text text-transparent">
 									{t("hero.name")}
 								</span>

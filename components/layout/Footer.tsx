@@ -9,11 +9,11 @@ function useNavSections() {
 
 	return [
 		{
-			title: t("footer.links.title"),
+			title: t("footer.navigation.title"),
 			links: NAV_LINKS.slice(0, 2),
 		},
 		{
-			title: t("footer.links.title"),
+			title: t("footer.connect.title"),
 			links: NAV_LINKS.slice(2),
 		},
 	];
