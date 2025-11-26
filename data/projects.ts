@@ -1,4 +1,6 @@
-export const projects = [
+import type { Project } from "@/types";
+
+export const projects: readonly Project[] = [
 	{
 		id: "zen",
 		title: "Zen",

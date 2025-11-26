@@ -2,11 +2,12 @@
 
 import { ChevronDown, Zap } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { HERO_STATS, SOCIAL_LINKS } from "@/data/constants";
 
-function StatCard({ value, label }: { value: string; label: string }) {
+// Memoized components to prevent unnecessary re-renders
+const StatCard = memo(function StatCard({ value, label }: { value: string; label: string }) {
 	return (
 		<div className="rounded-2xl border-2 border-gray-300 bg-white/90 p-3 text-center shadow-sm transition-all sm:p-4">
 			<div className="font-black text-gray-900 text-xl sm:text-2xl">
@@ -15,9 +16,9 @@ function StatCard({ value, label }: { value: string; label: string }) {
 			<div className="font-bold text-gray-600 text-xs sm:text-sm">{label}</div>
 		</div>
 	);
-}
+});
 
-function SocialLinks() {
+const SocialLinks = memo(function SocialLinks() {
 	return (
 		<div className="flex gap-4">
 			{SOCIAL_LINKS.map((social, index) => {
@@ -50,9 +51,9 @@ function SocialLinks() {
 			})}
 		</div>
 	);
-}
+});
 
-function FloatingShapes() {
+const FloatingShapes = memo(function FloatingShapes() {
 	return (
 		<>
 			{/* Circle 1 */}
@@ -123,7 +124,7 @@ function FloatingShapes() {
 			/>
 		</>
 	);
-}
+});
 
 function ScrollIndicator() {
 	const [isVisible, setIsVisible] = useState(true);

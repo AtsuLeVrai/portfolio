@@ -87,7 +87,16 @@
 			"sending": "Sending...",
 			"send": "Send Message",
 			"success": "Message sent successfully! I'll get back to you soon.",
-			"error": "Failed to send message. Please try again."
+			"error": "Failed to send message. Please try again.",
+			"errors": {
+				"nameRequired": "Name is required",
+				"nameTooLong": "Name is too long (max 100 characters)",
+				"emailRequired": "Email is required",
+				"emailTooLong": "Email is too long (max 254 characters)",
+				"emailInvalid": "Please enter a valid email address",
+				"messageRequired": "Message is required",
+				"messageTooLong": "Message is too long (max 5000 characters)"
+			}
 		},
 		"quickLinks": {
 			"title": "Quick Links",
