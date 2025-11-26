@@ -9,8 +9,11 @@ import { Header } from "@/components/layout/Header";
 export default function HomePage() {
 	return (
 		<>
+			<a href="#about" className="skip-link">
+				Skip to main content
+			</a>
 			<Header />
-			<main className="relative">
+			<main className="relative" id="main-content">
 				<Hero />
 				<About />
 				<Projects />

@@ -16,7 +16,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
 	title: {
 		default: "Tom B. - Backend Engineer Portfolio",
-		template: "%s | Tom B. Portfolio",
+		template: "%s | Tom B.",
 	},
 	description:
 		"Backend Engineer specializing in Discord tooling, real-time communication platforms, and developer infrastructure. 5+ years of experience building scalable systems.",
@@ -29,12 +29,22 @@ export const metadata: Metadata = {
 		"WebSocket",
 		"API Development",
 		"Developer Tools",
+		"BTS SIO",
+		"Développeur Backend",
 	],
 	authors: [{ name: "Tom B.", url: "https://github.com/AtsuLeVrai" }],
 	creator: "Tom B.",
+	metadataBase: new URL("https://tom-portfolio.vercel.app"),
+	alternates: {
+		languages: {
+			"en": "/",
+			"fr": "/",
+		},
+	},
 	openGraph: {
 		type: "website",
-		locale: "en_US",
+		locale: "fr_FR",
+		alternateLocale: "en_US",
 		url: "https://tom-portfolio.vercel.app",
 		title: "Tom B. - Backend Engineer Portfolio",
 		description:
@@ -64,7 +74,7 @@ export default function RootLayout({
 	children,
 }: Readonly<{ children: ReactNode }>) {
 	return (
-		<html lang="en">
+		<html lang="fr" suppressHydrationWarning>
 			<body className={`${poppins.className} antialiased`}>
 				<I18nProvider>{children}</I18nProvider>
 				<SpeedInsights />

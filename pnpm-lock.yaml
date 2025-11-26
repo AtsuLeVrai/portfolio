@@ -14,6 +14,9 @@ importers:
       '@vercel/speed-insights':
         specifier: ^1.2.0
         version: 1.2.0(next@16.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      he:
+        specifier: ^1.2.0
+        version: 1.2.0
       i18next:
         specifier: ^25.6.2
         version: 25.6.2(typescript@5.9.3)
@@ -41,6 +44,9 @@ importers:
       resend:
         specifier: ^6.4.2
         version: 6.4.2
+      zod:
+        specifier: ^4.1.13
+        version: 4.1.13
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.3.5
@@ -48,6 +54,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.17
         version: 4.1.17
+      '@types/he':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
@@ -434,6 +443,9 @@ packages:
   '@tailwindcss/postcss@4.1.17':
     resolution: {integrity: sha512-+nKl9N9mN5uJ+M7dBOOCzINw94MPstNR/GtIhz1fpZysxL/4a+No64jCBD6CPN+bIHWFx3KWuu8XJRrj/572Dw==}
 
+  '@types/he@1.2.3':
+    resolution: {integrity: sha512-q67/qwlxblDzEDvzHhVkwc1gzVWxaNxeyHUBF4xElrvjL11O+Ytze+1fGpBHlr/H9myiBUaUXNnNPmBHxxfAcA==}
+
   '@types/node@22.19.1':
     resolution: {integrity: sha512-LCCV0HdSZZZb34qifBsyWlUmok6W7ouER+oQIGBScS8EsZsQbrtFTUrDX4hOl+CS6p7cnNC4td+qrSVGSCTUfQ==}
 
@@ -585,6 +597,10 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  he@1.2.0:
+    resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
 
   html-parse-stringify@3.0.1:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
@@ -943,6 +959,9 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  zod@4.1.13:
+    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -1206,6 +1225,8 @@ snapshots:
       postcss: 8.5.6
       tailwindcss: 4.1.17
 
+  '@types/he@1.2.3': {}
+
   '@types/node@22.19.1':
     dependencies:
       undici-types: 6.21.0
@@ -1296,6 +1317,8 @@ snapshots:
   get-east-asian-width@1.4.0: {}
 
   graceful-fs@4.2.11: {}
+
+  he@1.2.0: {}
 
   html-parse-stringify@3.0.1:
     dependencies:
@@ -1621,3 +1644,5 @@ snapshots:
       strip-ansi: 7.1.2
 
   yaml@2.8.1: {}
+
+  zod@4.1.13: {}

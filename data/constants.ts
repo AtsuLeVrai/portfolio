@@ -60,3 +60,27 @@ export const NAV_LINKS = [
 	{ label: "Experience", href: "#experience" },
 	{ label: "Contact", href: "#contact" },
 ] as const;
+
+// Navigation anchors
+export const ANCHORS = {
+	HERO: "#hero",
+	ABOUT: "#about",
+	PROJECTS: "#projects",
+	EXPERIENCE: "#experience",
+	CONTACT: "#contact",
+} as const;
+
+// Form validation
+export const FORM_LIMITS = {
+	NAME_MAX: 100,
+	EMAIL_MAX: 254,
+	MESSAGE_MAX: 5000,
+} as const;
+
+// Animation durations
+export const ANIMATION = {
+	FAST: 0.2,
+	NORMAL: 0.3,
+	SLOW: 0.5,
+	VERY_SLOW: 0.8,
+} as const;

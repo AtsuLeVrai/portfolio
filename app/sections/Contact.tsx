@@ -2,66 +2,119 @@
 
 import { Mail, Send } from "lucide-react";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { CONTACT_INFO, SOCIAL_LINKS } from "@/data/constants";
+import { CONTACT_INFO, FORM_LIMITS, SOCIAL_LINKS } from "@/data/constants";
+import type { ContactFormData, FormStatus } from "@/types";
 
-interface FormData {
-	name: string;
-	email: string;
-	message: string;
+interface FormErrors {
+	name?: string;
+	email?: string;
+	message?: string;
 }
+
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 export function Contact() {
 	const { t } = useTranslation();
-	const [formData, setFormData] = useState<FormData>({
+	const [formData, setFormData] = useState<ContactFormData>({
 		name: "",
 		email: "",
 		message: "",
 	});
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [submitStatus, setSubmitStatus] = useState<
-		"idle" | "success" | "error"
-	>("idle");
+	const [errors, setErrors] = useState<FormErrors>({});
+	const [status, setStatus] = useState<FormStatus>("idle");
+	const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+	const validateField = useCallback((name: keyof ContactFormData, value: string): string | undefined => {
+		switch (name) {
+			case "name":
+				if (!value.trim()) return t("contact.form.errors.nameRequired");
+				if (value.length > FORM_LIMITS.NAME_MAX) return t("contact.form.errors.nameTooLong");
+				break;
+			case "email":
+				if (!value.trim()) return t("contact.form.errors.emailRequired");
+				if (value.length > FORM_LIMITS.EMAIL_MAX) return t("contact.form.errors.emailTooLong");
+				if (!EMAIL_REGEX.test(value)) return t("contact.form.errors.emailInvalid");
+				break;
+			case "message":
+				if (!value.trim()) return t("contact.form.errors.messageRequired");
+				if (value.length > FORM_LIMITS.MESSAGE_MAX) return t("contact.form.errors.messageTooLong");
+				break;
+		}
+		return undefined;
+	}, [t]);
+
+	const validateForm = useCallback((): boolean => {
+		const newErrors: FormErrors = {};
+		let isValid = true;
+
+		(Object.keys(formData) as Array<keyof ContactFormData>).forEach((key) => {
+			const error = validateField(key, formData[key]);
+			if (error) {
+				newErrors[key] = error;
+				isValid = false;
+			}
+		});
+
+		setErrors(newErrors);
+		return isValid;
+	}, [formData, validateField]);
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [name]: value }));
+
+		// Validate on change if field was touched
+		if (touched[name]) {
+			const error = validateField(name as keyof ContactFormData, value);
+			setErrors((prev) => ({ ...prev, [name]: error }));
+		}
+	};
+
+	const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		const { name, value } = e.target;
+		setTouched((prev) => ({ ...prev, [name]: true }));
+		const error = validateField(name as keyof ContactFormData, value);
+		setErrors((prev) => ({ ...prev, [name]: error }));
+	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setIsSubmitting(true);
-		setSubmitStatus("idle");
+
+		if (!validateForm()) return;
+
+		setStatus("submitting");
 
 		try {
 			const response = await fetch("/api/send-email", {
 				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(formData),
 			});
 
+			const data = await response.json();
+
 			if (!response.ok) {
-				throw new Error("Failed to send email");
+				throw new Error(data.error || "Failed to send email");
 			}
 
-			setSubmitStatus("success");
+			setStatus("success");
 			setFormData({ name: "", email: "", message: "" });
-
-			setTimeout(() => setSubmitStatus("idle"), 5000);
+			setTouched({});
+			setTimeout(() => setStatus("idle"), 5000);
 		} catch (error) {
-			console.error("Error sending email:", error);
-			setSubmitStatus("error");
-			setTimeout(() => setSubmitStatus("idle"), 5000);
-		} finally {
-			setIsSubmitting(false);
+			setStatus("error");
+			setTimeout(() => setStatus("idle"), 5000);
 		}
 	};
 
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		setFormData((prev) => ({
-			...prev,
-			[e.target.name]: e.target.value,
-		}));
+	const getInputClassName = (fieldName: keyof ContactFormData) => {
+		const baseClass = "w-full rounded-2xl border-2 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:outline-none focus:ring-2 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl";
+		const errorClass = errors[fieldName] && touched[fieldName]
+			? "border-red-500 focus:border-red-500 focus:ring-red-500"
+			: "border-gray-900 focus:border-cyan-600 focus:ring-cyan-600";
+		return `${baseClass} ${errorClass}`;
 	};
 
 	return (
@@ -125,10 +178,13 @@ export function Contact() {
 										name="name"
 										value={formData.name}
 										onChange={handleChange}
-										required
-										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
+										onBlur={handleBlur}
+										className={getInputClassName("name")}
 										placeholder={t("contact.form.namePlaceholder")}
 									/>
+									{errors.name && touched.name && (
+										<p className="mt-1 text-red-600 text-sm">{errors.name}</p>
+									)}
 								</div>
 
 								<div>
@@ -144,10 +200,13 @@ export function Contact() {
 										name="email"
 										value={formData.email}
 										onChange={handleChange}
-										required
-										className="w-full rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
+										onBlur={handleBlur}
+										className={getInputClassName("email")}
 										placeholder={t("contact.form.emailPlaceholder")}
 									/>
+									{errors.email && touched.email && (
+										<p className="mt-1 text-red-600 text-sm">{errors.email}</p>
+									)}
 								</div>
 
 								<div>
@@ -162,25 +221,28 @@ export function Contact() {
 										name="message"
 										value={formData.message}
 										onChange={handleChange}
-										required
+										onBlur={handleBlur}
 										rows={5}
-										className="w-full resize-none rounded-2xl border-2 border-gray-900 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl"
+										className={`${getInputClassName("message")} resize-none`}
 										placeholder={t("contact.form.messagePlaceholder")}
 									/>
+									{errors.message && touched.message && (
+										<p className="mt-1 text-red-600 text-sm">{errors.message}</p>
+									)}
 								</div>
 
 								<motion.button
 									type="submit"
-									disabled={isSubmitting}
+									disabled={status === "submitting"}
 									className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-cyan-400 px-6 py-3 font-black text-base text-gray-900 shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:py-4 sm:text-lg md:border-3 xl:border-4 xl:px-10 xl:py-5 xl:text-xl 2xl:px-12 2xl:py-6 2xl:text-2xl"
-									whileHover={!isSubmitting ? { y: -3 } : {}}
+									whileHover={status !== "submitting" ? { y: -3 } : {}}
 									whileTap={
-										!isSubmitting
+										status !== "submitting"
 											? { y: 0, boxShadow: "3px 3px 0px 0px rgba(17,24,39,1)" }
 											: {}
 									}
 								>
-									{isSubmitting ? (
+									{status === "submitting" ? (
 										<>
 											<motion.div
 												className="h-5 w-5 rounded-full border-2 border-gray-900 border-t-transparent"
@@ -201,7 +263,7 @@ export function Contact() {
 									)}
 								</motion.button>
 
-								{submitStatus === "success" && (
+								{status === "success" && (
 									<motion.p
 										className="rounded-2xl border-2 border-green-600 bg-green-50 p-3 text-center font-bold text-green-900 text-sm sm:p-4 sm:text-base xl:p-5 xl:text-lg"
 										initial={{ opacity: 0, y: -10 }}
@@ -211,7 +273,7 @@ export function Contact() {
 									</motion.p>
 								)}
 
-								{submitStatus === "error" && (
+								{status === "error" && (
 									<motion.p
 										className="rounded-2xl border-2 border-red-600 bg-red-50 p-3 text-center font-bold text-red-900 text-sm sm:p-4 sm:text-base xl:p-5 xl:text-lg"
 										initial={{ opacity: 0, y: -10 }}

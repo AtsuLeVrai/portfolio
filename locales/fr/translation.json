@@ -87,7 +87,16 @@
 			"sending": "Envoi...",
 			"send": "Envoyer le Message",
 			"success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
-			"error": "Échec de l'envoi du message. Veuillez réessayer."
+			"error": "Échec de l'envoi du message. Veuillez réessayer.",
+			"errors": {
+				"nameRequired": "Le nom est requis",
+				"nameTooLong": "Le nom est trop long (max 100 caractères)",
+				"emailRequired": "L'email est requis",
+				"emailTooLong": "L'email est trop long (max 254 caractères)",
+				"emailInvalid": "Veuillez entrer une adresse email valide",
+				"messageRequired": "Le message est requis",
+				"messageTooLong": "Le message est trop long (max 5000 caractères)"
+			}
 		},
 		"quickLinks": {
 			"title": "Liens Rapides",
