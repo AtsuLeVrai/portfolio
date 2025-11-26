@@ -34,18 +34,18 @@ export const metadata: Metadata = {
 	],
 	authors: [{ name: "Tom B.", url: "https://github.com/AtsuLeVrai" }],
 	creator: "Tom B.",
-	metadataBase: new URL("https://tom-portfolio.vercel.app"),
+	metadataBase: new URL("https://atsulevrai.vercel.app"),
 	alternates: {
 		languages: {
-			"en": "/",
-			"fr": "/",
+			en: "/",
+			fr: "/",
 		},
 	},
 	openGraph: {
 		type: "website",
 		locale: "fr_FR",
 		alternateLocale: "en_US",
-		url: "https://tom-portfolio.vercel.app",
+		url: "https://atsulevrai.vercel.app",
 		title: "Tom B. - Backend Engineer Portfolio",
 		description:
 			"Backend Engineer specializing in Discord tooling, real-time communication platforms, and developer infrastructure.",

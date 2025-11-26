@@ -3,19 +3,13 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
 
-export default function Error({
-	error,
-	reset,
-}: {
-	error: Error & { digest?: string };
-	reset: () => void;
-}) {
+export default function PageError({ reset }: { reset: () => void }) {
 	useEffect(() => {
 		// Log error to monitoring service in production
 		if (process.env.NODE_ENV === "production") {
 			// Send to error tracking service
 		}
-	}, [error]);
+	}, []);
 
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-rose-50 via-white to-cyan-50 px-4">

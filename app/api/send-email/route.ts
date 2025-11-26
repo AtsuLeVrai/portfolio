@@ -1,7 +1,7 @@
+import he from "he";
 import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import he from "he";
-import { rateLimit, getClientIP } from "@/lib/rate-limit";
+import { getClientIP, rateLimit } from "@/lib/rate-limit";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,7 +9,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 5000;
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const EMAIL_REGEX =
+	/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 interface ContactFormData {
 	name: string;
@@ -17,7 +18,11 @@ interface ContactFormData {
 	message: string;
 }
 
-function validateFormData(data: unknown): { success: true; data: ContactFormData } | { success: false; error: string } {
+function validateFormData(
+	data: unknown,
+):
+	| { success: true; data: ContactFormData }
+	| { success: false; error: string } {
 	if (!data || typeof data !== "object") {
 		return { success: false, error: "Invalid request body" };
 	}
@@ -28,14 +33,20 @@ function validateFormData(data: unknown): { success: true; data: ContactFormData
 		return { success: false, error: "Name is required" };
 	}
 	if (name.length > MAX_NAME_LENGTH) {
-		return { success: false, error: `Name must be less than ${MAX_NAME_LENGTH} characters` };
+		return {
+			success: false,
+			error: `Name must be less than ${MAX_NAME_LENGTH} characters`,
+		};
 	}
 
 	if (typeof email !== "string" || email.trim().length === 0) {
 		return { success: false, error: "Email is required" };
 	}
 	if (email.length > MAX_EMAIL_LENGTH) {
-		return { success: false, error: `Email must be less than ${MAX_EMAIL_LENGTH} characters` };
+		return {
+			success: false,
+			error: `Email must be less than ${MAX_EMAIL_LENGTH} characters`,
+		};
 	}
 	if (!EMAIL_REGEX.test(email)) {
 		return { success: false, error: "Invalid email format" };
@@ -45,7 +56,10 @@ function validateFormData(data: unknown): { success: true; data: ContactFormData
 		return { success: false, error: "Message is required" };
 	}
 	if (message.length > MAX_MESSAGE_LENGTH) {
-		return { success: false, error: `Message must be less than ${MAX_MESSAGE_LENGTH} characters` };
+		return {
+			success: false,
+			error: `Message must be less than ${MAX_MESSAGE_LENGTH} characters`,
+		};
 	}
 
 	return {
@@ -81,10 +95,7 @@ export async function POST(req: NextRequest) {
 		const validation = validateFormData(body);
 
 		if (!validation.success) {
-			return NextResponse.json(
-				{ error: validation.error },
-				{ status: 400 },
-			);
+			return NextResponse.json({ error: validation.error }, { status: 400 });
 		}
 
 		const { name, email, message } = validation.data;

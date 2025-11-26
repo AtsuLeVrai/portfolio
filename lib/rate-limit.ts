@@ -3,7 +3,11 @@ const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per minute
 
-export function rateLimit(identifier: string): { success: boolean; remaining: number; resetIn: number } {
+export function rateLimit(identifier: string): {
+	success: boolean;
+	remaining: number;
+	resetIn: number;
+} {
 	const now = Date.now();
 	const record = rateLimitMap.get(identifier);
 
@@ -26,7 +30,11 @@ export function rateLimit(identifier: string): { success: boolean; remaining: nu
 	}
 
 	record.count++;
-	return { success: true, remaining: MAX_REQUESTS - record.count, resetIn: record.resetTime - now };
+	return {
+		success: true,
+		remaining: MAX_REQUESTS - record.count,
+		resetIn: record.resetTime - now,
+	};
 }
 
 export function getClientIP(request: Request): string {

@@ -4,7 +4,8 @@ export default function manifest(): MetadataRoute.Manifest {
 	return {
 		name: "Tom B. - Backend Engineer Portfolio",
 		short_name: "Tom B. Portfolio",
-		description: "Backend Engineer specializing in Discord tooling and real-time systems",
+		description:
+			"Backend Engineer specializing in Discord tooling and real-time systems",
 		start_url: "/",
 		display: "standalone",
 		background_color: "#ffffff",

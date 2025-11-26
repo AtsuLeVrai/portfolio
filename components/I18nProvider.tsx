@@ -11,7 +11,11 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 	useEffect(() => {
 		// Restore language preference after hydration
 		const stored = localStorage.getItem("i18nextLng");
-		if (stored && (stored === "en" || stored === "fr") && stored !== i18n.language) {
+		if (
+			stored &&
+			(stored === "en" || stored === "fr") &&
+			stored !== i18n.language
+		) {
 			i18n.changeLanguage(stored);
 		}
 		setIsHydrated(true);

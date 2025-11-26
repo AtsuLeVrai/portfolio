@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: "*",
 			allow: "/",
 		},
-		sitemap: "https://tom-portfolio.vercel.app/sitemap.xml",
+		sitemap: "https://atsulevrai.vercel.app/sitemap.xml",
 	};
 }

@@ -13,7 +13,8 @@ interface FormErrors {
 	message?: string;
 }
 
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const EMAIL_REGEX =
+	/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 export function Contact() {
 	const { t } = useTranslation();
@@ -26,24 +27,31 @@ export function Contact() {
 	const [status, setStatus] = useState<FormStatus>("idle");
 	const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-	const validateField = useCallback((name: keyof ContactFormData, value: string): string | undefined => {
-		switch (name) {
-			case "name":
-				if (!value.trim()) return t("contact.form.errors.nameRequired");
-				if (value.length > FORM_LIMITS.NAME_MAX) return t("contact.form.errors.nameTooLong");
-				break;
-			case "email":
-				if (!value.trim()) return t("contact.form.errors.emailRequired");
-				if (value.length > FORM_LIMITS.EMAIL_MAX) return t("contact.form.errors.emailTooLong");
-				if (!EMAIL_REGEX.test(value)) return t("contact.form.errors.emailInvalid");
-				break;
-			case "message":
-				if (!value.trim()) return t("contact.form.errors.messageRequired");
-				if (value.length > FORM_LIMITS.MESSAGE_MAX) return t("contact.form.errors.messageTooLong");
-				break;
-		}
-		return undefined;
-	}, [t]);
+	const validateField = useCallback(
+		(name: keyof ContactFormData, value: string): string | undefined => {
+			switch (name) {
+				case "name":
+					if (!value.trim()) return t("contact.form.errors.nameRequired");
+					if (value.length > FORM_LIMITS.NAME_MAX)
+						return t("contact.form.errors.nameTooLong");
+					break;
+				case "email":
+					if (!value.trim()) return t("contact.form.errors.emailRequired");
+					if (value.length > FORM_LIMITS.EMAIL_MAX)
+						return t("contact.form.errors.emailTooLong");
+					if (!EMAIL_REGEX.test(value))
+						return t("contact.form.errors.emailInvalid");
+					break;
+				case "message":
+					if (!value.trim()) return t("contact.form.errors.messageRequired");
+					if (value.length > FORM_LIMITS.MESSAGE_MAX)
+						return t("contact.form.errors.messageTooLong");
+					break;
+			}
+			return undefined;
+		},
+		[t],
+	);
 
 	const validateForm = useCallback((): boolean => {
 		const newErrors: FormErrors = {};
@@ -61,7 +69,9 @@ export function Contact() {
 		return isValid;
 	}, [formData, validateField]);
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -72,7 +82,9 @@ export function Contact() {
 		}
 	};
 
-	const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+	const handleBlur = (
+		e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
 		const { name, value } = e.target;
 		setTouched((prev) => ({ ...prev, [name]: true }));
 		const error = validateField(name as keyof ContactFormData, value);
@@ -103,17 +115,19 @@ export function Contact() {
 			setFormData({ name: "", email: "", message: "" });
 			setTouched({});
 			setTimeout(() => setStatus("idle"), 5000);
-		} catch (error) {
+		} catch (_error) {
 			setStatus("error");
 			setTimeout(() => setStatus("idle"), 5000);
 		}
 	};
 
 	const getInputClassName = (fieldName: keyof ContactFormData) => {
-		const baseClass = "w-full rounded-2xl border-2 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:outline-none focus:ring-2 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl";
-		const errorClass = errors[fieldName] && touched[fieldName]
-			? "border-red-500 focus:border-red-500 focus:ring-red-500"
-			: "border-gray-900 focus:border-cyan-600 focus:ring-cyan-600";
+		const baseClass =
+			"w-full rounded-2xl border-2 bg-white px-4 py-3 font-medium text-gray-900 text-sm transition-all focus:outline-none focus:ring-2 sm:text-base xl:px-5 xl:py-4 xl:text-lg 2xl:px-6 2xl:py-5 2xl:text-xl";
+		const errorClass =
+			errors[fieldName] && touched[fieldName]
+				? "border-red-500 focus:border-red-500 focus:ring-red-500"
+				: "border-gray-900 focus:border-cyan-600 focus:ring-cyan-600";
 		return `${baseClass} ${errorClass}`;
 	};
 
@@ -227,7 +241,9 @@ export function Contact() {
 										placeholder={t("contact.form.messagePlaceholder")}
 									/>
 									{errors.message && touched.message && (
-										<p className="mt-1 text-red-600 text-sm">{errors.message}</p>
+										<p className="mt-1 text-red-600 text-sm">
+											{errors.message}
+										</p>
 									)}
 								</div>
 

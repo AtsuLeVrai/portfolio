@@ -7,7 +7,13 @@ import { useTranslation } from "react-i18next";
 import { HERO_STATS, SOCIAL_LINKS } from "@/data/constants";
 
 // Memoized components to prevent unnecessary re-renders
-const StatCard = memo(function StatCard({ value, label }: { value: string; label: string }) {
+const StatCard = memo(function StatCard({
+	value,
+	label,
+}: {
+	value: string;
+	label: string;
+}) {
 	return (
 		<div className="rounded-2xl border-2 border-gray-300 bg-white/90 p-3 text-center shadow-sm transition-all sm:p-4">
 			<div className="font-black text-gray-900 text-xl sm:text-2xl">
