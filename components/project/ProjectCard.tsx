@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { projects } from "@/data/projects";
 
-const iconMap = {
+export const iconMap = {
 	Bot,
 	MessageSquare,
 	Code,
-};
+} as const;
+
+export type IconName = keyof typeof iconMap;
 
 export function ProjectCard({
 	project,
@@ -21,7 +23,7 @@ export function ProjectCard({
 }) {
 	const { t } = useTranslation();
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const Icon = iconMap[project.icon as keyof typeof iconMap];
+	const Icon = iconMap[project.icon];
 
 	// Close modal on Escape key
 	useEffect(() => {

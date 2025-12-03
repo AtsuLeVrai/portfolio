@@ -3,76 +3,8 @@
 import { Briefcase, Calendar } from "lucide-react";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-
-interface ExperienceItem {
-	id: string;
-	title: string;
-	company: string;
-	period: string;
-	description: string[];
-	technologies: string[];
-}
-
-function useExperiences() {
-	const { t } = useTranslation();
-
-	return [
-		{
-			id: "web-development-freelance",
-			title: t("experience.freelance.title"),
-			company: t("experience.freelance.company"),
-			period: t("experience.freelance.period"),
-			description: [
-				t("experience.freelance.description1"),
-				t("experience.freelance.description2"),
-			],
-			technologies: [
-				"TypeScript",
-				"Next.js",
-				"React",
-				"Node.js",
-				"PostgreSQL",
-				"Tailwind CSS",
-			],
-		},
-		{
-			id: "nyxo-js-library",
-			title: t("experience.nyxo.title"),
-			company: t("experience.nyxo.company"),
-			period: t("experience.nyxo.period"),
-			description: [
-				t("experience.nyxo.description1"),
-				t("experience.nyxo.description2"),
-			],
-			technologies: [
-				"TypeScript",
-				"Node.js",
-				"Discord API",
-				"Performance Optimization",
-				"Documentation",
-				"Testing",
-			],
-		},
-		{
-			id: "it-internship-mairie",
-			title: t("experience.mairie.title"),
-			company: t("experience.mairie.company"),
-			period: t("experience.mairie.period"),
-			description: [
-				t("experience.mairie.description1"),
-				t("experience.mairie.description2"),
-			],
-			technologies: [
-				"Windows",
-				"Hardware Maintenance",
-				"Network Administration",
-				"Technical Support",
-				"IT Infrastructure",
-				"System Management",
-			],
-		},
-	];
-}
+import { useExperiences } from "@/hooks/useExperiences";
+import type { ExperienceItem } from "@/types";
 
 function ExperienceCard({
 	experience,

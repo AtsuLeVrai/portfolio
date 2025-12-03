@@ -1,7 +1,16 @@
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS = 5;
 
-const WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS = 5; // 5 requests per minute
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+
+function cleanupExpiredEntries(): void {
+	const now = Date.now();
+	for (const [key, value] of rateLimitStore.entries()) {
+		if (now > value.resetTime) {
+			rateLimitStore.delete(key);
+		}
+	}
+}
 
 export function rateLimit(identifier: string): {
 	success: boolean;
@@ -9,19 +18,15 @@ export function rateLimit(identifier: string): {
 	resetIn: number;
 } {
 	const now = Date.now();
-	const record = rateLimitMap.get(identifier);
 
-	// Clean up old entries periodically
 	if (Math.random() < 0.01) {
-		for (const [key, value] of rateLimitMap.entries()) {
-			if (now > value.resetTime) {
-				rateLimitMap.delete(key);
-			}
-		}
+		cleanupExpiredEntries();
 	}
 
+	const record = rateLimitStore.get(identifier);
+
 	if (!record || now > record.resetTime) {
-		rateLimitMap.set(identifier, { count: 1, resetTime: now + WINDOW_MS });
+		rateLimitStore.set(identifier, { count: 1, resetTime: now + WINDOW_MS });
 		return { success: true, remaining: MAX_REQUESTS - 1, resetIn: WINDOW_MS };
 	}
 

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { memo, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { HERO_STATS, SOCIAL_LINKS } from "@/data/constants";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 // Memoized components to prevent unnecessary re-renders
 const StatCard = memo(function StatCard({
@@ -59,69 +60,86 @@ const SocialLinks = memo(function SocialLinks() {
 	);
 });
 
-const FloatingShapes = memo(function FloatingShapes() {
+const FloatingShapes = memo(function FloatingShapes({
+	shouldAnimate,
+}: {
+	shouldAnimate: boolean;
+}) {
 	return (
 		<>
-			{/* Circle 1 */}
 			<motion.div
 				className="absolute top-20 left-10 h-24 w-24 rounded-full bg-cyan-300 opacity-30 blur-sm"
-				animate={{
-					y: [0, -30, 0],
-					x: [0, 20, 0],
-					rotate: [0, 180, 360],
-				}}
+				animate={
+					shouldAnimate
+						? {
+								y: [0, -30, 0],
+								x: [0, 20, 0],
+								rotate: [0, 180, 360],
+							}
+						: {}
+				}
 				transition={{
 					duration: 15,
 					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
 				}}
-				style={{ zIndex: -1 }}
+				style={{ zIndex: -1, willChange: shouldAnimate ? "transform" : "auto" }}
 			/>
 
-			{/* Square 1 */}
 			<motion.div
 				className="absolute top-40 right-20 h-32 w-32 rotate-45 bg-rose-300 opacity-25 blur-sm"
-				animate={{
-					y: [0, 40, 0],
-					x: [0, -30, 0],
-					rotate: [45, 135, 45],
-				}}
+				animate={
+					shouldAnimate
+						? {
+								y: [0, 40, 0],
+								x: [0, -30, 0],
+								rotate: [45, 135, 45],
+							}
+						: {}
+				}
 				transition={{
 					duration: 20,
 					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
 				}}
-				style={{ zIndex: -1 }}
+				style={{ zIndex: -1, willChange: shouldAnimate ? "transform" : "auto" }}
 			/>
 
-			{/* Circle 2 */}
 			<motion.div
 				className="absolute bottom-32 left-1/4 h-20 w-20 rounded-full bg-cyan-400 opacity-35 blur-sm"
-				animate={{
-					y: [0, 25, 0],
-					x: [0, -15, 0],
-					scale: [1, 1.2, 1],
-				}}
+				animate={
+					shouldAnimate
+						? {
+								y: [0, 25, 0],
+								x: [0, -15, 0],
+								scale: [1, 1.2, 1],
+							}
+						: {}
+				}
 				transition={{
 					duration: 12,
 					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
 				}}
-				style={{ zIndex: -1 }}
+				style={{ zIndex: -1, willChange: shouldAnimate ? "transform" : "auto" }}
 			/>
 
-			{/* Triangle (using clip-path) */}
 			<motion.div
 				className="absolute right-1/4 bottom-40 h-28 w-28 bg-rose-400 opacity-30 blur-sm"
 				style={{
 					clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
 					zIndex: -1,
+					willChange: shouldAnimate ? "transform" : "auto",
 				}}
-				animate={{
-					y: [0, -35, 0],
-					x: [0, 25, 0],
-					rotate: [0, 120, 240, 360],
-				}}
+				animate={
+					shouldAnimate
+						? {
+								y: [0, -35, 0],
+								x: [0, 25, 0],
+								rotate: [0, 120, 240, 360],
+							}
+						: {}
+				}
 				transition={{
 					duration: 18,
 					repeat: Number.POSITIVE_INFINITY,
@@ -189,13 +207,14 @@ function ScrollIndicator() {
 
 export function Hero() {
 	const { t } = useTranslation();
+	const prefersReducedMotion = useReducedMotion();
 
 	return (
 		<section
 			id="hero"
 			className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-cyan-50 py-20 sm:py-24 md:py-28"
 		>
-			<FloatingShapes />
+			<FloatingShapes shouldAnimate={!prefersReducedMotion} />
 			<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]">
 				<div className="grid items-center gap-12 sm:gap-16 md:gap-20 lg:grid-cols-2 lg:gap-24 xl:gap-28 2xl:gap-32">
 					<motion.div
