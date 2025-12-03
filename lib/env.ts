@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const envSchema = z.object({
 	RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required"),
-	CONTACT_EMAIL: z.string().email("CONTACT_EMAIL must be a valid email"),
+	CONTACT_EMAIL: z.email("CONTACT_EMAIL must be a valid email"),
 	NODE_ENV: z
 		.enum(["development", "production", "test"])
 		.default("development"),
