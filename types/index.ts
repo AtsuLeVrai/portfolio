@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { IconName } from "@/components/project/ProjectCard";
 
 export interface ProjectMetric {
 	label: string;
@@ -12,7 +13,7 @@ export interface Project {
 	longDescription: string;
 	tags: readonly string[];
 	gradient: string;
-	icon: "Bot" | "MessageSquare" | "Code";
+	icon: IconName;
 	githubUrl?: string;
 	liveUrl?: string;
 	featured?: boolean;

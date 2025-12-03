@@ -1,16 +1,12 @@
 @import "tailwindcss";
 
-/* Hide scrollbars */
-*::-webkit-scrollbar {
-	display: none;
+:root {
+	--shadow-sm: 4px 4px 0px 0px rgba(17, 24, 39, 1);
+	--shadow-md: 6px 6px 0px 0px rgba(17, 24, 39, 1);
+	--shadow-lg: 8px 8px 0px 0px rgba(17, 24, 39, 1);
+	--shadow-xl: 12px 12px 0px 0px rgba(17, 24, 39, 1);
 }
 
-* {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-/* Smooth scrolling for the entire page */
 html {
 	scroll-behavior: smooth;
 }

@@ -75,6 +75,14 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
 	return (
 		<html lang="fr" suppressHydrationWarning>
+			<head>
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link
+					rel="preconnect"
+					href="https://fonts.gstatic.com"
+					crossOrigin="anonymous"
+				/>
+			</head>
 			<body className={`${poppins.className} antialiased`}>
 				<I18nProvider>{children}</I18nProvider>
 				<SpeedInsights />

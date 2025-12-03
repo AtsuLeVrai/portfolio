@@ -1,9 +1,10 @@
 import he from "he";
 import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { env } from "@/lib/env";
 import { getClientIP, rateLimit } from "@/lib/rate-limit";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
 // Validation schemas
 const MAX_NAME_LENGTH = 100;
@@ -74,7 +75,26 @@ function validateFormData(
 
 export async function POST(req: NextRequest) {
 	try {
-		// Rate limiting
+		const origin = req.headers.get("origin");
+		const referer = req.headers.get("referer");
+		const host = req.headers.get("host");
+
+		const allowedOrigins = [
+			`https://${host}`,
+			`http://${host}`,
+			process.env.NEXT_PUBLIC_APP_URL,
+		].filter(Boolean);
+
+		const isValidOrigin =
+			origin && allowedOrigins.some((allowed) => origin === allowed);
+		const isValidReferer =
+			referer &&
+			allowedOrigins.some((allowed) => referer.startsWith(allowed as string));
+
+		if (!isValidOrigin && !isValidReferer) {
+			return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+		}
+
 		const clientIP = getClientIP(req);
 		const rateLimitResult = rateLimit(clientIP);
 
@@ -107,7 +127,7 @@ export async function POST(req: NextRequest) {
 
 		const { data, error } = await resend.emails.send({
 			from: "Portfolio Contact <onboarding@resend.dev>",
-			to: process.env.CONTACT_EMAIL || "minecraftytom22@gmail.com",
+			to: env.CONTACT_EMAIL,
 			replyTo: email,
 			subject: `New Contact Form Submission from ${safeName}`,
 			html: `

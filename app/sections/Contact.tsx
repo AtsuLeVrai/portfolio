@@ -16,6 +16,10 @@ interface FormErrors {
 const EMAIL_REGEX =
 	/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
+function isContactFormField(key: string): key is keyof ContactFormData {
+	return key === "name" || key === "email" || key === "message";
+}
+
 export function Contact() {
 	const { t } = useTranslation();
 	const [formData, setFormData] = useState<ContactFormData>({
@@ -26,6 +30,8 @@ export function Contact() {
 	const [errors, setErrors] = useState<FormErrors>({});
 	const [status, setStatus] = useState<FormStatus>("idle");
 	const [touched, setTouched] = useState<Record<string, boolean>>({});
+	const [abortController, setAbortController] =
+		useState<AbortController | null>(null);
 
 	const validateField = useCallback(
 		(name: keyof ContactFormData, value: string): string | undefined => {
@@ -73,11 +79,12 @@ export function Contact() {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
+		if (!isContactFormField(name)) return;
+
 		setFormData((prev) => ({ ...prev, [name]: value }));
 
-		// Validate on change if field was touched
 		if (touched[name]) {
-			const error = validateField(name as keyof ContactFormData, value);
+			const error = validateField(name, value);
 			setErrors((prev) => ({ ...prev, [name]: error }));
 		}
 	};
@@ -86,8 +93,10 @@ export function Contact() {
 		e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
+		if (!isContactFormField(name)) return;
+
 		setTouched((prev) => ({ ...prev, [name]: true }));
-		const error = validateField(name as keyof ContactFormData, value);
+		const error = validateField(name, value);
 		setErrors((prev) => ({ ...prev, [name]: error }));
 	};
 
@@ -96,6 +105,12 @@ export function Contact() {
 
 		if (!validateForm()) return;
 
+		if (abortController) {
+			abortController.abort();
+		}
+
+		const controller = new AbortController();
+		setAbortController(controller);
 		setStatus("submitting");
 
 		try {
@@ -103,6 +118,7 @@ export function Contact() {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(formData),
+				signal: controller.signal,
 			});
 
 			const data = await response.json();
@@ -115,9 +131,14 @@ export function Contact() {
 			setFormData({ name: "", email: "", message: "" });
 			setTouched({});
 			setTimeout(() => setStatus("idle"), 5000);
-		} catch (_error) {
+		} catch (error) {
+			if (error instanceof Error && error.name === "AbortError") {
+				return;
+			}
 			setStatus("error");
 			setTimeout(() => setStatus("idle"), 5000);
+		} finally {
+			setAbortController(null);
 		}
 	};
 
