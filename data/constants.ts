@@ -58,6 +58,7 @@ export const NAV_LINKS = [
 	{ label: "About", href: "#about" },
 	{ label: "Projects", href: "#projects" },
 	{ label: "Experience", href: "#experience" },
+	{ label: "Veille", href: "/veille/cryptographie-post-quantique" },
 	{ label: "Contact", href: "#contact" },
 ] as const;
 

@@ -3,6 +3,7 @@
 		"about": "About",
 		"projects": "Projects",
 		"experience": "Experience",
+		"veille": "Tech Watch",
 		"contact": "Contact"
 	},
 	"hero": {
@@ -124,5 +125,135 @@
 		},
 		"builtWith": "Built with",
 		"rights": "All rights reserved."
+	},
+	"veille": {
+		"tags": {
+			"crypto": "Cryptography",
+			"quantum": "Quantum",
+			"security": "Security",
+			"btssio": "BTS-SIO"
+		},
+		"hero": {
+			"date": "December 2025",
+			"title": "Technology Watch:",
+			"titleHighlight": "Post-Quantum Cryptography",
+			"subtitle": "The future of cybersecurity facing the quantum revolution"
+		},
+		"intro": {
+			"label": "Introduction & Context",
+			"title": "Introduction & Context",
+			"problemTitle": "Research Question",
+			"problem": "How do quantum computers threaten current encryption systems, and what solutions are emerging to secure our digital infrastructure?",
+			"context1": "Current encryption algorithms (RSA, ECC) protect our communications, banking transactions, and personal data",
+			"context2": "The arrival of quantum computers renders these protections potentially obsolete",
+			"context3": "NIST standardized new algorithms in 2024 to prepare for this transition"
+		},
+		"threat": {
+			"label": "The Quantum Threat",
+			"title": "The Quantum Threat",
+			"quantumTitle": "What is a quantum computer?",
+			"quantumDesc": "Unlike classical computers that use bits (0 or 1), quantum computers leverage qubits capable of being in multiple states simultaneously (superposition). This property gives them exponentially superior computing power for certain mathematical problems.",
+			"fact1Label": "Current qubits",
+			"fact1Value": "50-1000+",
+			"fact2Label": "Major players",
+			"fact2Value": "IBM, Google, IonQ",
+			"fact3Label": "Quantum advantage",
+			"fact3Value": "Demonstrated 2019",
+			"shorTitle": "Shor's Algorithm: The end of RSA",
+			"shor1": "Ability to factor large numbers in polynomial time",
+			"shor2": "RSA-2048 could be broken in hours by a sufficiently powerful quantum computer",
+			"shor3": "\"Harvest now, decrypt later\": data encrypted today can be stored to be decrypted later",
+			"timelineTitle": "Threat Timeline",
+			"timeline1": "NIST standards published",
+			"timeline2": "Cryptographically relevant quantum computers",
+			"timeline3": "Urgent need to migrate now",
+			"timelineNow": "Now"
+		},
+		"solutions": {
+			"label": "Post-Quantum Solutions",
+			"title": "Post-Quantum Solutions",
+			"subtitle": "NIST 2024 Standards - New algorithms resistant to quantum attacks",
+			"encryption": "Encryption",
+			"signature": "Digital Signature",
+			"kyberDesc": "Based on lattice problems, CRYSTALS-Kyber replaces RSA/ECC for secure key exchange.",
+			"kyber1": "Based on the MLWE (Module Learning With Errors) problem",
+			"kyber2": "Performance: fast, compact keys (~800 bytes)",
+			"kyber3": "Already adopted by Signal, Chrome, Cloudflare",
+			"dilithiumDesc": "Alternative to RSA/ECDSA signatures, used for authentication and data integrity verification.",
+			"dilithium1": "Quantum-resistant digital signatures",
+			"dilithium2": "Used for authentication and integrity",
+			"dilithium3": "Implemented in some blockchains",
+			"otherTitle": "Other cryptographic approaches",
+			"sphincs": "Hash-based signatures",
+			"codeBased": "Code-based",
+			"codeBasedDesc": "Cryptography based on error-correcting codes",
+			"isogeny": "Isogeny-based",
+			"isogenyDesc": "Based on elliptic curve isogenies"
+		},
+		"ecosystem": {
+			"label": "Ecosystem Impact",
+			"title": "Impact on Tech Ecosystem",
+			"blockchainTitle": "Blockchain & Crypto",
+			"blockchain1": "Migration required for Bitcoin, Ethereum, Solana",
+			"blockchain2": "Wallets and transaction signatures vulnerable",
+			"blockchain3": "Transition projects underway (Ethereum Verkle Trees)",
+			"financeTitle": "Finance & Trading",
+			"finance1": "TLS/SSL must be updated",
+			"finance2": "Financial APIs and interbank communications",
+			"finance3": "High-frequency trading systems to secure",
+			"backendTitle": "Backend Infrastructure",
+			"backend1": "Crypto library updates (OpenSSL, libsodium)",
+			"backend2": "Compatibility layers for progressive transition",
+			"backend3": "Performance testing and benchmarks required"
+		},
+		"practical": {
+			"label": "Practical Cases",
+			"title": "Practical Cases & Demo",
+			"codeTitle": "Practical implementation",
+			"comment1": "Example of PQC migration",
+			"comment2": "Old: RSA",
+			"comment3": "New: CRYSTALS-Kyber",
+			"comparisonTitle": "Performance comparison",
+			"metric": "Metric",
+			"keyGen": "Key generation",
+			"keySize": "Key size",
+			"encSpeed": "Encryption speed",
+			"quantumSafe": "Quantum resistant"
+		},
+		"projects": {
+			"label": "Link with my Projects",
+			"title": "Link with my Projects",
+			"aresSubtitle": "Solana Trading Terminal",
+			"ares1": "Securing user private keys",
+			"ares2": "Preparing for Solana migration to PQC",
+			"ares3": "Smart contract security audit",
+			"chronosSubtitle": "Forex Trading Bot",
+			"chronos1": "Encryption of sensitive trading data",
+			"chronos2": "Securing broker API keys",
+			"chronos3": "Protected server-client communications"
+		},
+		"resources": {
+			"label": "Resources & Watch",
+			"title": "Resources & Continuous Watch",
+			"officialTitle": "Official sources",
+			"toolsTitle": "Monitoring tools",
+			"liboqs": "Open Quantum Safe - C library for PQC algorithms",
+			"pqcrypto": "Collection of post-quantum cryptographic libraries",
+			"newsletters": "Newsletters",
+			"newslettersDesc": "Quantum Computing Report, CryptoSense, IBM Quantum Newsletter"
+		},
+		"conclusion": {
+			"label": "Conclusion",
+			"title": "Conclusion & Outlook",
+			"challengesTitle": "Challenges for a backend developer",
+			"challenge1": "Understanding these technologies becomes essential for security",
+			"challenge2": "Anticipating necessary migrations in projects",
+			"challenge3": "Professional opportunities in post-quantum cybersecurity",
+			"nextTitle": "Next steps",
+			"step1": "Continuous monitoring of implementations and standards",
+			"step2": "Integration testing in personal projects (ARES, CHRONOS)",
+			"step3": "Contributing to the open-source PQC ecosystem",
+			"backToPortfolio": "Back to Portfolio"
+		}
 	}
 }

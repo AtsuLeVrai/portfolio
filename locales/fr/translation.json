@@ -3,6 +3,7 @@
 		"about": "À Propos",
 		"projects": "Projets",
 		"experience": "Expérience",
+		"veille": "Veille",
 		"contact": "Contact"
 	},
 	"hero": {
@@ -124,5 +125,135 @@
 		},
 		"builtWith": "Construit avec",
 		"rights": "Tous droits réservés."
+	},
+	"veille": {
+		"tags": {
+			"crypto": "Cryptographie",
+			"quantum": "Quantum",
+			"security": "Sécurité",
+			"btssio": "BTS-SIO"
+		},
+		"hero": {
+			"date": "Décembre 2025",
+			"title": "Veille Technologique :",
+			"titleHighlight": "Cryptographie Post-Quantique",
+			"subtitle": "L'avenir de la sécurité informatique face à la révolution quantique"
+		},
+		"intro": {
+			"label": "Introduction & Contexte",
+			"title": "Introduction & Contexte",
+			"problemTitle": "Problématique",
+			"problem": "Comment les ordinateurs quantiques menacent-ils les systèmes de chiffrement actuels, et quelles solutions émergent pour sécuriser nos infrastructures numériques ?",
+			"context1": "Les algorithmes de chiffrement actuels (RSA, ECC) protègent nos communications, transactions bancaires et données personnelles",
+			"context2": "L'arrivée des ordinateurs quantiques rend ces protections potentiellement obsolètes",
+			"context3": "Le NIST a standardisé de nouveaux algorithmes en 2024 pour préparer cette transition"
+		},
+		"threat": {
+			"label": "La Menace Quantique",
+			"title": "La Menace Quantique",
+			"quantumTitle": "Qu'est-ce qu'un ordinateur quantique ?",
+			"quantumDesc": "Contrairement aux ordinateurs classiques qui utilisent des bits (0 ou 1), les ordinateurs quantiques exploitent des qubits capables d'être dans plusieurs états simultanément (superposition). Cette propriété leur confère une puissance de calcul exponentiellement supérieure pour certains problèmes mathématiques.",
+			"fact1Label": "Qubits actuels",
+			"fact1Value": "50-1000+",
+			"fact2Label": "Acteurs majeurs",
+			"fact2Value": "IBM, Google, IonQ",
+			"fact3Label": "Avantage quantique",
+			"fact3Value": "Démontré 2019",
+			"shorTitle": "L'algorithme de Shor : la fin de RSA",
+			"shor1": "Capacité à factoriser de grands nombres en temps polynomial",
+			"shor2": "RSA-2048 pourrait être cassé en quelques heures par un ordinateur quantique suffisamment puissant",
+			"shor3": "\"Harvest now, decrypt later\" : les données chiffrées aujourd'hui peuvent être stockées pour être déchiffrées plus tard",
+			"timelineTitle": "Timeline de la menace",
+			"timeline1": "Standards NIST publiés",
+			"timeline2": "Ordinateurs quantiques cryptographiquement pertinents",
+			"timeline3": "Urgence de migrer dès maintenant",
+			"timelineNow": "Maintenant"
+		},
+		"solutions": {
+			"label": "Solutions Post-Quantiques",
+			"title": "Solutions Post-Quantiques",
+			"subtitle": "Standards NIST 2024 - Les nouveaux algorithmes résistants aux attaques quantiques",
+			"encryption": "Chiffrement",
+			"signature": "Signature numérique",
+			"kyberDesc": "Basé sur les réseaux euclidiens (lattice-based), CRYSTALS-Kyber remplace RSA/ECC pour l'échange de clés sécurisé.",
+			"kyber1": "Basé sur le problème MLWE (Module Learning With Errors)",
+			"kyber2": "Performance : rapide, clés compactes (~800 bytes)",
+			"kyber3": "Déjà adopté par Signal, Chrome, Cloudflare",
+			"dilithiumDesc": "Alternative aux signatures RSA/ECDSA, utilisé pour l'authentification et la vérification d'intégrité des données.",
+			"dilithium1": "Signatures numériques résistantes au quantique",
+			"dilithium2": "Utilisé pour authentification et intégrité",
+			"dilithium3": "Implémenté dans certaines blockchains",
+			"otherTitle": "Autres approches cryptographiques",
+			"sphincs": "Signatures basées sur les fonctions de hachage",
+			"codeBased": "Code-based",
+			"codeBasedDesc": "Cryptographie basée sur les codes correcteurs d'erreurs",
+			"isogeny": "Isogeny-based",
+			"isogenyDesc": "Basé sur les isogénies de courbes elliptiques"
+		},
+		"ecosystem": {
+			"label": "Impact Écosystème",
+			"title": "Impact sur l'Écosystème Tech",
+			"blockchainTitle": "Blockchain & Crypto",
+			"blockchain1": "Migration nécessaire pour Bitcoin, Ethereum, Solana",
+			"blockchain2": "Portefeuilles et signatures de transactions vulnérables",
+			"blockchain3": "Projets de transition en cours (Ethereum Verkle Trees)",
+			"financeTitle": "Finance & Trading",
+			"finance1": "TLS/SSL doivent être mis à jour",
+			"finance2": "APIs financières et communications interbancaires",
+			"finance3": "Systèmes de trading haute fréquence à sécuriser",
+			"backendTitle": "Infrastructure Backend",
+			"backend1": "Mise à jour des bibliothèques crypto (OpenSSL, libsodium)",
+			"backend2": "Compatibility layers pour transition progressive",
+			"backend3": "Tests de performance et benchmarks nécessaires"
+		},
+		"practical": {
+			"label": "Cas Pratiques",
+			"title": "Cas Pratiques & Démo",
+			"codeTitle": "Implémentation pratique",
+			"comment1": "Exemple de migration vers PQC",
+			"comment2": "Ancien : RSA",
+			"comment3": "Nouveau : CRYSTALS-Kyber",
+			"comparisonTitle": "Comparaison de performance",
+			"metric": "Métrique",
+			"keyGen": "Génération de clés",
+			"keySize": "Taille des clés",
+			"encSpeed": "Vitesse chiffrement",
+			"quantumSafe": "Résistant quantique"
+		},
+		"projects": {
+			"label": "Lien avec mes Projets",
+			"title": "Lien avec mes Projets",
+			"aresSubtitle": "Trading Terminal Solana",
+			"ares1": "Sécurisation des clés privées des utilisateurs",
+			"ares2": "Préparation à la migration Solana vers PQC",
+			"ares3": "Audit de sécurité des smart contracts",
+			"chronosSubtitle": "Trading Bot Forex",
+			"chronos1": "Chiffrement des données de trading sensibles",
+			"chronos2": "Sécurisation des API keys brokers",
+			"chronos3": "Communications serveur-client protégées"
+		},
+		"resources": {
+			"label": "Ressources & Veille",
+			"title": "Ressources & Veille Continue",
+			"officialTitle": "Sources officielles",
+			"toolsTitle": "Outils de monitoring",
+			"liboqs": "Open Quantum Safe - Bibliothèque C pour algorithmes PQC",
+			"pqcrypto": "Collection de bibliothèques cryptographiques post-quantiques",
+			"newsletters": "Newsletters",
+			"newslettersDesc": "Quantum Computing Report, CryptoSense, IBM Quantum Newsletter"
+		},
+		"conclusion": {
+			"label": "Conclusion",
+			"title": "Conclusion & Perspectives",
+			"challengesTitle": "Enjeux pour un développeur backend",
+			"challenge1": "Comprendre ces technologies devient essentiel pour la sécurité",
+			"challenge2": "Anticipation des migrations nécessaires dans les projets",
+			"challenge3": "Opportunités professionnelles dans la cybersécurité post-quantique",
+			"nextTitle": "Prochaines étapes",
+			"step1": "Veille continue sur les implémentations et standards",
+			"step2": "Tests d'intégration dans projets personnels (ARES, CHRONOS)",
+			"step3": "Contribution à l'écosystème open-source PQC",
+			"backToPortfolio": "Retour au Portfolio"
+		}
 	}
 }
