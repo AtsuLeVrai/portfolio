@@ -38,17 +38,13 @@
 	"projects_tech_stack": "Tech Stack",
 	"projects_view_code": "View Code",
 
-	"project_zen_title": "Zen",
-	"project_zen_short": "Free multipurpose Discord bot built with Rust - replacing expensive premium bots",
-	"project_zen_long": "A professional, open-source Discord bot combining the best features from premium bots (MEE6, Dyno, Xenon) into one powerful, free solution. Features moderation, leveling, tickets, giveaways, raid protection, logging, and more.",
+	"project_chronos_title": "CHRONOS",
+	"project_chronos_short": "Neuroevolutionary trading system combining deep reinforcement learning with evolutionary optimization",
+	"project_chronos_desc": "AI-powered trading system using LSTM + Attention architecture with NEAT-like speciation. Combines PPO reinforcement learning with gradient-free neuroevolution for forex market strategy discovery.",
 
-	"project_vox_title": "Vox",
-	"project_vox_short": "Modern real-time communication platform inspired by Discord, built with Next.js",
-	"project_vox_long": "A lightweight Discord-inspired chat application demonstrating modern full-stack development. Features real-time messaging via WebSockets, channel management, authentication, and persistent message history. Built with Next.js 15, Hono, Prisma, and PostgreSQL.",
-
-	"project_nyxo_title": "Nyxo.js",
-	"project_nyxo_short": "Modern TypeScript framework for building Discord bots - Discord.js reimagined",
-	"project_nyxo_long": "A modern JavaScript/TypeScript framework for building Discord bots with improved developer experience. Features a clean API, full TypeScript support, and modern async patterns. Built to be faster and more intuitive than existing solutions.",
+	"project_ares_title": "ARES",
+	"project_ares_short": "High-performance crypto trading terminal built for speed, simplicity, and transparency",
+	"project_ares_desc": "Next-gen Solana trading platform with paper trading, anti-rug protection, copy trading, and AI-powered analysis. Built with SvelteKit, Bun, and Elysia.",
 
 	"experience_title_my": "MY",
 	"experience_title_experience": "EXPERIENCE",
@@ -136,6 +132,17 @@
 	"veille_impact_finance_desc": "Banking systems and payment infrastructures need to update their encryption protocols.",
 	"veille_impact_web": "Web Security",
 	"veille_impact_web_desc": "TLS/SSL certificates will need to adopt post-quantum algorithms to secure communications.",
+
+	"veille_sources_title": "How I Stay Informed",
+	"veille_sources_intro": "To maintain an effective technology watch on post-quantum cryptography, I use several information sources:",
+	"veille_source_nist": "NIST Official Publications",
+	"veille_source_nist_desc": "Direct monitoring of FIPS standards and official announcements from the standardization authority.",
+	"veille_source_research": "Scientific Research",
+	"veille_source_research_desc": "Reading academic papers on arXiv and publications from cryptography conferences (CRYPTO, EUROCRYPT).",
+	"veille_source_news": "Specialized News",
+	"veille_source_news_desc": "Following security blogs (Schneier on Security, The Hacker News) and newsletters on cryptography.",
+	"veille_source_community": "Technical Community",
+	"veille_source_community_desc": "Discussions on Reddit (r/crypto), Hacker News, and expert exchanges on LinkedIn.",
 
 	"veille_resources_title": "Resources",
 	"veille_link_presentation": "Full Presentation",

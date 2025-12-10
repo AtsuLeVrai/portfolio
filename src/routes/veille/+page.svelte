@@ -1,6 +1,28 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+	import { SEO } from '$lib/constants';
+
+	const pageTitle = `Veille Technologique - Cryptographie Post-Quantique | ${SEO.siteName}`;
+	const pageDescription =
+		'Veille technologique sur la cryptographie post-quantique : algorithmes KYBER, DILITHIUM, SPHINCS+ et leur impact sur la sécurité informatique de demain.';
 </script>
+
+<svelte:head>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDescription} />
+	<meta
+		name="keywords"
+		content="cryptographie post-quantique, KYBER, DILITHIUM, SPHINCS+, sécurité quantique, NIST, veille technologique"
+	/>
+	<link rel="canonical" href={`${SEO.siteUrl}/veille`} />
+
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:url" content={`${SEO.siteUrl}/veille`} />
+
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDescription} />
+</svelte:head>
 
 <section class="veille">
 	<div class="veille-container">
@@ -234,10 +256,114 @@
 		</div>
 
 		<div class="section-title">
+			<h2>{m.veille_sources_title()}</h2>
+		</div>
+		<div class="content-card sources-card">
+			<p class="sources-intro">{m.veille_sources_intro()}</p>
+			<div class="sources-grid">
+				<div class="source-item">
+					<div class="source-icon nist">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path
+								d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"
+							></path>
+							<path d="M18 14h-8"></path>
+							<path d="M15 18h-5"></path>
+							<path d="M10 6h8v4h-8V6Z"></path>
+						</svg>
+					</div>
+					<div class="source-content">
+						<h3>{m.veille_source_nist()}</h3>
+						<p>{m.veille_source_nist_desc()}</p>
+					</div>
+				</div>
+				<div class="source-item">
+					<div class="source-icon research">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+							<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+						</svg>
+					</div>
+					<div class="source-content">
+						<h3>{m.veille_source_research()}</h3>
+						<p>{m.veille_source_research_desc()}</p>
+					</div>
+				</div>
+				<div class="source-item">
+					<div class="source-icon news">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M4 11a9 9 0 0 1 9 9"></path>
+							<path d="M4 4a16 16 0 0 1 16 16"></path>
+							<circle cx="5" cy="19" r="1"></circle>
+						</svg>
+					</div>
+					<div class="source-content">
+						<h3>{m.veille_source_news()}</h3>
+						<p>{m.veille_source_news_desc()}</p>
+					</div>
+				</div>
+				<div class="source-item">
+					<div class="source-icon community">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+							<circle cx="9" cy="7" r="4"></circle>
+							<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+							<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+						</svg>
+					</div>
+					<div class="source-content">
+						<h3>{m.veille_source_community()}</h3>
+						<p>{m.veille_source_community_desc()}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section-title">
 			<h2>{m.veille_resources_title()}</h2>
 		</div>
 		<div class="resources-grid">
-			<a href="#" class="resource-link">
+			<button type="button" class="resource-link" disabled>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -253,8 +379,8 @@
 					<polyline points="14 2 14 8 20 8"></polyline>
 				</svg>
 				{m.veille_link_presentation()}
-			</a>
-			<a href="#" class="resource-link">
+			</button>
+			<button type="button" class="resource-link" disabled>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -270,7 +396,7 @@
 					<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
 				</svg>
 				{m.veille_link_sources()}
-			</a>
+			</button>
 		</div>
 	</div>
 </section>

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
 	import { getLocale, setLocale } from '$lib/paraglide/runtime';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 
 	let isMenuOpen = $state(false);
 	let scrollY = $state(0);
@@ -18,7 +20,14 @@
 		setLocale(currentLocale === 'en' ? 'fr' : 'en');
 	};
 
-	const handleNavClick = (href: string) => {
+	const isHomePage = $derived(page.url.pathname === '/');
+
+	const handleNavClick = async (href: string) => {
+		if (!isHomePage) {
+			await goto('/' + href);
+			isMenuOpen = false;
+			return;
+		}
 		const element = document.querySelector(href);
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth' });

@@ -38,17 +38,13 @@
 	"projects_tech_stack": "Technologies",
 	"projects_view_code": "Voir le code",
 
-	"project_zen_title": "Zen",
-	"project_zen_short": "Bot Discord multifonction gratuit en Rust - remplaçant les bots premium coûteux",
-	"project_zen_long": "Un bot Discord professionnel et open-source combinant les meilleures fonctionnalités des bots premium (MEE6, Dyno, Xenon) en une solution puissante et gratuite. Inclut modération, niveaux, tickets, giveaways, protection anti-raid, logs, et plus encore.",
+	"project_chronos_title": "CHRONOS",
+	"project_chronos_short": "Système de trading neuroévolutif combinant apprentissage par renforcement et optimisation évolutive",
+	"project_chronos_desc": "Système de trading IA utilisant une architecture LSTM + Attention avec spéciation NEAT. Combine PPO avec neuroévolution sans gradient pour la découverte de stratégies forex.",
 
-	"project_vox_title": "Vox",
-	"project_vox_short": "Plateforme de communication temps réel moderne inspirée de Discord, construite avec Next.js",
-	"project_vox_long": "Une application de chat légère inspirée de Discord démontrant le développement full-stack moderne. Messagerie temps réel via WebSockets, gestion des canaux, authentification et historique persistant. Construit avec Next.js 15, Hono, Prisma et PostgreSQL.",
-
-	"project_nyxo_title": "Nyxo.js",
-	"project_nyxo_short": "Framework TypeScript moderne pour créer des bots Discord - Discord.js réinventé",
-	"project_nyxo_long": "Un framework JavaScript/TypeScript moderne pour créer des bots Discord avec une meilleure expérience développeur. API propre, support TypeScript complet et patterns async modernes. Conçu pour être plus rapide et intuitif que les solutions existantes.",
+	"project_ares_title": "ARES",
+	"project_ares_short": "Terminal de trading crypto haute performance conçu pour la vitesse, la simplicité et la transparence",
+	"project_ares_desc": "Plateforme de trading Solana next-gen avec paper trading, protection anti-rug, copy trading et analyse IA. Construit avec SvelteKit, Bun et Elysia.",
 
 	"experience_title_my": "MON",
 	"experience_title_experience": "EXPÉRIENCE",
@@ -136,6 +132,17 @@
 	"veille_impact_finance_desc": "Les systèmes bancaires et infrastructures de paiement doivent mettre à jour leurs protocoles de chiffrement.",
 	"veille_impact_web": "Sécurité Web",
 	"veille_impact_web_desc": "Les certificats TLS/SSL devront adopter des algorithmes post-quantiques pour sécuriser les communications.",
+
+	"veille_sources_title": "Comment je me tiens informé",
+	"veille_sources_intro": "Pour maintenir une veille technologique efficace sur la cryptographie post-quantique, j'utilise plusieurs sources d'information :",
+	"veille_source_nist": "Publications Officielles NIST",
+	"veille_source_nist_desc": "Suivi direct des standards FIPS et des annonces officielles de l'autorité de standardisation.",
+	"veille_source_research": "Recherche Scientifique",
+	"veille_source_research_desc": "Lecture d'articles académiques sur arXiv et publications des conférences de cryptographie (CRYPTO, EUROCRYPT).",
+	"veille_source_news": "Actualités Spécialisées",
+	"veille_source_news_desc": "Suivi de blogs sécurité (Schneier on Security, The Hacker News) et newsletters sur la cryptographie.",
+	"veille_source_community": "Communauté Technique",
+	"veille_source_community_desc": "Discussions sur Reddit (r/crypto), Hacker News et échanges d'experts sur LinkedIn.",
 
 	"veille_resources_title": "Ressources",
 	"veille_link_presentation": "Présentation Complète",
