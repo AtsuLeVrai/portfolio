@@ -20,29 +20,5 @@
 <Footer />
 
 <style lang="scss">
-	:global(*) {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	:global(body) {
-		font-family: 'Poppins', sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-
-	:global(html) {
-		scroll-behavior: smooth;
-	}
-
-	// Hide scrollbars
-	:global(*) {
-		scrollbar-width: none; // Firefox
-		-ms-overflow-style: none; // IE/Edge
-
-		&::-webkit-scrollbar {
-			display: none; // Chrome/Safari/Opera
-		}
-	}
+	@use '$lib/styles/Layout.scss';
 </style>

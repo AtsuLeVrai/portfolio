@@ -1,0 +1,620 @@
+@use 'variables' as *;
+
+.contact {
+	position: relative;
+	background: linear-gradient(to bottom right, $color-cyan-50, $color-white, $color-rose-50);
+	padding: 3rem 0;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 4rem 0;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		padding: 5rem 0;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		padding: 6rem 0;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		padding: 7rem 0;
+	}
+}
+
+.contact-container {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 1rem;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 0 1.5rem;
+	}
+
+	@media (min-width: $breakpoint-lg) {
+		padding: 0 2rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		max-width: 1400px;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		max-width: 1600px;
+	}
+}
+
+.contact-header {
+	text-align: center;
+	margin-bottom: 3rem;
+
+	@media (min-width: $breakpoint-sm) {
+		margin-bottom: 3.5rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		margin-bottom: 4rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		margin-bottom: 5rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		margin-bottom: 6rem;
+	}
+}
+
+.title {
+	margin-bottom: 1rem;
+	font-size: 1.875rem;
+	font-weight: 900;
+	color: $color-gray-900;
+	line-height: 1.1;
+
+	@media (min-width: $breakpoint-sm) {
+		font-size: 2.25rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		font-size: 3rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		font-size: 3.75rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		font-size: 4.5rem;
+	}
+}
+
+.gradient-text {
+	background: linear-gradient(to right, $color-cyan-600, $color-rose-600);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.description {
+	max-width: 42rem;
+	margin: 0 auto;
+	font-size: 1rem;
+	font-weight: 500;
+	color: $color-gray-700;
+
+	@media (min-width: $breakpoint-sm) {
+		font-size: 1.125rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		font-size: 1.25rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		font-size: 1.5rem;
+	}
+}
+
+.contact-grid {
+	display: grid;
+	gap: 2rem;
+
+	@media (min-width: $breakpoint-sm) {
+		gap: 2.5rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		gap: 3rem;
+	}
+
+	@media (min-width: $breakpoint-lg) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		gap: 3.5rem;
+	}
+}
+
+.form-card {
+	background-color: $color-white;
+	border: 2px solid $color-gray-900;
+	border-radius: 1rem;
+	padding: 1.5rem;
+	box-shadow: 8px 8px 0px 0px $color-gray-900;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 2rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		border-width: 3px;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		border-radius: 1.5rem;
+		border-width: 4px;
+		padding: 2.5rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		padding: 3rem;
+	}
+}
+
+.form-group {
+	margin-bottom: 1.25rem;
+
+	@media (min-width: $breakpoint-sm) {
+		margin-bottom: 1.5rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		margin-bottom: 1.75rem;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: $color-gray-900;
+
+		@media (min-width: $breakpoint-sm) {
+			font-size: 1rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			font-size: 1.125rem;
+		}
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		background-color: $color-white;
+		border: 2px solid $color-gray-900;
+		border-radius: 1rem;
+		font-family: inherit;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: $color-gray-900;
+		transition: $transition-fast;
+		outline: none;
+
+		@media (min-width: $breakpoint-sm) {
+			font-size: 1rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			padding: 1rem 1.25rem;
+			font-size: 1.125rem;
+		}
+
+		@media (min-width: $breakpoint-2xl) {
+			padding: 1.25rem 1.5rem;
+			font-size: 1.25rem;
+		}
+
+		&:focus {
+			border-color: $color-cyan-600;
+			box-shadow: 0 0 0 2px rgba($color-cyan-600, 0.2);
+		}
+
+		&.error {
+			border-color: $color-red-600;
+
+			&:focus {
+				box-shadow: 0 0 0 2px rgba($color-red-600, 0.2);
+			}
+		}
+
+		&::placeholder {
+			color: $color-gray-600;
+		}
+	}
+
+	textarea {
+		resize: none;
+	}
+}
+
+.error-message {
+	margin-top: 0.25rem;
+	font-size: 0.875rem;
+	color: $color-red-600;
+}
+
+.submit-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: 100%;
+	padding: 0.75rem 1.5rem;
+	background-color: $color-cyan-400;
+	border: 2px solid $color-gray-900;
+	border-radius: 9999px;
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 900;
+	color: $color-gray-900;
+	cursor: pointer;
+	box-shadow: 6px 6px 0px 0px $color-gray-900;
+	transition: $transition-fast;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 1rem 2rem;
+		font-size: 1.125rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		border-width: 3px;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		border-width: 4px;
+		padding: 1.25rem 2.5rem;
+		font-size: 1.25rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		padding: 1.5rem 3rem;
+		font-size: 1.5rem;
+	}
+
+	&:hover:not(:disabled) {
+		transform: translateY(-3px);
+		box-shadow: 8px 8px 0px 0px $color-gray-900;
+	}
+
+	&:active:not(:disabled) {
+		transform: translateY(0);
+		box-shadow: 3px 3px 0px 0px $color-gray-900;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+.spinner {
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid $color-gray-900;
+	border-top-color: transparent;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.status-message {
+	margin-top: 1rem;
+	padding: 0.75rem;
+	border-radius: 1rem;
+	text-align: center;
+	font-size: 0.875rem;
+	font-weight: 700;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 1rem;
+		font-size: 1rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		padding: 1.25rem;
+		font-size: 1.125rem;
+	}
+
+	&.success {
+		background-color: $color-green-50;
+		border: 2px solid $color-green-600;
+		color: $color-green-900;
+	}
+
+	&.error {
+		background-color: $color-red-50;
+		border: 2px solid $color-red-600;
+		color: $color-red-900;
+	}
+}
+
+.info-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+
+	@media (min-width: $breakpoint-sm) {
+		gap: 2rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		gap: 2.5rem;
+	}
+}
+
+.connect-card {
+	background: linear-gradient(to bottom right, $color-cyan-400, $color-rose-400);
+	border: 2px solid $color-gray-900;
+	border-radius: 1rem;
+	padding: 1.5rem;
+	box-shadow: 8px 8px 0px 0px $color-gray-900;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 2rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		border-width: 3px;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		border-radius: 1.5rem;
+		border-width: 4px;
+		padding: 2.5rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		padding: 3rem;
+	}
+
+	h3 {
+		margin-bottom: 0.75rem;
+		font-size: 1.5rem;
+		font-weight: 900;
+		color: $color-white;
+
+		@media (min-width: $breakpoint-sm) {
+			margin-bottom: 1rem;
+			font-size: 1.875rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			margin-bottom: 1.25rem;
+			font-size: 2.25rem;
+		}
+
+		@media (min-width: $breakpoint-2xl) {
+			font-size: 3rem;
+		}
+	}
+
+	p {
+		margin-bottom: 1.25rem;
+		font-size: 1rem;
+		font-weight: 500;
+		color: $color-white;
+		line-height: 1.625;
+
+		@media (min-width: $breakpoint-sm) {
+			margin-bottom: 1.5rem;
+			font-size: 1.125rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			margin-bottom: 2rem;
+			font-size: 1.25rem;
+		}
+
+		@media (min-width: $breakpoint-2xl) {
+			font-size: 1.5rem;
+		}
+	}
+}
+
+.email-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+
+	@media (min-width: $breakpoint-xl) {
+		gap: 1rem;
+	}
+
+	a {
+		font-size: 1rem;
+		font-weight: 700;
+		color: $color-white;
+		text-decoration: none;
+
+		@media (min-width: $breakpoint-sm) {
+			font-size: 1.125rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			font-size: 1.25rem;
+		}
+
+		@media (min-width: $breakpoint-2xl) {
+			font-size: 1.5rem;
+		}
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.email-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	background-color: rgba($color-white, 0.2);
+	border: 2px solid $color-white;
+	border-radius: 50%;
+	color: $color-white;
+
+	@media (min-width: $breakpoint-xl) {
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+.quick-links-card {
+	background-color: $color-white;
+	border: 2px solid $color-gray-900;
+	border-radius: 1rem;
+	padding: 1.5rem;
+	box-shadow: 8px 8px 0px 0px $color-gray-900;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 2rem;
+	}
+
+	@media (min-width: $breakpoint-md) {
+		border-width: 3px;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		border-radius: 1.5rem;
+		border-width: 4px;
+		padding: 2.5rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		padding: 3rem;
+	}
+
+	h3 {
+		margin-bottom: 1.25rem;
+		font-size: 1.25rem;
+		font-weight: 900;
+		color: $color-gray-900;
+
+		@media (min-width: $breakpoint-sm) {
+			margin-bottom: 1.5rem;
+			font-size: 1.5rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			margin-bottom: 2rem;
+			font-size: 1.875rem;
+		}
+
+		@media (min-width: $breakpoint-2xl) {
+			font-size: 2.25rem;
+		}
+	}
+}
+
+.social-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.75rem;
+
+	@media (min-width: $breakpoint-sm) {
+		gap: 1rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+	}
+}
+
+.social-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 1rem;
+	border: 2px solid $color-gray-900;
+	border-radius: 0.75rem;
+	text-decoration: none;
+	color: $color-white;
+	transition: $transition-fast;
+
+	@media (min-width: $breakpoint-sm) {
+		padding: 1.25rem;
+	}
+
+	@media (min-width: $breakpoint-xl) {
+		gap: 0.75rem;
+		padding: 1.5rem;
+		border-radius: 1rem;
+	}
+
+	@media (min-width: $breakpoint-2xl) {
+		padding: 2rem;
+	}
+
+	span {
+		font-size: 0.75rem;
+		font-weight: 700;
+
+		@media (min-width: $breakpoint-sm) {
+			font-size: 0.875rem;
+		}
+
+		@media (min-width: $breakpoint-xl) {
+			font-size: 1rem;
+		}
+
+		@media (min-width: $breakpoint-2xl) {
+			font-size: 1.125rem;
+		}
+	}
+
+	&:hover {
+		transform: translateY(-4px) rotate(3deg);
+	}
+
+	&:active {
+		transform: scale(0.95);
+	}
+
+	&.github {
+		background-color: $color-gray-900;
+
+		&:hover {
+			background-color: scale($color-gray-900, 10%);
+		}
+	}
+
+	&.linkedin {
+		background-color: $color-blue-600;
+
+		&:hover {
+			background-color: scale($color-blue-600, 5%);
+		}
+	}
+
+	&.email {
+		background-color: $color-rose-500;
+
+		&:hover {
+			background-color: scale($color-rose-500, 5%);
+		}
+	}
+}

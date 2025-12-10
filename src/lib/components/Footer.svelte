@@ -33,13 +33,11 @@
 <footer class="footer">
 	<div class="footer-container">
 		<div class="footer-grid">
-			<!-- Brand -->
 			<div class="brand">
 				<h3 class="brand-name">TOM<span class="accent">.</span></h3>
 				<p class="brand-description">{m.footer_brand_tagline()}</p>
 			</div>
 
-			<!-- Nav Sections -->
 			{#each navSections as section (section.title())}
 				<div class="nav-section">
 					<h4 class="nav-title">{section.title()}</h4>
@@ -56,12 +54,9 @@
 			{/each}
 		</div>
 
-		<!-- Gradient Divider -->
 		<div class="divider"></div>
 
-		<!-- Bottom -->
 		<div class="footer-bottom">
-			<!-- Social Links -->
 			<div class="social-links">
 				{#each SOCIAL_LINKS as social (social.name)}
 					<a
@@ -126,298 +121,11 @@
 				{/each}
 			</div>
 
-			<!-- Copyright -->
 			<p class="copyright">{m.footer_copyright({ year: currentYear.toString() })}</p>
 		</div>
 	</div>
 </footer>
 
 <style lang="scss">
-	// Variables
-	$color-gray-50: #f9fafb;
-	$color-gray-100: #f3f4f6;
-	$color-gray-600: #4b5563;
-	$color-gray-900: #111827;
-	$color-white: #ffffff;
-	$color-cyan-400: #22d3ee;
-	$color-cyan-600: #0891b2;
-	$color-purple-400: #c084fc;
-	$color-rose-400: #fb7185;
-	$color-blue-600: #2563eb;
-
-	$breakpoint-sm: 640px;
-	$breakpoint-md: 768px;
-	$breakpoint-lg: 1024px;
-	$breakpoint-xl: 1280px;
-	$breakpoint-2xl: 1536px;
-
-	$transition-fast: 0.2s ease;
-
-	// Footer
-	.footer {
-		position: relative;
-		background: linear-gradient(to bottom right, $color-gray-50, $color-gray-100);
-		border-top: 2px solid $color-gray-900;
-
-		@media (min-width: $breakpoint-md) {
-			border-top-width: 3px;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			border-top-width: 4px;
-		}
-	}
-
-	// Container
-	.footer-container {
-		max-width: 1280px;
-		margin: 0 auto;
-		padding: 2rem 1rem;
-
-		@media (min-width: $breakpoint-sm) {
-			padding: 2.5rem 1.5rem;
-		}
-
-		@media (min-width: $breakpoint-lg) {
-			padding: 2.5rem 2rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			max-width: 1400px;
-			padding: 3rem 2rem;
-		}
-
-		@media (min-width: $breakpoint-2xl) {
-			max-width: 1600px;
-			padding: 4rem 2rem;
-		}
-	}
-
-	// Grid
-	.footer-grid {
-		display: grid;
-		gap: 1.5rem;
-
-		@media (min-width: $breakpoint-sm) {
-			gap: 2rem;
-		}
-
-		@media (min-width: $breakpoint-md) {
-			grid-template-columns: repeat(3, 1fr);
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			gap: 2.5rem;
-		}
-	}
-
-	// Brand
-	.brand-name {
-		margin-bottom: 0.75rem;
-		font-size: 1.5rem;
-		font-weight: 900;
-		color: $color-gray-900;
-
-		@media (min-width: $breakpoint-sm) {
-			margin-bottom: 1rem;
-			font-size: 1.875rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			font-size: 2.25rem;
-		}
-
-		@media (min-width: $breakpoint-2xl) {
-			font-size: 3rem;
-		}
-	}
-
-	.accent {
-		color: $color-cyan-600;
-	}
-
-	.brand-description {
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: $color-gray-600;
-		line-height: 1.625;
-
-		@media (min-width: $breakpoint-sm) {
-			font-size: 1rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			font-size: 1.125rem;
-		}
-	}
-
-	// Nav Section
-	.nav-title {
-		margin-bottom: 0.75rem;
-		font-size: 1rem;
-		font-weight: 900;
-		color: $color-gray-900;
-
-		@media (min-width: $breakpoint-sm) {
-			margin-bottom: 1rem;
-			font-size: 1.125rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			font-size: 1.25rem;
-		}
-
-		@media (min-width: $breakpoint-2xl) {
-			font-size: 1.5rem;
-		}
-	}
-
-	.nav-list {
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-
-		@media (min-width: $breakpoint-xl) {
-			gap: 0.75rem;
-		}
-
-		button {
-			background: none;
-			border: none;
-			padding: 0;
-			font-family: inherit;
-			font-size: 0.875rem;
-			font-weight: 500;
-			color: $color-gray-600;
-			cursor: pointer;
-			transition: color $transition-fast;
-
-			@media (min-width: $breakpoint-sm) {
-				font-size: 1rem;
-			}
-
-			@media (min-width: $breakpoint-xl) {
-				font-size: 1.125rem;
-			}
-
-			&:hover {
-				color: $color-cyan-600;
-			}
-		}
-	}
-
-	// Divider
-	.divider {
-		height: 4px;
-		margin: 1.5rem 0;
-		background: linear-gradient(to right, $color-purple-400, $color-cyan-400, $color-rose-400);
-		border-radius: 9999px;
-
-		@media (min-width: $breakpoint-sm) {
-			margin: 2rem 0;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			margin: 2.5rem 0;
-		}
-	}
-
-	// Footer Bottom
-	.footer-bottom {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1.25rem;
-
-		@media (min-width: $breakpoint-sm) {
-			gap: 1.5rem;
-		}
-
-		@media (min-width: $breakpoint-md) {
-			flex-direction: row;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			gap: 2rem;
-		}
-	}
-
-	// Social Links
-	.social-links {
-		display: flex;
-		gap: 0.75rem;
-
-		@media (min-width: $breakpoint-sm) {
-			gap: 1rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			gap: 1.25rem;
-		}
-	}
-
-	.social-link {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.625rem;
-		background-color: $color-white;
-		border: 2px solid $color-gray-900;
-		border-radius: 50%;
-		color: $color-gray-900;
-		transition: $transition-fast;
-
-		@media (min-width: $breakpoint-sm) {
-			padding: 0.75rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			padding: 1rem;
-
-			svg {
-				width: 24px;
-				height: 24px;
-			}
-		}
-
-		&:hover {
-			transform: translateY(-4px) rotate(5deg);
-		}
-
-		&:active {
-			transform: scale(0.95);
-		}
-
-		&.github:hover {
-			background-color: $color-gray-900;
-			color: $color-white;
-		}
-
-		&.linkedin:hover {
-			background-color: $color-blue-600;
-			color: $color-white;
-		}
-
-		&.email:hover {
-			background-color: $color-cyan-600;
-			color: $color-white;
-		}
-	}
-
-	// Copyright
-	.copyright {
-		font-size: 0.75rem;
-		font-weight: 500;
-		color: $color-gray-600;
-
-		@media (min-width: $breakpoint-sm) {
-			font-size: 0.875rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			font-size: 1rem;
-		}
-	}
+	@use '$lib/styles/Footer.scss';
 </style>

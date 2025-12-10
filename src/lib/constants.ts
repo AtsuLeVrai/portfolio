@@ -7,6 +7,33 @@ export const PERSONAL_INFO = {
 	tagline: 'Built with SvelteKit & SCSS'
 } as const;
 
+export const SEO = {
+	siteName: 'Tom Bialecki | Portfolio',
+	siteUrl: 'https://tombialecki.dev',
+	defaultTitle: 'Tom Bialecki | Backend Engineer & Full-Stack Developer',
+	defaultDescription:
+		'Portfolio de Tom Bialecki - Backend Engineer spécialisé en Discord tooling, plateformes de communication temps réel et infrastructure développeur. Découvrez mes projets en Rust, TypeScript et Node.js.',
+	defaultKeywords: [
+		'Tom Bialecki',
+		'Backend Engineer',
+		'Full-Stack Developer',
+		'Discord Bot',
+		'TypeScript',
+		'Rust',
+		'Node.js',
+		'SvelteKit',
+		'Portfolio',
+		'Développeur',
+		'Web Developer'
+	],
+	author: 'Tom Bialecki',
+	twitterHandle: '@AtsuLeVrai',
+	locale: 'fr_FR',
+	themeColor: '#22d3ee',
+	ogImage: '/og-image.png',
+	favicon: '/favicon.ico'
+} as const;
+
 export const CONTACT_INFO = {
 	email: 'tom.bialecki2211@gmail.com',
 	github: 'https://github.com/AtsuLeVrai',
