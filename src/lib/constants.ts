@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
 
 export const SEO = {
 	siteName: 'Tom Bialecki | Portfolio',
-	siteUrl: 'https://tombialecki.dev',
+	siteUrl: 'https://atsulevrai.vercel.app',
 	defaultTitle: 'Tom Bialecki | Backend Engineer & Full-Stack Developer',
 	defaultDescription:
 		'Portfolio de Tom Bialecki - Backend Engineer spécialisé en Discord tooling, plateformes de communication temps réel et infrastructure développeur. Découvrez mes projets en Rust, TypeScript et Node.js.',
