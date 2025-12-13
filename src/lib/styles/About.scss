@@ -151,26 +151,11 @@
 		transform: rotate(-2deg) scale(1.02);
 	}
 
-	span {
-		font-size: 4.5rem;
-		font-weight: 900;
-		color: $color-white;
-
-		@media (min-width: $breakpoint-sm) {
-			font-size: 5rem;
-		}
-
-		@media (min-width: $breakpoint-md) {
-			font-size: 6rem;
-		}
-
-		@media (min-width: $breakpoint-xl) {
-			font-size: 10rem;
-		}
-
-		@media (min-width: $breakpoint-2xl) {
-			font-size: 12rem;
-		}
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 25%;
 	}
 }
 

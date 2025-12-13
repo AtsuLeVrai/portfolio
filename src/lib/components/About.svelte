@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages.js';
+	import {m} from '$lib/paraglide/messages.js';
 </script>
 
 <section class="about" id="about">
@@ -8,7 +8,7 @@
 			<div class="image-wrapper">
 				<div class="image-card-bg"></div>
 				<div class="image-card">
-					<span>TB</span>
+					<img alt="Just me" src="/me.png" />
 				</div>
 			</div>
 
