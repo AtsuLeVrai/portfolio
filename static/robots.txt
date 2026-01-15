@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://atsulevrai.vercel.app/sitemap.xml
+Sitemap: https://tombcode.vercel.app/sitemap.xml

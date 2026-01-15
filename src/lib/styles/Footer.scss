@@ -216,6 +216,11 @@
 		background-color: $color-rose-600;
 		color: $color-white;
 	}
+
+	&.banner:hover {
+		background-color: $color-purple-600;
+		color: $color-white;
+	}
 }
 
 .divider {
