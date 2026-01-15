@@ -38,13 +38,13 @@
 	"projects_tech_stack": "Technologies",
 	"projects_view_code": "Voir le code",
 
-	"project_chronos_title": "CHRONOS",
-	"project_chronos_short": "Système de trading neuroévolutif combinant apprentissage par renforcement et optimisation évolutive",
-	"project_chronos_desc": "Système de trading IA utilisant une architecture LSTM + Attention avec spéciation NEAT. Combine PPO avec neuroévolution sans gradient pour la découverte de stratégies forex.",
+	"project_apex_title": "APEX",
+	"project_apex_short": "Screener de trading SMC/ICT en temps réel pour MetaTrader 5 qui identifie les zones de liquidité institutionnelles et génère des setups à haute confluence",
+	"project_apex_desc": "Un screener qui analyse les paires forex en temps réel avec les concepts Smart Money. Détecte les sweeps de liquidité, la structure de marché (BOS/CHoCH), order blocks, FVGs et niveaux clés avec scoring multi-timeframe.",
 
-	"project_ares_title": "ARES",
-	"project_ares_short": "Terminal de trading crypto haute performance conçu pour la vitesse, la simplicité et la transparence",
-	"project_ares_desc": "Plateforme de trading Solana next-gen avec paper trading, protection anti-rug, copy trading et analyse IA. Construit avec SvelteKit, Bun et Elysia.",
+	"project_cordbun_title": "cordbun",
+	"project_cordbun_short": "La librairie Discord qui ne vous gêne pas. Rapide, légère et type-safe. Conçue pour Bun.",
+	"project_cordbun_desc": "Construite de zéro pour le runtime Bun avec WebSocket natif et zéro dépendance inutile. Inférence TypeScript complète, API chainable et système de plugins first-class.",
 
 	"experience_title_my": "MON",
 	"experience_title_experience": "EXPÉRIENCE",
@@ -225,7 +225,7 @@
 	"cv_section_project": "Projet",
 	"cv_project_name": "cordbun",
 	"cv_project_date": "2024",
-	"cv_project_desc": "Librairie Discord optimisée pour Bun. API chainable, typage TypeScript complet, gestion avancée de la mémoire, optimisation CPU/RAM et documentation complète avec tests de performance.",
+	"cv_project_desc": "Librairie Discord optimisée pour Bun. API chainable, typage TypeScript complet, système de plugins first-class.",
 
 	"cv_section_technologies": "Technologies",
 

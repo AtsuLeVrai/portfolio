@@ -38,13 +38,13 @@
 	"projects_tech_stack": "Tech Stack",
 	"projects_view_code": "View Code",
 
-	"project_chronos_title": "CHRONOS",
-	"project_chronos_short": "Neuroevolutionary trading system combining deep reinforcement learning with evolutionary optimization",
-	"project_chronos_desc": "AI-powered trading system using LSTM + Attention architecture with NEAT-like speciation. Combines PPO reinforcement learning with gradient-free neuroevolution for forex market strategy discovery.",
+	"project_apex_title": "APEX",
+	"project_apex_short": "Real-time SMC/ICT trading screener for MetaTrader 5 that identifies institutional liquidity zones and generates high-confluence setups",
+	"project_apex_desc": "A screener that analyzes forex pairs in real-time using Smart Money Concepts. Detects liquidity sweeps, market structure (BOS/CHoCH), order blocks, FVGs, and key levels with multi-timeframe confluence scoring.",
 
-	"project_ares_title": "ARES",
-	"project_ares_short": "High-performance crypto trading terminal built for speed, simplicity, and transparency",
-	"project_ares_desc": "Next-gen Solana trading platform with paper trading, anti-rug protection, copy trading, and AI-powered analysis. Built with SvelteKit, Bun, and Elysia.",
+	"project_cordbun_title": "cordbun",
+	"project_cordbun_short": "The Discord library that doesn't get in your way. Fast, lightweight, and type-safe. Built for Bun.",
+	"project_cordbun_desc": "Built from the ground up for Bun's runtime with native WebSocket and zero unnecessary dependencies. Full TypeScript inference, chainable API, and first-class plugin system.",
 
 	"experience_title_my": "MY",
 	"experience_title_experience": "EXPERIENCE",
@@ -225,7 +225,7 @@
 	"cv_section_project": "Project",
 	"cv_project_name": "cordbun",
 	"cv_project_date": "2024",
-	"cv_project_desc": "Discord library optimized for Bun. Chainable API, complete TypeScript typing, advanced memory management, CPU/RAM optimization and comprehensive documentation with performance tests.",
+	"cv_project_desc": "Discord library optimized for Bun. Chainable API, complete TypeScript typing, first-class plugin system.",
 
 	"cv_section_technologies": "Technologies",
 

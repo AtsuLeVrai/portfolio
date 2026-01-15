@@ -27,7 +27,6 @@ export const SEO = {
 		'Web Developer'
 	],
 	author: 'Tom Bialecki',
-	twitterHandle: '@AtsuLeVrai',
 	locale: 'fr_FR',
 	themeColor: '#22d3ee',
 	ogImage: '/og-image.png',
@@ -36,7 +35,7 @@ export const SEO = {
 
 export const CONTACT_INFO = {
 	email: 'tom.bialecki2211@gmail.com',
-	github: 'https://github.com/AtsuLeVrai',
+	github: 'https://github.com/t-aize',
 	linkedin: 'https://linkedin.com/in/tom-bialecki-464a65270'
 } as const;
 
@@ -44,7 +43,7 @@ export const SOCIAL_LINKS = [
 	{
 		name: 'GitHub',
 		label: 'GitHub',
-		href: 'https://github.com/AtsuLeVrai',
+		href: 'https://github.com/t-aize',
 		hoverClass: 'github'
 	},
 	{

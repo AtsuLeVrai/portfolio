@@ -393,6 +393,39 @@
 	}
 }
 
+.opensource-notice {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: 100%;
+	padding: 0.75rem 1rem;
+	background: linear-gradient(to right, $color-cyan-500, $color-purple-500);
+	border: 2px solid $color-gray-900;
+	border-radius: 9999px;
+	font-size: 0.875rem;
+	font-weight: 700;
+	color: $color-white;
+	text-decoration: none;
+	box-shadow: 4px 4px 0px 0px $color-gray-900;
+	transition: $transition-fast;
+	cursor: pointer;
+
+	@media (min-width: $breakpoint-sm) {
+		font-size: 1rem;
+	}
+
+	svg {
+		flex-shrink: 0;
+	}
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 6px 6px 0px 0px $color-gray-900;
+		background: linear-gradient(to right, $color-cyan-600, $color-purple-600);
+	}
+}
+
 .github-link {
 	display: flex;
 	align-items: center;
